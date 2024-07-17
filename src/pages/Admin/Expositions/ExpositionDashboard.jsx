@@ -1,5 +1,5 @@
 import Card from '../../../components/data_display/Cards';
-import styles from './ExpositionDashboard.module.css'
+import styles, {button, _red} from './ExpositionDashboard.module.css'
 import { useNavigate } from 'react-router-dom';
 
 const ExpositionDashboard = () => {
@@ -12,14 +12,13 @@ const ExpositionDashboard = () => {
     navigate("/admin/register")
   };
 
-
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <h2 className={styles.title}>
           Exposições
         </h2>
-        <button onClick={handleRedirect} className={styles.button}>
+        <button onClick={handleRedirect} className={`${button} ${_red}`}>
           Adicionar Exposição
         </button>
       </div>

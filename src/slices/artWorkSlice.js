@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import artWorkService from "../services/artWorkService";
+import { formatDate } from "../utils/formatDate";
 
 const initialState = {
     artWorks: {},
@@ -102,7 +103,7 @@ export const artWorkSlice = createSlice({
     reducers: {
         resetMessage: (state) => {
             state.message = null;
-        },
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(getArtWorks.pending, (state) => {

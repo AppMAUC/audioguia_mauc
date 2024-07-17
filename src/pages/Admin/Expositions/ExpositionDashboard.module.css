@@ -28,6 +28,10 @@
     margin-right: 1em;
 }
 
+.button._red {
+    background-color: red;
+}
+
 .body {
     width: 100%;
     display: flex;

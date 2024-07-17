@@ -18,6 +18,5 @@ export const useArtWorks = (id = '') => {
         }
     }, [id]);
 
-
     return { artWorks, artWork, loading, error, message };
 };

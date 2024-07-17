@@ -46,11 +46,11 @@ const Navbar = () => {
             {!admin &&
                 <form id="search-form" onSubmit={handleSearch}>
                     <BsSearch />
-                    <input type="text" placeholder="Pesquisar" onChange={(e) => setQuery(e.target.value)}/>
+                    <input type="text" placeholder="Pesquisar" onChange={(e) => setQuery(e.target.value)} />
                 </form>
             }
             <ul id="nav-links">
-                {auth && (
+                {auth  && (
                     <>
                         {/* <li>
                             <NavLink to="/">

@@ -1,4 +1,4 @@
-import '../../Auth/Auth.css';
+import '../Profile/AdminProfile.css';
 
 // Components
 import { Link } from 'react-router-dom';

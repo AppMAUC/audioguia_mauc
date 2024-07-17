@@ -65,7 +65,7 @@ const AdminProfile = () => {
   };
 
   return (
-    <div id='edit-profile'>
+    <div className='edit-profile'>
       <h2>Edite seus dados</h2>
       <p className='subtitle'> Adicionar uma imagem de perfil</p>
       {(admin.profileImage || previewImage) && (

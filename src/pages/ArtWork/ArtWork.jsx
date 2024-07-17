@@ -7,6 +7,8 @@ import 'react-h5-audio-player/lib/styles.css';
 
 import { useParams } from "react-router-dom";
 import { useArtWorks } from "../../hooks/useArtWorks";
+import { useEffect, useRef } from "react";
+import { showDate } from "../../utils/formatDate";
 
 // redux
 
@@ -20,6 +22,7 @@ const ArtWork = () => {
     if (loading) {
         return <p>Carregando...</p>
     };
+
 
     return (
         <div id='art-work'>
@@ -35,7 +38,7 @@ const ArtWork = () => {
                 //     <source src={`${uploads}/audios/artWork/${artWork.audio_desc}`} type="audio/mpeg" />
                 //     Your browser does not support the audio element.
                 // </audio>
-                <AudioPlayer
+                <AudioPlayer autoPlay
                     src={`${uploads}/audios/artworks/${artWork.audio_desc}`}
                     onPlay={() => console.log('Áudio reproduzido')}
                 // Outras props aqui
@@ -45,9 +48,10 @@ const ArtWork = () => {
             <p>Author: {artWork.author}</p>
             <p>Collection: {artWork.colection}</p>
             <p>Support: {artWork.suport}</p>
-            <p>Date: {artWork.date}</p>
+            <p>Data: {showDate(artWork?.date)}</p>
             <p>Dimensions: {artWork.dimension}</p>
 
+            
 
         </div>
     );

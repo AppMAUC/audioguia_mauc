@@ -25,23 +25,23 @@ const register = async (data) => {
 
 // Sign in
 const login = async (data) => {
-    
+
     const config = requestConfig("POST", data);
-    
+
     try {
         const res = await fetch(api + `/${route}/login`, config).then((res) => res.json()).catch((err) => err.message);
-        
+
         if (res._id) {
             localStorage.setItem("admin", JSON.stringify({ ...res, "isValid": true }));
         } else if (res == "Failed to fetch") {
             return { errors: ["Erro de conexão com o servidor, tente novamente mais tarde."] };
         };
-        
+
         return res;
     } catch (error) {
         console.log(error);
     };
-    
+
 }
 
 // Logout
@@ -54,6 +54,10 @@ const verifyToken = async (token) => {
 
     try {
         const res = await fetch(api + `/${route}/token`, config).then((res) => res.json()).catch((err) => err);
+
+        if (res.errors) {
+            return false
+        }
 
         return res.token;
     } catch (error) {

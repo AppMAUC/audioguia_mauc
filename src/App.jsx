@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 // hooks
 import { useAuth } from './hooks/useAuth';
-import { useRef, useState } from 'react';
 // components
 import Navbar from './components/surfaces/Navbar';
 import Footer from './components/surfaces/Footer';
@@ -29,7 +28,6 @@ import ArtWorksEdit from './pages/Admin/ArtWorks/ArtWorksEdit';
 import ArtWork from './pages/ArtWork/ArtWork';
 import Search from './pages/Search/Search';
 
-
 function App() {
   const { auth, loading } = useAuth();
 
@@ -40,10 +38,10 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        <Navbar/>
         <div className="container">
           <Routes>
-            <Route path='/' element={!auth ? <Home /> : <AdminHome />} />
+            <Route path='/' element={auth ? <AdminHome /> : <Home />} />
             <Route path='/artworks' element={<ArtWorks />} />
             <Route path='/artworks/:id' element={<ArtWork />} />
             <Route path='/about' element={<About />} />
@@ -57,7 +55,6 @@ function App() {
             <Route path='/admin/dashboard' element={auth && <AdminDashboard />} />
             <Route path='/admin/timeline' element={auth && <TimeLineDashboard />} />
             <Route path='/admin/artists' element={auth && <ArtistsDashboard />} />
-            <Route path='/login' element={<Teste />} />
             <Route path='/search' element={<Search />} />
           </Routes>
         </div>
@@ -66,28 +63,5 @@ function App() {
     </div>
   )
 };
-
-
-const Teste = () => {
-
-  const [teste, setTeste] = useState("")
-
-  const withRef = useRef('');
-
-  const testing = {
-    name: useRef(''),
-    text: useRef(''),
-  }
-
-  console.log('rederizou');
-  return (
-    <div>
-      <h3>Testando...</h3>
-      <form>
-        <input type="text" ref={testing.name} onChange={(e) => console.log(testing.name.current.value)}/>
-      </form>
-    </div>
-  )
-}
 
 export default App;
