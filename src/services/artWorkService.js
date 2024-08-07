@@ -1,5 +1,5 @@
 import { api, requestConfig } from '../utils/config';
-
+import { isJson } from '../utils/validation';
 const route = "artworks";
 
 
@@ -11,7 +11,7 @@ const registerArtWork = async (data, token) => {
         const res = await fetch(api + `/${route}/`, config)
             .then((res) => res.json())
             .catch((err) => err);
-
+            
         return res;
     } catch (error) {
         console.log(error);

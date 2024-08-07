@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getArtWorkDetails, getArtWorks } from "../slices/artWorkSlice";
+import { getArtWorkDetails, getArtWorks, resetArtWork, updateArtWork } from "../slices/artWorkSlice";
 
 export const useArtWorks = (id = '') => {
 
+    const { artWorks, artWork, loading, error, message } = useSelector((state) => state.artWork);
     const dispatch = useDispatch();
-    const { artWorks, artWork, loading, error, message} = useSelector((state) => state.artWork);
 
     useEffect(() => {
         dispatch(getArtWorks());
@@ -18,5 +18,13 @@ export const useArtWorks = (id = '') => {
         }
     }, [id]);
 
-    return { artWorks, artWork, loading, error, message };
+    return {
+        artWorks,
+        artWork,
+        loading,
+        error,
+        message,
+        update: (data) => dispatch(updateArtWork(data)),
+        get: (id) => dispatch(getArtWorkDetails(id))
+    };
 };

@@ -7,8 +7,8 @@ import 'react-h5-audio-player/lib/styles.css';
 
 import { useParams } from "react-router-dom";
 import { useArtWorks } from "../../hooks/useArtWorks";
-import { useEffect, useRef } from "react";
 import { showDate } from "../../utils/formatDate";
+import { useEffect, useState } from "react";
 
 // redux
 
@@ -21,39 +21,39 @@ const ArtWork = () => {
 
     if (loading) {
         return <p>Carregando...</p>
-    };
-
+    }
 
     return (
         <div id='art-work'>
             <h1>{artWork.title}</h1>
-            <p>Partial Description: {artWork.partial_desc}</p>
-            <p>Complete Description: {artWork.complete_desc}</p>
+            <p>Partial Description: {artWork.partialDesc}</p>
+            <p>Complete Description: {artWork.completeDesc}</p>
 
             {artWork.image && (
                 <img className="profile-image" src={`${uploads}/images/artworks/${artWork.image}`} alt={artWork.title} />
             )}
-            {artWork.audio_desc && (
-                // <audio controls>
-                //     <source src={`${uploads}/audios/artWork/${artWork.audio_desc}`} type="audio/mpeg" />
-                //     Your browser does not support the audio element.
-                // </audio>
-                <AudioPlayer autoPlay
-                    src={`${uploads}/audios/artworks/${artWork.audio_desc}`}
-                    onPlay={() => console.log('Áudio reproduzido')}
-                // Outras props aqui
-                />
-            )}
+            {artWork.audioDesc &&
+                artWork.audioDesc.map((item) =>
+                (
+                    <div key={item}>
+                        < AudioPlayer autoPlay
+                            src={`${uploads}/audios/artworks/br/${item}`}
+                            onPlay={() => console.log('Áudio reproduzido')}
+                        // Outras props aqui
+                        />
+                    </div>
+                )
+                )
+            }
 
             <p>Author: {artWork.author}</p>
-            <p>Collection: {artWork.colection}</p>
             <p>Support: {artWork.suport}</p>
-            <p>Data: {showDate(artWork?.date)}</p>
+            <p> Ano: {artWork?.year}</p>
             <p>Dimensions: {artWork.dimension}</p>
 
-            
 
-        </div>
+
+        </div >
     );
 };
 

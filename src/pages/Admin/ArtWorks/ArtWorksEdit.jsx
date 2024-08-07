@@ -1,133 +1,200 @@
 // CSs
 import "../Profile/AdminProfile.css";
 
-import { uploads } from "../../../utils/config";
-
 // hooks
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import useForm from '../../../hooks/useForm';
+import { useForm } from "react-hook-form";
 
 // redux
-import { updateArtWork, resetMessage, deleteArtWork } from "../../../slices/artWorkSlice";
+import { useDispatch } from "react-redux";
+import artWorkService from "../../../services/artWorkService";
+import { resetMessage, updateArtWork } from "../../../slices/artWorkSlice";
 
 // components
 import Message from "../../../components/feedback/Message";
 import AudioPlayer from 'react-h5-audio-player';
 import { useArtWorks } from "../../../hooks/useArtWorks";
 import { BsXLg } from "react-icons/bs";
-import { formatDate } from "../../../utils/formatDate";
+
+// utils
+import { uploads } from "../../../utils/config";
+import { arraysisEquals } from "../../../utils/validation";
+import { sendFormData } from "../../../utils/sendData"
+import { addSuffixToFileName } from "../../../utils/formatFile";
+
+//zod
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+const schema = z.object({
+    title: z.string().optional(),
+    partialDesc: z.string().optional(),
+    completeDesc: z.string().optional(),
+    dimension: z.string().optional(),
+    author: z.string().optional(),
+    archived: z.boolean().optional(),
+    year: z.string().optional(),
+    suport: z.string().optional(),
+    image: z.union([z.string(), z.instanceof(FileList).transform(list => list[0])]).optional(),
+    audioDesc: z.array(z.union([
+        z.string(),
+        z.instanceof(FileList).transform((list, ctx) => {
+            const file = list[0];
+            const lang = ctx.path[1] === 0 ? 'br' : 'en'; // Determina o idioma baseado no índice
+            return file ? addSuffixToFileName(file, lang) : '';
+        })
+    ])).optional()
+});
 
 const ArtWorksEdit = () => {
-
     const { id } = useParams();
-
+    const dispatch = useDispatch();
     const { artWork, loading, error, message } = useArtWorks(id);
-    const [formValues, handleInputChange, handleSet, handleChangeFile, handleSubmit, handleDelete] = useForm({});
-    const [previewImage, setPreviewImage] = useState("");
-    const [previewAudio, setPreviewAudio] = useState("");
 
-    useEffect(() => {
-        if (artWork) {
-            // formatDate();
-            handleSet(artWork);
+    const { register, handleSubmit, formState: { errors }, watch } = useForm({
+        defaultValues: () => {
+            return artWorkService.getArtWorkDetails(id);
+        },
+        resolver: zodResolver(schema)
+    });
+
+    const watchImage = watch('image');
+    const watchAudioBr = watch('audioDesc.0');
+    const watchAudioEn = watch('audioDesc.1');
+
+    const previewImage = useMemo(() => {
+        if (typeof (watchImage) == 'string') {
+            return `${uploads}/images/artworks/${artWork.image}`
         }
-    }, [artWork]);
 
+        return URL.createObjectURL(new Blob(watchImage));
+    }, [watchImage])
+
+    const previewAudioBr = useMemo(() => {
+        if (typeof (watchAudioBr) == 'string') {
+            return `${uploads}/audios/artworks/${watchAudioBr.match(/\-(br|en)/)[1]}/${watchAudioBr}`;
+        }
+
+        return URL.createObjectURL(new Blob(watchAudioBr));
+    }, [watchAudioBr]);
+
+    const previewAudioEn = useMemo(() => {
+        if (typeof (watchAudioEn) == 'string') {
+            return `${uploads}/audios/artworks/${watchAudioEn.match(/\-(br|en)/)[1]}/${watchAudioEn}`;
+        }
+        return URL.createObjectURL(new Blob(watchAudioEn));
+    }, [watchAudioEn]);
+
+    const onSubmit = (e) => {
+        const data = {};
+        const keys = Object.keys(artWork).filter((item) => {
+            return e[item] !== artWork[item]
+        })
+        keys.forEach(item => {
+            data[item] = e[item];
+        })
+
+        if (arraysisEquals(data.audioDesc, artWork.audioDesc)) {
+            delete data.audioDesc;
+        }
+
+        const newData = sendFormData(data)
+
+        dispatch(updateArtWork({ newData, id }));
+
+        setTimeout(() => dispatch(resetMessage()), 4000);
+    }
     return (
         <div className="container">
             <div className='edit-profile'>
                 <h2>Edite os dados da obra</h2>
-                <form onSubmit={(e) => handleSubmit(e, updateArtWork, resetMessage, '/admin/artworks')}>
+                <form className={'show'} onSubmit={handleSubmit(onSubmit)}>
                     <label>
                         <span className="subtitle">Imagem:</span>
-                        {(formValues?.image || previewImage) && (
+                        {previewImage &&
                             <img
                                 className="profile-image"
                                 src={
-                                    previewImage || `${uploads}/images/artworks/${formValues.image}`
+                                    previewImage
                                 }
-                                alt={formValues?.title}
+                                alt={artWork?.title}
                             />
-                        )}
-                        <input type="file" name="image" accept="image/png, image/jpeg" onChange={(e) => { setPreviewImage(URL.createObjectURL(e.target.files[0])); handleChangeFile(e) }} />
+
+                        }
+                        <input type="file" accept="image/png, image/jpeg" {...register('image')} />
                     </label>
                     <label>
-                        <span>Audio:</span>
-                        {(formValues.audio_desc || previewAudio) && (
-                            <AudioPlayer className="audio"
-                                src={previewAudio || `${uploads}/audios/artworks/${formValues.audio_desc}`}
-                            // Outras props aqui
+                        <span>Audios:</span>
+                        {previewAudioBr && (
+                            <AudioPlayer
+                                src={previewAudioBr || ''}
                             />
                         )}
-                        <input type="file" name="audio_desc" accept="audio/mpeg" onChange={(e) => { setPreviewAudio(URL.createObjectURL(e.target.files[0])); handleChangeFile(e) }} />
+                        {previewAudioEn && (
+                            <AudioPlayer
+                                src={previewAudioEn || ''}
+                            />
+                        )}
+                        <span>Audio br</span>
+                        <input type="file" accept="audio/mpeg" {...register('audioDesc.0')} />
+                        <span>Audio en</span>
+                        <input type="file" accept="audio/mpeg" {...register('audioDesc.1')} />
                     </label>
                     <input
                         type="text"
-                        placeholder='Nome'
-                        name="title"
-                        onChange={handleInputChange}
-                        value={formValues.title || ""}
+                        placeholder='Título'
+                        defaultValue={artWork?.title || ''}
+                        {...register('title')}
                     />
                     <input
                         type="text"
                         placeholder='Descrição Parcial'
-                        name="partial_desc"
-                        value={formValues.partial_desc || ""}
-                        onChange={handleInputChange}
+                        {...register('partialDesc')}
                     />
                     <input
                         type="text"
                         placeholder='Descrição Completa'
-                        name="complete_desc"
-                        value={formValues.complete_desc || ""}
-                        onChange={handleInputChange}
+                        {...register('completeDesc')}
                     />
                     <input
                         type="text"
                         placeholder='Autor'
-                        name="author"
-                        value={formValues.author || ""}
-                        onChange={handleInputChange}
+                        {...register('author')}
                     />
                     <input
                         type="text"
                         placeholder='Suporte'
-                        name="suport"
-                        value={formValues.complete_desc || ""}
-                        onChange={handleInputChange}
+                        {...register('suport')}
                     />
                     <input
                         type="text"
                         placeholder='Insira as dimensões da data'
-                        name="dimension"
-                        value={formValues.dimension || ""}
-                        onChange={handleInputChange}
+                        {...register('dimension')}
                     />
-                    <input
-                        type="text"
-                        placeholder='Insira a coleção'
-                        name="colection"
-                        value={formValues.colection || ""}
-                        onChange={handleInputChange}
-                    />
-                    <label htmlFor="date">
-                        <span>Insira a data da obra:</span>
+                    <label htmlFor="year">
+                        <span>Insira o ano da obra:</span>
                     </label>
                     <input
-                        type="date"
-                        name="date"
-                        id="date"
-                        value={formatDate(formValues?.date) || ""}
-                        onChange={(e) => { handleInputChange(e) }}
+                        type="text"
+                        id="year"
+                        {...register('year')}
                     />
+                    <label className="checkbox-label">
+                        <p>Arquivar:</p>
+                        <input
+                            className="checkbox"
+                            type="checkbox"
+                            {...register('archived')}
+                        />
+                    </label>
 
                     {!loading && <input type="submit" value="Atualizar" />}
                     {loading && <input type="submit" value="Aguarde..." disabled />}
                     {error && <Message msg={error} type={"error"} />}
                     {message && <Message msg={message} type={"success"} />}
                 </form>
-                <BsXLg onClick={(e) => handleDelete(e, deleteArtWork, resetMessage, '/admin/artworks', id)} />
+                {/* <BsXLg onClick={(e) => handleDelete(e, deleteArtWork, resetMessage, '/admin/artworks', id)} /> */}
             </div>
         </div>
     );

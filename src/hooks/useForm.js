@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addSuffixToFileName } from "../utils/formatFile";
 
 const useForm = (initialValues) => {
     const dispatch = useDispatch();
@@ -17,11 +18,32 @@ const useForm = (initialValues) => {
         setValues({ ...values, [event.target.name]: event.target.files[index] });
     };
 
+    const handleChangeArrayFile = (event, lang) => {
+        event.preventDefault();
+
+        const { audioDesc } = values;
+
+        // Adicionar sufixo ao arquivo
+        const suffix = lang === 'br' ? 'br' : 'en';
+        const fileWithSuffix = addSuffixToFileName(event.target.files[0], suffix);
+
+        // Atualizar o array audioDesc com base no idioma
+        const newAudioDesc = [...audioDesc];
+        if (lang === 'br') {
+            newAudioDesc[0] = fileWithSuffix;
+        } else if (lang === 'en') {
+            newAudioDesc[1] = fileWithSuffix;
+        }
+
+        setValues({ ...values, [event.target.name]: newAudioDesc });
+    };
+
+
     const handleSet = (data) => {
         setValues({ ...data });
     };
 
-    const handleSubmit = async (e, action, reset, link = '/') => {
+    const handleSubmit = async (e, action, reset, link = '/', error, form = true) => {
         e.preventDefault();
 
         const data = {
@@ -32,10 +54,34 @@ const useForm = (initialValues) => {
         const formData = new FormData();
 
         Object.keys(data).forEach((key) => {
-            formData.append(key, data[key])
+
+            if (key == 'audioDesc') {
+                for (let i = 0; i < data[key].length; i++) {
+                    formData.append(key, data[key][i]);
+                }
+            } else {
+                formData.append(key, data[key])
+            }
         });
 
-        await dispatch(action(formData));
+        if (form) {
+            await dispatch(action(formData));
+        } else {
+            await dispatch(action(data));
+        }
+
+        setTimeout(() => {
+            if (!error) {
+                dispatch(reset());
+                navigate(link);
+            }
+        }, 3000);
+    }
+
+    const handleDelete = async (e, action, reset, link = '/', id) => {
+        e.preventDefault();
+
+        dispatch(action(id));
 
         setTimeout(() => {
             dispatch(reset());
@@ -43,19 +89,7 @@ const useForm = (initialValues) => {
         }, 2000);
     }
 
-    const handleDelete = async (e, action, reset, link = '/', id) => {
-        e.preventDefault();
-
-
-        dispatch(action(id));
-
-        setTimeout(() => {
-            dispatch(reset());
-            navigate(link);
-        }, 3000);
-    }
-
-    return [values, handleInputChange, handleSet, handleChangeFile, handleSubmit, handleDelete];
+    return [values, handleInputChange, handleSet, handleChangeFile, handleSubmit, handleDelete, handleChangeArrayFile];
 };
 
 

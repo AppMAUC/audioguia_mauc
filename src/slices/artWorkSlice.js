@@ -3,7 +3,7 @@ import artWorkService from "../services/artWorkService";
 import { formatDate } from "../utils/formatDate";
 
 const initialState = {
-    artWorks: {},
+    artWorks: [],
     artWork: {},
     error: false,
     success: false,
@@ -27,10 +27,9 @@ export const registerArtWork = createAsyncThunk(
 
 export const updateArtWork = createAsyncThunk(
     "artWork/update",
-    async (artWork, thunkAPI) => {
+    async ({ newData, id }, thunkAPI) => {
         const token = thunkAPI.getState().auth.admin.token;
-        const id = artWork.get("_id");
-        const data = await artWorkService.updateArtWork(id, artWork, token);
+        const data = await artWorkService.updateArtWork(id, newData, token);
 
         // Check for errors
         if (data.errors) {
@@ -103,6 +102,9 @@ export const artWorkSlice = createSlice({
     reducers: {
         resetMessage: (state) => {
             state.message = null;
+        },
+        resetArtWork: (state) => {
+            state.artWork = null;
         }
     },
     extraReducers: (builder) => {
@@ -177,5 +179,5 @@ export const artWorkSlice = createSlice({
     }
 });
 
-export const { resetMessage } = artWorkSlice.actions;
+export const { resetMessage, resetArtWork } = artWorkSlice.actions;
 export default artWorkSlice.reducer;

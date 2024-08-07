@@ -8,6 +8,7 @@ const register = async (data) => {
     const config = requestConfig("POST", data, null, true);
 
     try {
+        console.log(config);
         const res = await fetch(api + `/${route}/register`, config)
             .then((res) => res.json())
             .catch((err) => err);

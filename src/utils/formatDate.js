@@ -15,13 +15,9 @@ export const formatDate = (date) => {
 export const showDate = (date) => {
 
     try {
-
-
         if (date) {
             const newDate = formatDate(date);
-
             return newDate.split('-').reverse().join('/');
-
         }
 
     } catch (error) {

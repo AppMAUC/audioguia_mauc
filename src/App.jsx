@@ -32,13 +32,13 @@ function App() {
   const { auth, loading } = useAuth();
 
   if (loading) {
-    return <p>Carregando...</p>;
-  };
+    return <p>Carregando...</p>
+  }
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar/>
+        <Navbar />
         <div className="container">
           <Routes>
             <Route path='/' element={auth ? <AdminHome /> : <Home />} />
@@ -46,7 +46,8 @@ function App() {
             <Route path='/artworks/:id' element={<ArtWork />} />
             <Route path='/about' element={<About />} />
             <Route path='/admin' element={!auth ? <Login /> : <Navigate to='/' />} />
-            <Route path='/admin/register' element={auth ? <Register /> : <Navigate to='/' />} />
+            <Route path='/admin/register' element={<Register />} />
+            {/* <Route path='/admin/register' element={auth ? <Register /> : <Navigate to='/' />} /> */}
             <Route path='/admin/profile' element={auth ? <AdminProfile /> : <Navigate to='/' />} />
             <Route path='/admin/expositions' element={auth && <ExpositionDashboard />} />
             <Route path='/admin/artworks' element={auth && <ArtWorksDashboard />} />
@@ -62,6 +63,6 @@ function App() {
       </BrowserRouter>
     </div>
   )
-};
+}
 
 export default App;

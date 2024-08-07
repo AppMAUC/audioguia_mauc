@@ -5,87 +5,84 @@ import { Link } from 'react-router-dom';
 import Message from '../../components/feedback/Message';
 
 // Hooks
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import useForm from '../../hooks/useForm';
+import { uploads } from '../../utils/config';
 // Redux
 import { register, reset } from '../../slices/authSlice';
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [accessLevel, setAccessLevel] = useState(1);
 
-  const dispatch = useDispatch();
-
+  const [previewImage, setPreviewImage] = useState("");
   const { loading, error } = useSelector((state) => state.auth);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const admin = {
-      name,
-      email,
-      password,
-      confirmPassword,
-      accessLevel
-    };
-    
-    dispatch(register(admin));
-  };
-
-  // Clear all auth states
-  useEffect(() => {
-    dispatch(reset());
-  }, [dispatch]);
+  const [formValues, handleInputChange, handleSet, handleChangeFile, handleSubmit] = useForm({
+    name: '',
+    image: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    accessLevel: '2',
+  });
 
   return (
     <div id='register'>
       <h2>Administrador</h2>
+      {(formValues.image || previewImage) && (
+        <img
+          className="profile-image"
+          src={
+            previewImage || `${uploads}/images/admin/${formValues.image}`
+          }
+          alt={formValues?.name}
+        />
+      )}
       <p className="subtitle">Caso seja um administrador do projeto, cadastre-se.</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e, register, reset, '/', error)}>
         <input
           type="text"
           name="name"
           placeholder='Nome'
-          onChange={(e) => setName(e.target.value)}
-          value={name || ''}
+          onChange={handleInputChange}
+          value={formValues.name || ''}
           required
         />
+        <label>
+          <span>Imagem do Perfil:</span>
+          <input type="file" name='image' onChange={(e) => { setPreviewImage(URL.createObjectURL(e.target.files[0])); handleChangeFile(e) }} />
+        </label>
         <input
           type="email"
           name='email'
           placeholder='Email'
-          onChange={(e) => setEmail(e.target.value)}
-          value={email || ''}
+          onChange={handleInputChange}
+          value={formValues.email || ''}
           required
         />
         <input
           type="password"
           name='password'
           placeholder='Senha'
-          onChange={(e) => setPassword(e.target.value)}
-          value={password || ''}
+          onChange={handleInputChange}
+          value={formValues.password || ''}
           required
         />
         <input
           type="password"
           name="confirmPassword"
           placeholder='Confirme a senha'
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          value={confirmPassword || ''}
+          onChange={handleInputChange}
+          value={formValues.confirmPassword || ''}
           required
         />
         <p>Escolha o nível de acesso do novo administrador:</p>
-        <select onChange={(e) => setAccessLevel(e.target.value)}>
+        <select name='accessLevel' defaultValue="1" onChange={handleInputChange}>
           <option value="1">1</option>
           <option value="2">2</option>
         </select>
         {!loading && <input type="submit" value="Cadastrar" />}
         {loading && <input type="submit" value="Cadastrar" disabled />}
-        {error && <Message msg={error} type={"error"}/>}
+        {error && <Message msg={error} type={"error"} />}
       </form>
     </div>
   )

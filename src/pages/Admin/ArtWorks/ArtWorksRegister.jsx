@@ -16,12 +16,15 @@ import { useArtWorks } from '../../../hooks/useArtWorks';
 const ArtWorkRegister = () => {
 
     const { error, message, loading } = useArtWorks();
-    const [formValues, handleInputChange, handleSet, handleChangeFile, handleSubmit] = useForm({});
+    const [formValues, handleInputChange, handleSet, handleChangeFile, handleSubmit, handleDelete, handleChangeArrayFile] = useForm({
+        audio_desc: []
+    });
     const [previewImage, setPreviewImage] = useState("");
     const [previewAudio, setPreviewAudio] = useState("");
+    const [previewAudioS, setPreviewAudioS] = useState("");
 
 
-
+    console.log(formValues)
     return (
         <div id='register'>
             <h2>ArtWork</h2>
@@ -40,6 +43,12 @@ const ArtWorkRegister = () => {
                 // Outras props aqui
                 />
             )}
+            {previewAudioS && (
+                <AudioPlayer
+                    src={previewAudioS || ''}
+                // Outras props aqui
+                />
+            )}
             <form onSubmit={(e) => handleSubmit(e, registerArtWork, resetMessage, '/admin/artworks')}>
                 <input
                     type="text"
@@ -51,15 +60,15 @@ const ArtWorkRegister = () => {
                 <input
                     type="text"
                     placeholder='Descrição Parcial'
-                    name="partial_desc"
-                    value={formValues.partial_desc || ""}
+                    name="partialDesc"
+                    value={formValues.partialDesc || ""}
                     onChange={handleInputChange}
                 />
                 <input
                     type="text"
                     placeholder='Descrição Completa'
-                    name="complete_desc"
-                    value={formValues.complete_desc || ""}
+                    name="completeDesc"
+                    value={formValues.completeDesc || ""}
                     onChange={handleInputChange}
                 />
                 <input
@@ -83,19 +92,12 @@ const ArtWorkRegister = () => {
                     value={formValues.dimension || ""}
                     onChange={handleInputChange}
                 />
-                <input
-                    type="text"
-                    placeholder='Insira a coleção'
-                    name="colection"
-                    value={formValues.colection || ""}
-                    onChange={handleInputChange}
-                />
-                <label htmlFor="date">
+                <label htmlFor="year">
                     <span>Insira a data da obra:</span>
                 </label>
                 <input
-                    type="date"
-                    name="date"
+                    type="text"
+                    name="year"
                     onChange={handleInputChange}
                 />
                 <label>
@@ -103,8 +105,12 @@ const ArtWorkRegister = () => {
                     <input type="file" name="image" accept="image/png, image/jpeg" onChange={(e) => { setPreviewImage(URL.createObjectURL(e.target.files[0])); handleChangeFile(e) }} />
                 </label>
                 <label>
-                    <span>Audio:</span>
-                    <input type="file" name="audio_desc" accept="audio/mpeg" onChange={(e) => { setPreviewAudio(URL.createObjectURL(e.target.files[0])); handleChangeFile(e) }} />
+                    <span>Audio br:</span>
+                    <input type="file" name="audioDesc" multiple accept="audio/mpeg" onChange={(e) => { setPreviewAudio(URL.createObjectURL(e.target.files[0])); handleChangeArrayFile(e, 'br') }} />
+                </label>
+                <label>
+                    <span>Audio en:</span>
+                    <input type="file" name="audioDesc" accept="audio/mpeg" onChange={(e) => { setPreviewAudioS(URL.createObjectURL(e.target.files[0])); handleChangeArrayFile(e, 'en') }} />
                 </label>
 
 

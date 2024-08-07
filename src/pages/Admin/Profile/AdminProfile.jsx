@@ -68,11 +68,11 @@ const AdminProfile = () => {
     <div className='edit-profile'>
       <h2>Edite seus dados</h2>
       <p className='subtitle'> Adicionar uma imagem de perfil</p>
-      {(admin.profileImage || previewImage) && (
+      {(admin.image || previewImage) && (
         <img
           className="profile-image"
           src={
-            previewImage || `${uploads}/images/admin/${admin.profileImage}`
+            previewImage || `${uploads}/images/admin/${admin.image}`
           }
           alt={admin.name}
         />
@@ -94,7 +94,7 @@ const AdminProfile = () => {
         />
         <label>
           <span>Imagem do Perfil:</span>
-          <input type="file" name='profileImage' onChange={(e) => { setPreviewImage(URL.createObjectURL(e.target.files[0])); handleChangeFile(e) }} />
+          <input type="file" name='image' onChange={(e) => { setPreviewImage(URL.createObjectURL(e.target.files[0])); handleChangeFile(e) }} />
         </label>
         <label>
           <span>Quer alterar a sua senha?</span>
