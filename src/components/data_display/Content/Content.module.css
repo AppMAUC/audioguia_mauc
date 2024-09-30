@@ -1,0 +1,42 @@
+.title {
+  font-family: "Source Serif 4", serif;
+  color: #a57c52;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
+  padding: 0 20px;
+}
+
+.desc {
+  width: 100%;
+  text-align: left;
+  font-family: "Lato", sans-serif;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #707070;
+  margin-top: 0.8rem;
+  margin-bottom: 0.1rem;
+  padding: 0 20px;
+  color: #707070;
+}
+
+.desc.black {
+  color: #1e1e1e;
+}
+
+.content {
+  display: flex;
+  height: 40%;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 0.1em;
+}
+
+.image {
+  width: 100%;
+  height: 160px;
+  background-color: #aeadad;
+}

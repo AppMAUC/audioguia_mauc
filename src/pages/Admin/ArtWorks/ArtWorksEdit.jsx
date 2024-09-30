@@ -129,11 +129,13 @@ const ArtWorksEdit = () => {
                         {previewAudioBr && (
                             <AudioPlayer
                                 src={previewAudioBr || ''}
+                                pause
                             />
                         )}
                         {previewAudioEn && (
                             <AudioPlayer
                                 src={previewAudioEn || ''}
+                                pause
                             />
                         )}
                         <span>Audio br</span>

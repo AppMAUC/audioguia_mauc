@@ -37,7 +37,7 @@ const ArtWork = () => {
                 (
                     <div key={item}>
                         < AudioPlayer autoPlay
-                            src={`${uploads}/audios/artworks/br/${item}`}
+                            src={`${uploads}/audios/artworks/${item.match(/\-(br|en)/)[1]}/${item}`}
                             onPlay={() => console.log('Áudio reproduzido')}
                         // Outras props aqui
                         />

@@ -1,12 +1,44 @@
+/* styles.css */
 
+/* Estilos padrão para mobile */
 body {
-  background-color: #121212;
-  padding: 0;
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-  box-sizing: border-box;
-  color: #fafafa;
+  font-size: 16px;
 }
+
+.container {
+  width: 100%;
+  padding: 0;
+}
+
+.item {
+  margin: 10px 0;
+}
+
+/* Estilos para tablets */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+
+  body {
+    font-size: 18px;
+    padding: 20px;
+  }
+}
+
+/* Estilos para desktops */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  body {
+    font-size: 20px;
+    padding: 30px;
+  }
+}
+
 
 a {
   color: #fafafa;
@@ -34,27 +66,16 @@ label {
 
 label span {
   font-weight: bold;
-  margin-bottom: .5em;
-  color: #AAA;
-  font-size: .7em;
-}
-
-input {
-  background-color: #3b3b3b;
-  color: #FFF;
-  border: 1px solid #555;
-  border-radius: 2px;
-  padding: 10px 8px;
-  outline: none;
-  margin-bottom: .6em;
+  margin-bottom: 0.5em;
+  color: #aaa;
+  font-size: 0.7em;
 }
 
 input::placeholder {
-  color: #AAA;
+  color: #aaa;
 }
 
 .btn,
-button,
 input[type="submit"] {
   background-color: #0094f6;
   color: #fff;
@@ -63,7 +84,7 @@ input[type="submit"] {
   padding: 10px 98px;
   font-weight: bold;
   cursor: pointer;
-  opacity: .8;
+  opacity: 0.8;
   font-size: 1em;
 }
 
@@ -76,9 +97,16 @@ input:disabled {
   background-color: #000;
 }
 
-button:hover,
-input[type="submit"]:hover {
-  opacity: 1;
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
 }
 
 .cancel-btn {

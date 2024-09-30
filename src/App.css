@@ -1,4 +1,5 @@
-.container {
-  min-height: 70vh;
-
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

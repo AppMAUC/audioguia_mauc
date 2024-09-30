@@ -11,7 +11,6 @@ export const useAuth = () => {
 
     useEffect(() => {
         if (token === true && admin) {
-           // dispatch(verifyToken());
             setAuth(token);
         } else {
             setAuth(false);

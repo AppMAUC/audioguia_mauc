@@ -1,11 +1,11 @@
 import Card from '../../components/data_display/Cards';
-import './Admin.css';
+import styles from './Admin.module.css';
 import Vite from '/vite.svg';
 
 const AdminHome = () => {
 
     return (
-        <div className='container'>
+        <div className={styles.container}>
             <Card link={"/admin/dashboard"}>
                 <Card.Image src={Vite} alt={"vite"} />
                 <Card.Title>

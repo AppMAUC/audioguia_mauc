@@ -13,6 +13,12 @@
 
 
 .subtitle {
+    color: #f1f1f1;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.label-span {
     color: #CCC;
 }
 

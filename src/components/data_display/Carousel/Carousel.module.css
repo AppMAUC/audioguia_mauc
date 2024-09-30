@@ -1,0 +1,97 @@
+.inner {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  height: 100%;
+}
+
+.carousel {
+  margin-top: 10px;
+  width: 100%; /* largura carrossel 412 */ 
+  height: 57.7vw; /* altura carrossel */
+  cursor: grab;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.item {
+  height: 100%; /* altura item */
+  min-width: 45.8%; /* largura item */
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.item a {
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+
+.item p {
+  text-align: left;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 19px;
+  margin-left: .5em;
+}
+
+.item h3 {
+  font-size: 24px;
+  margin-left: .4em;
+  font-weight: bold;
+}
+
+.item.focused {
+  border: 5px solid #1277c9e7;
+}
+
+.text {
+  text-align: left;
+  font-family: "Source Serif 4", serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 19px;
+  padding: 0;
+  margin: 0;
+}
+
+.control_btn {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.dots {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
