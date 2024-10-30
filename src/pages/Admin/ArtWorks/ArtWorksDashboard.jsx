@@ -27,15 +27,15 @@ const ArtWorksDashboard = () => {
       </div>
       <hr className={styles.hr} />
       <div className={styles.body}>
-        {artWorks?.length > 0 &&
-          artWorks.map((item) => (
+        {artWorks.data?.length > 0 &&
+          artWorks.data.map((item) => (
             <Card link={`/admin/artworks/${item._id}`} key={item._id}>
-              <Card.Image src={`${uploads}/images/artworks/${item.image}`} alt={item.title} />
+              <Card.Image src={item.image.url} alt={item.title} />
               <Card.Title>
                 {item.title}
               </Card.Title>
               <Card.Description>
-                {item.partial_desc}
+                {item.desc}
               </Card.Description>
             </Card>
           ))

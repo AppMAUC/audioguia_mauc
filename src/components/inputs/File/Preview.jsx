@@ -1,8 +1,8 @@
 import AudioPlayer from "react-h5-audio-player";
 import { usePreview } from "../hooks/usePreview";
 
-export const AudioPreview = ({ file, folder, type }) => {
-  const preview = usePreview(file, `audios/${folder}/${type}`);
+export const AudioPreview = ({ file }) => {
+  const preview = usePreview(file);
 
   if (!preview) return null;
 

@@ -25,6 +25,7 @@ import { sendFormData } from "../../../utils/sendData";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { artWorkEditValidation } from "../../../utils/validations/artWorkValidation";
 import { Spinner } from "@radix-ui/themes";
+import errorMap from "zod/locales/en.js";
 
 const ArtWorksEditTest = () => {
   const { id } = useParams();
@@ -55,18 +56,17 @@ const ArtWorksEditTest = () => {
     keys.forEach((item) => {
       data[item] = e[item];
     });
-
+    
     if (arraysisEquals(data.audioDesc, artWork.audioDesc)) {
       delete data.audioDesc;
     }
-
+    console.log(data)
     const newData = sendFormData(data);
-
     dispatch(updateArtWork({ newData, id }));
 
-    setTimeout(() => dispatch(resetMessage()), 4000);
+    // setTimeout(() => dispatch(resetMessage()), 4000);
   };
-
+  console.log(errors);
   return (
     <div className="container">
       <div className="edit-profile">
@@ -105,6 +105,15 @@ const ArtWorksEditTest = () => {
               <File.Input accept="audio/mpeg" {...register("audioDesc.1")} />
             </File>
           </label>
+          <label>
+            <File>
+              <span className="subtitle">Audios:</span>
+              <span>Audio br</span>
+              <File.Input accept="audio/mpeg" {...register("audioGuia.0")} />
+              <span>Audio en</span>
+              <File.Input accept="audio/mpeg" {...register("audioGuia.1")} />
+            </File>
+          </label>
           <input
             type="text"
             placeholder="Título"
@@ -113,13 +122,8 @@ const ArtWorksEditTest = () => {
           />
           <input
             type="text"
-            placeholder="Descrição Parcial"
-            {...register("partialDesc")}
-          />
-          <input
-            type="text"
-            placeholder="Descrição Completa"
-            {...register("completeDesc")}
+            placeholder="Descrição"
+            {...register("description")}
           />
           <input type="text" placeholder="Autor" {...register("author")} />
           <input type="text" placeholder="Suporte" {...register("suport")} />
