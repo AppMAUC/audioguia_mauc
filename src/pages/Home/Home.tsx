@@ -1,4 +1,5 @@
 import { useAuth } from "../../features/Admin/hooks/useAuth";
+import AccessibilityMenu from "../../features/Accessibility/AccessibilityMenu";
 
 function Home() {
   const data = {
@@ -17,6 +18,7 @@ function Home() {
       <h1>AppMauc</h1>
       <button onClick={handleLogin}>Login</button>
       <button onClick={handleLogout}>Logout</button>
+      <AccessibilityMenu />
     </div>
   );
 }

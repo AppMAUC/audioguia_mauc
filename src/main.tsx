@@ -1,10 +1,11 @@
 import { createRoot } from "react-dom/client";
-import "./index.css";
+import "./styles/global.css";
 import AuthProvider from "./features/Admin/context/AuthProvider.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFoundPage from "./pages/NotFound/NotFoundPage.tsx";
 import { adminRoutes } from "./features/Admin/adminRoutes.tsx";
 import Home from "./pages/Home/Home.tsx";
+import { ThemeProvider } from "./features/Theme/ThemeProvider.tsx";
 
 const router = createBrowserRouter(
   [
@@ -29,12 +30,14 @@ const router = createBrowserRouter(
 createRoot(document.getElementById("root")!).render(
   // <StrictMode>
   <AuthProvider>
-    <RouterProvider
-      router={router}
-      future={{
-        v7_startTransition: true,
-      }}
-    />
+    <ThemeProvider>
+      <RouterProvider
+        router={router}
+        future={{
+          v7_startTransition: true,
+        }}
+      />
+    </ThemeProvider>
   </AuthProvider>
   // </StrictMode>
 );
