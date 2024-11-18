@@ -1,4 +1,5 @@
 import { createRoot } from "react-dom/client";
+import "./styles/reset.css";
 import "./styles/global.css";
 import AuthProvider from "./features/Admin/context/AuthProvider.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -6,12 +7,17 @@ import NotFoundPage from "./pages/NotFound/NotFoundPage.tsx";
 import { adminRoutes } from "./features/Admin/adminRoutes.tsx";
 import Home from "./pages/Home/Home.tsx";
 import { ThemeProvider } from "./features/Theme/ThemeProvider.tsx";
+import Layout from "./components/ui/Layout.tsx";
 
 const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <Home />,
+      element: (
+        <Layout>
+          <Home />
+        </Layout>
+      ),
       errorElement: <NotFoundPage />,
     },
     ...adminRoutes,

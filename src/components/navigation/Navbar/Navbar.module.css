@@ -1,0 +1,65 @@
+.nav {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 1em;
+  padding-top: var(--spacing);
+  width: 100%;
+  background-color: var(--color-bg);
+  position: none;
+  z-index: 10;
+}
+.search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 28px;
+  width: 100%;
+  background-color: var(--color-bg);
+}
+
+.acces_icon {
+  position: fixed;
+  z-index: 20;
+  top: 70vh;
+  right: 10px;
+}
+
+.nav_itens {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  overflow: hidden;
+}
+
+.item_link {
+  display: flex;
+  align-self: center;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links li {
+  margin-right: 1em;
+}
+
+.nav-links span {
+  cursor: pointer;
+}
+
+.nav-links svg {
+  font-size: 1.5em;
+}
+
+.menu_button {
+  padding: 0;
+}

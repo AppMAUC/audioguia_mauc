@@ -18,6 +18,8 @@ type requestError = {
 type AuthContext = {
   token?: string | null;
   currentAdmin?: Admin | null;
+  auth: boolean | null;
+  loading: boolean;
   error: requestError | null;
   login: (data: AdminLogin) => Promise<void>;
   logout: () => Promise<void>;
@@ -29,8 +31,10 @@ type AuthProviderProps = PropsWithChildren;
 
 export default function AuthProvider({ children }: AuthProviderProps) {
   const [token, setToken] = useState<string | null>(null);
+  const [auth, setAuth] = useState<boolean | null>(null);
   const [currentAdmin, setCurrentAdmin] = useState<Admin | null>();
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<requestError | null>(null);
   useEffect(() => {
     const fetchToken = async () => {
@@ -39,7 +43,9 @@ export default function AuthProvider({ children }: AuthProviderProps) {
 
         if (localToken && localToken != "undefined") {
           setToken(localToken);
+          setLoading(false);
         } else {
+          setLoading(false);
           setToken(null);
           setCurrentAdmin(null);
         }
@@ -60,6 +66,7 @@ export default function AuthProvider({ children }: AuthProviderProps) {
   const fetchCurrentAdmin = async () => {
     try {
       const response = await api.get("/admin/profile", requestConfig());
+      setAuth(true);
       setCurrentAdmin(response.data.data);
     } catch (error) {
       console.log(error);
@@ -105,6 +112,7 @@ export default function AuthProvider({ children }: AuthProviderProps) {
             originalRequest.headers.Authorization = `Bearer ${response.data.token}`;
             originalRequest.withCredentials = true;
             setIsRefreshing(false);
+            setLoading(false);
             return api(originalRequest);
           } catch (error) {
             console.log(error);
@@ -143,11 +151,13 @@ export default function AuthProvider({ children }: AuthProviderProps) {
       if (response.status === 204) {
         localStorage.removeItem("token");
         setToken(null);
+        setAuth(false);
         setCurrentAdmin(null);
       }
     } catch (error) {
       console.log(error);
       setToken(null);
+      setAuth(null);
       setCurrentAdmin(null);
     }
   }
@@ -157,9 +167,11 @@ export default function AuthProvider({ children }: AuthProviderProps) {
       value={{
         login,
         logout,
+        auth,
         currentAdmin,
         token,
         error,
+        loading,
       }}
     >
       {children}

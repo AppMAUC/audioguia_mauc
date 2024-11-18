@@ -1,0 +1,45 @@
+:root {
+  /* Fontes */
+  --font-family-base: "Lato", sans-serif;
+  --font-family-primary: "Source Serif 4", serif;
+  --font-family-secondary: "Source Sans 3", sans-serif;
+  --font-family-third: "Quicksand", sans-serif;
+
+  /* Tamanhos de fonte 
+    p, h3, title-like-1, title-like-2, button
+  */ 
+  --font-size-df: 16px; 
+  --font-size-sm: 1.2rem;
+  --font-size-md: 1.44rem;
+  --font-size-lg: 1.728rem;
+
+  /* H1 */
+  --h1-size-df: 1.5rem;
+  --h1-size-sm: 1.8rem;
+  --h1-size-md: 2.16rem;
+  --h1-size-lg: 2.592rem;
+
+  /* H2 */
+  --h2-size-df: 1.25rem;
+  --h2-size-sm: 1.5rem;
+  --h2-size-md: 1.8rem;
+  --h2-size-lg: 2.16rem;
+
+  /* SPANS */
+
+  --title-like-3-df: 1rem;
+  --title-like-3-sm: 1.2rem;
+  --title-like-3-md: 1.26rem;
+  --title-like-3-lg: 1.728rem;
+
+  --title-like-4-df: 0.875rem;
+  --title-like-4-sm: 1.05rem;
+  --title-like-4-md: 1.44rem;
+  --title-like-4-lg: 1.512rem;
+
+  /* Pesos de fonte */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+}

@@ -1,14 +1,21 @@
 // src/App.tsx
 import React, { useState, useEffect } from "react";
-
+import Button from "../ui/Button";
+interface BeforeInstallPromptEvent extends Event {
+  readonly platforms: string[];
+  readonly userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
+  prompt(): Promise<void>;
+}
 const Install: React.FC = () => {
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [deferredPrompt, setDeferredPrompt] =
+    useState<BeforeInstallPromptEvent | null>(null);
   const [showInstallButton, setShowInstallButton] = useState(false);
 
   useEffect(() => {
-    const handleBeforeInstallPrompt = (e: any) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
+    const handleBeforeInstallPrompt = (e: Event) => {
+      const evt = e as BeforeInstallPromptEvent;
+      evt.preventDefault();
+      setDeferredPrompt(evt);
       setShowInstallButton(true);
     };
 
@@ -39,7 +46,7 @@ const Install: React.FC = () => {
   return (
     <div>
       {showInstallButton && (
-        <button onClick={handleInstallClick}>Instalar Aplicativo</button>
+        <Button onClick={handleInstallClick}>Instalar Aplicativo</Button>
       )}
     </div>
   );

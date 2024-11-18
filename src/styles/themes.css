@@ -1,0 +1,75 @@
+/* Default Theme */
+/*  title-like tokens are for html itens that like titles, for example spans with css custom */
+[data-theme="default"] {
+  --color-bg: var(--color-white-default);
+  --color-text: var(--color-black-default);
+  --color-input: var(--color-gray-light);
+  --color-placeholder: var(--color-gray-dark);
+  --color-input-focus: var(--color-black-default);
+  --color-state: var(--color-gray);
+  --color-state-active: var(--color-black-default);
+  --color-title-secondary: var(--color-gray-dark);
+  --color-error: var(--color-red-default);
+  --color-error-accent: var(--color-red-accent);
+  --color-error-muted: var(--color-red-muted);
+  --color-success: var(--color-green-default);
+  --color-success-accent: var(--color-green-accent);
+  --color-success-muted: var(--color-green-muted);
+  --color-primary: var(--color-blue-default);
+  --color-primary-accent: var(--color-blue-accent);
+  --color-primary-muted: var(--color-blue-muted);
+  --color-link-highlight: var(--color-blue-default);
+  --color-secondary: var(--color-brown-default);
+  --color-secondary-accent: var(--color-brown-accent);
+  --color-secondary-muted: var(--color-brown-muted);
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --color-bg: var(--color-white);
+  --color-text: var(--color-black);
+  --color-input: var(--color-black);
+  --color-placeholder: var(--color-white);
+  --color-input-focus: var(--color-white);
+  --color-state: var(--color-gray-dark);
+  --color-state-active: var(--color-black);
+  --color-title-secondary: var(--color-black);
+  --color-error: var(--color-red-high-contrast-light-default);
+  --color-error-accent: var(--color-red-high-contrast-light-accent);
+  --color-error-muted: var(--color-red-high-contrast-light-muted);
+  --color-success: var(--color-green-high-contrast-light-default);
+  --color-success-accent: var(--color-green-high-contrast-light-accent);
+  --color-success-muted: var(--color-green-high-contrast-light-muted);
+  --color-primary: var(--color-blue-high-contrast-light-default);
+  --color-primary-accent: var(--color-blue-high-contrast-light-accent);
+  --color-primary-muted: var(--color-blue-high-contrast-light-muted);
+  --color-link-highlight: var(--color-blue-high-contrast-light-highlight);
+  --color-secondary: var(--color-brown-high-contrast-light-default);
+  --color-secondary-accent: var(--color-brown-high-contrast-light-accent);
+  --color-secondary-muted: var(--color-brown-high-contrast-light-muted);
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --color-bg: var(--color-black);
+  --color-text: var(--color-white);
+  --color-input: var(--color-white);
+  --color-placeholder: var(--color-black);
+  --color-input-focus: var(--color-black);
+  --color-state: var(--color-gray-dark);
+  --color-state-active: var(--color-white);
+  --color-title-secondary: var(--color-white);
+  --color-error: var(--color-red-high-contrast-dark-default);
+  --color-error-accent: var(--color-red-high-contrast-dark-accent);
+  --color-error-muted: var(--color-red-high-contrast-dark-muted);
+  --color-success: var(--color-green-high-contrast-dark-default);
+  --color-success-accent: var(--color-green-high-contrast-dark-accent);
+  --color-success-muted: var(--color-green-high-contrast-dark-muted);
+  --color-primary: var(--color-blue-high-contrast-dark-default);
+  --color-primary-accent: var(--color-blue-high-contrast-dark-accent);
+  --color-primary-muted: var(--color-blue-high-contrast-dark-muted);
+  --color-link-highlight: var(--color-blue-high-contrast-dark-highlight);
+  --color-secondary: var(--color-brown-high-contrast-dark-default);
+  --color-secondary-accent: var(--color-brown-high-contrast-dark-accent);
+  --color-secondary-muted: var(--color-brown-high-contrast-dark-muted);
+}

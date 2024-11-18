@@ -1,0 +1,63 @@
+:root {
+  /* Branco */
+  --color-white-default: #fffefc;
+  --color-white: #ffffff;
+  /* Preto */
+  --color-black-default: #1c1b1f;
+  --color-black: #000000;
+
+  /* Cinza Claro*/
+  --color-gray-light: #e0e0e0;
+
+  /* Cinza */
+  --color-gray: #a0a0a0;
+
+  /* Cinza Escuro */
+  --color-gray-dark: #707070;
+
+  /* Vermelho */
+  --color-red-default: #9b1c2f;
+  --color-red-accent: #620e1b;
+  --color-red-muted: #9b1c2f66;
+  --color-red-high-contrast-light-default: #9b1c2f;
+  --color-red-high-contrast-light-accent: #620e1b;
+  --color-red-high-contrast-light-muted: #9b1c2f66;
+  --color-red-high-contrast-dark-default: #ea8b99;
+  --color-red-high-contrast-dark-accent: #f4bdc3;
+  --color-red-high-contrast-dark-muted: #ea8b9966;
+
+  /* Verde */
+  --color-green-default: #006f3d;
+  --color-green-accent: #025c34;
+  --color-green-muted: #006f3d66;
+  --color-green-high-contrast-light-default: #006638;
+  --color-green-high-contrast-light-accent: #004d2a;
+  --color-green-high-contrast-light-muted: #00663866;
+  --color-green-high-contrast-dark-default: #00c26b;
+  --color-green-high-contrast-dark-accent: #00f587;
+  --color-green-high-contrast-dark-muted: #00c26b66;
+
+  /* Cor Primária */
+  --color-blue-default: #0062a2;
+  --color-blue-accent: #004572;
+  --color-blue-muted: #0062a266;
+  --color-blue-high-contrast-light-default: #005994;
+  --color-blue-high-contrast-light-accent: #003a61;
+  --color-blue-high-contrast-light-muted: #00599466;
+  --color-blue-high-contrast-light-highlight: #6300c7;
+  --color-blue-high-contrast-dark-default: #38afff;
+  --color-blue-high-contrast-dark-accent: #7acaff;
+  --color-blue-high-contrast-dark-muted: #38afff66;
+  --color-blue-high-contrast-dark-highlight: #fb8c00;
+
+  /* Cor Secundária */
+  --color-brown-default: #a57c52;
+  --color-brown-accent: #835526;
+  --color-brown-muted: #c1a08166;
+  --color-brown-high-contrast-light-default: #6d5336;
+  --color-brown-high-contrast-light-accent: #483723;
+  --color-brown-high-contrast-light-muted: #6d533666;
+  --color-brown-high-contrast-dark-default: #c1a081;
+  --color-brown-high-contrast-dark-accent: #d9c4b0;
+  --color-brown-high-contrast-dark-muted: #c1a08166;
+}

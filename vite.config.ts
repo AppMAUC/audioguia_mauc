@@ -1,14 +1,16 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
+import svgr from "vite-plugin-svgr";
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
+    svgr({ include: "**/*.svg?react" }),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["pwa-192x192.svg", "pwa-512x512.png"],
+      includeAssets: ["pwa-192x192.svg", "pwa-512x512.svg", "screenshot.png", "screenshot2.png"],
       manifest: {
         name: "AppMauc",
         short_name: "",
@@ -20,7 +22,7 @@ export default defineConfig({
         background_color: "#ffffff",
         icons: [
           { src: "pwa-192x192.svg", sizes: "any", type: "image/svg+xml" },
-          { src: "pwa-512x512.png", sizes: "512x512", type: "image/png" },
+          { src: "pwa-512x512.svg", sizes: "512x512", type: "image/svg+xml" },
         ],
         screenshots: [
           {

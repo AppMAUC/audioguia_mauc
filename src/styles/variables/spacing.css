@@ -1,0 +1,33 @@
+:root {
+  /* Espaçamentos */
+
+  /* 0 */
+  --spacing-0-df: 0rem;
+  --spacing-0-sm: 0.075rem;
+  --spacing-0-md: 0.09rem;
+  --spacing-0-lg: 0.108rem;
+
+  /* 5 */
+  --spacing-5-df: 0.312rem;
+  --spacing-5-sm: 0.375rem;
+  --spacing-5-md: 0.45rem;
+  --spacing-5-lg: 0.54rem;
+
+  /* 10 */
+  --spacing-10-df: 0.625rem;
+  --spacing-10-sm: 0.75rem;
+  --spacing-10-md: 0.9rem;
+  --spacing-10-lg: 0.108rem;
+
+  /* 15 */
+  --spacing-15-df: 0.937rem;
+  --spacing-15-sm: 1.125rem;
+  --spacing-15-md: 1.35rem;
+  --spacing-15-lg: 1.62rem;
+
+  /* 25 */
+  --spacing-25-df: 1.562rem;
+  --spacing-25-sm: 1.875rem;
+  --spacing-25-md: 2.25rem;
+  --spacing-25-lg: 2.7rem;
+}

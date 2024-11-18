@@ -1,5 +1,11 @@
 // ThemeProvider.tsx
-import React, { createContext, useContext, useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 
 type Theme = "light" | "dark" | "default";
 
@@ -8,11 +14,13 @@ interface ThemeContextProps {
   toggleTheme: (newTheme: Theme) => void;
 }
 
+interface ThemeProviderProps {
+  children: ReactNode;
+}
+
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [theme, setTheme] = useState<Theme>("default");
 
   useEffect(() => {
