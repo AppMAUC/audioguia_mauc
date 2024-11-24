@@ -11,6 +11,7 @@ import { requestConfig } from "../../../services/api/config";
 import { AdminLogin } from "../types/Admin";
 
 type requestError = {
+  response: any;
   statusCode: number;
   message: string;
 };
@@ -21,7 +22,7 @@ type AuthContext = {
   auth: boolean | null;
   loading: boolean;
   error: requestError | null;
-  login: (data: AdminLogin) => Promise<void>;
+  login: (data: AdminLogin) => Promise<boolean | undefined>;
   logout: () => Promise<void>;
 };
 
@@ -43,15 +44,15 @@ export default function AuthProvider({ children }: AuthProviderProps) {
 
         if (localToken && localToken != "undefined") {
           setToken(localToken);
-          setLoading(false);
         } else {
-          setLoading(false);
           setToken(null);
           setCurrentAdmin(null);
         }
       } catch (error) {
         console.log(error);
         setToken(null);
+      } finally {
+        setLoading(false);
       }
     };
     fetchToken();
@@ -65,12 +66,14 @@ export default function AuthProvider({ children }: AuthProviderProps) {
 
   const fetchCurrentAdmin = async () => {
     try {
+      setLoading(true);
       const response = await api.get("/admin/profile", requestConfig());
       setAuth(true);
       setCurrentAdmin(response.data.data);
     } catch (error) {
-      console.log(error);
       setCurrentAdmin(null);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -103,6 +106,7 @@ export default function AuthProvider({ children }: AuthProviderProps) {
           originalRequest._retry = true;
           setIsRefreshing(true);
           try {
+            setLoading(true);
             const response = await api.post(
               "/admin/refresh-token",
               {},
@@ -112,14 +116,14 @@ export default function AuthProvider({ children }: AuthProviderProps) {
             originalRequest.headers.Authorization = `Bearer ${response.data.token}`;
             originalRequest.withCredentials = true;
             setIsRefreshing(false);
-            setLoading(false);
             return api(originalRequest);
           } catch (error) {
-            console.log(error);
             localStorage.removeItem("token");
             setCurrentAdmin(null);
             setToken(null);
             setIsRefreshing(false);
+          } finally {
+            setLoading(false);
           }
         }
         return Promise.reject(error);
@@ -133,20 +137,28 @@ export default function AuthProvider({ children }: AuthProviderProps) {
 
   async function login(data: AdminLogin) {
     try {
+      setLoading(true);
       const response = await api.post("/admin/login", data, {
         withCredentials: true,
       });
       localStorage.setItem("token", response.data.token);
       setToken(response.data.token);
+      setAuth(true);
+      setError(null);
+      return true;
     } catch (error) {
+      setAuth(false);
       setError(error as requestError);
       setToken(null);
       setCurrentAdmin(null);
+    } finally {
+      setLoading(false);
     }
   }
 
   async function logout() {
     try {
+      setLoading(true);
       const response = await api.post("/admin/logout");
       if (response.status === 204) {
         localStorage.removeItem("token");
@@ -159,6 +171,8 @@ export default function AuthProvider({ children }: AuthProviderProps) {
       setToken(null);
       setAuth(null);
       setCurrentAdmin(null);
+    } finally {
+      setLoading(false);
     }
   }
 

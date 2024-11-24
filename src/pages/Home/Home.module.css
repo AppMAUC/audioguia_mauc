@@ -28,7 +28,7 @@
   text-decoration-line: underline;
   text-align: center;
   align-self: center;
-  margin-top: var(--spacing);
+  margin-top: var(--spacing-15);
 }
 
 .navLink:visited {

@@ -16,10 +16,11 @@ import Button from "../../ui/Button/index.tsx";
 
 interface MenuProps {
   isOpen: boolean;
+  tabIndex?: number;
   setModalOpen: () => void;
 }
 
-const Menu = ({ isOpen, setModalOpen }: MenuProps) => {
+const Menu = ({ isOpen, setModalOpen, tabIndex }: MenuProps) => {
   return (
     <>
       <div
@@ -30,6 +31,7 @@ const Menu = ({ isOpen, setModalOpen }: MenuProps) => {
       ></div>
       <div
         className={isOpen ? `${styles.body}` : `${styles.body} ${styles.hide}`}
+        tabIndex={tabIndex}
       >
         <Container.Nav>
           <button
@@ -38,7 +40,7 @@ const Menu = ({ isOpen, setModalOpen }: MenuProps) => {
             onClick={setModalOpen}
           >
             {/* <Container.Icon src={CloseIcon} alt={"Ícone de fechar"} /> */}
-            <CloseIcon className="svg2"/>
+            <CloseIcon className="svg2" />
           </button>
         </Container.Nav>
         <Container.Items>

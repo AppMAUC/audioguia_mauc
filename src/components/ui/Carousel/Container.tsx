@@ -21,7 +21,7 @@ const Container = ({
     if (carousel.current) {
       setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
     }
-  }, [carousel.current?.scrollWidth, carousel.current?.offsetWidth]);
+  }, [carousel.current?.scrollWidth, carousel.current?.offsetWidth, width]);
 
   return (
     <motion.div
@@ -55,7 +55,7 @@ interface ItemProps {
   link: string;
 }
 
-const Item = ({ image, author, dateEnds, title, link }: ItemProps) => {
+const Item = ({ image, dateEnds, title, link }: ItemProps) => {
   return (
     <motion.div
       className={`${styles.item}`}
@@ -65,11 +65,13 @@ const Item = ({ image, author, dateEnds, title, link }: ItemProps) => {
       }}
     >
       <NavLink to={`/artworks/${link}`} className={styles.none}>
-        <h3 className={styles.text}>{title}</h3>
-        <p className={styles.text}>{author}</p>
-        <p className={styles.text} style={{ marginBottom: ".4em" }}>
-          Até {dateEnds}
-        </p>
+        <h3 className={styles.h3}>{title}</h3>
+        <h3
+          className={styles.h3}
+          style={{ paddingBottom: "var(--spacing-15)" }}
+        >
+          {dateEnds}
+        </h3>
       </NavLink>
     </motion.div>
   );

@@ -1,13 +1,12 @@
 .search_form {
   width: 100%;
-  height: 36px;
+  height: 2.25rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   background-color: var(--color-input);
   color: var(--color-bg-accent);
-  padding: 0 0.5em;
   border-radius: 10px;
 }
 
@@ -15,12 +14,13 @@
   fill: var(--color-placeholder);
   width: var(--h1-size);
   height: var(--h1-size);
+  padding-right: 10px;
 }
 
 .search_input {
   width: 80%;
   height: 100%;
-  font-size: var(--font-size);
+  font-size: var(--p-size);
   background-color: var(--color-input);
   color: var(--color-placeholder);
   border: none;

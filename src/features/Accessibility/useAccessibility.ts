@@ -5,6 +5,7 @@ export const useAccessibility = () => {
   const sizes = ["df", "sm", "md", "lg"];
   const [fontSize, setFontSize] = useState<number>(0); // "sm", "md", ou "lg"
   const [spacing, setSpacing] = useState<number>(0); // "sm", "md", ou "lg"
+
   const reset = () => {
     setLocalStorage("fontSize", 0);
     setLocalStorage("spacing", 0);
@@ -29,6 +30,14 @@ export const useAccessibility = () => {
       `var(--h2-size-${fontSize})`
     );
     document.documentElement.style.setProperty(
+      "--title-like-1",
+      `var(--title-like-1-${fontSize})`
+    );
+    document.documentElement.style.setProperty(
+      "--title-like-2",
+      `var(--title-like-2-${fontSize})`
+    );
+    document.documentElement.style.setProperty(
       "--title-like-3",
       `var(--title-like-3-${fontSize})`
     );
@@ -37,8 +46,8 @@ export const useAccessibility = () => {
       `var(--title-like-4-${fontSize})`
     );
     document.documentElement.style.setProperty(
-      "--spacing",
-      `var(--spacing-${spacing})`
+      "--p-size",
+      `var(--p-size-${fontSize})`
     );
     document.documentElement.style.setProperty(
       "--spacing-0",
@@ -53,12 +62,12 @@ export const useAccessibility = () => {
       `var(--spacing-10-${spacing})`
     );
     document.documentElement.style.setProperty(
-      "--spacing",
+      "--spacing-15",
       `var(--spacing-15-${spacing})`
     );
     document.documentElement.style.setProperty(
       "--spacing-25",
-      `var(--spacing-25${spacing})`
+      `var(--spacing-25-${spacing})`
     );
   };
 

@@ -1,0 +1,22 @@
+.add_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  position: fixed;
+  bottom: 5%;
+  right: 1%; ;
+}
+
+.add_button:hover {
+  background-color: var(--color-secondary);
+}
+
+.add_icon {
+  fill: var(--color-bg);
+    width: 40px;
+    height: 40px;
+}

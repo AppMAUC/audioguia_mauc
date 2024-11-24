@@ -3,6 +3,7 @@ export { default as ArrowRight } from "./icons/arrow-right.svg?react";
 export { default as ArrowLeft } from "./icons/arrow-left.svg?react";
 export { default as ArrowUp } from "./icons/arrow-up.svg?react";
 export { default as ArrowDown } from "./icons/arrow-down.svg?react";
+export { default as ArrowBack } from "./icons/arrow-back.svg?react";
 export { default as CloseIcon } from "./icons/close.svg?react";
 export { default as DescriptionIcon } from "./icons/description.svg?react";
 export { default as DraftsIcon } from "./icons/drafts.svg?react";
@@ -21,6 +22,14 @@ export { default as StateIcon } from "./icons/state.svg?react";
 export { default as TypeIcon } from "./icons/type.svg?react";
 export { default as SpacingIcon } from "./icons/spacing.svg?react";
 export { default as ContrastIcon } from "./icons/contrast.svg?react";
+export { default as MaucLogo } from "./images/mauc-logo.svg?react";
+export { default as PPCALogo } from "./images/ppca-logo.svg?react";
+export { default as ProcultLogo } from "./images/procult-logo.svg?react";
+export { default as LineElement } from "./icons/line.svg?react";
+export { default as AccountIcon } from "./icons/account.svg?react";
+export { default as EditIcon } from "./icons/edit.svg?react";
+export { default as AddIcon } from "./icons/add.svg?react";
+export { default as CalendarIcon } from "./icons/calendar.svg?react";
 
 // Exportando imagens
 export { default as Image1 } from "./images/carrousel/1.png";

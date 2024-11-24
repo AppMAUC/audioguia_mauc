@@ -13,10 +13,11 @@ import {
 
 interface MenuProps {
   isOpen: boolean;
+  tabIndex: number;
   setModalOpen: () => void;
 }
 
-const AccessibilityMenu = ({ isOpen, setModalOpen }: MenuProps) => {
+const AccessibilityMenu = ({ isOpen, setModalOpen, tabIndex }: MenuProps) => {
   const { fontSize, spacing, changeFontSize, changeSpacing, reset } =
     useAccessibility();
   const { toggleTheme, theme } = useTheme();
@@ -36,6 +37,7 @@ const AccessibilityMenu = ({ isOpen, setModalOpen }: MenuProps) => {
       ></div>
       <div
         className={isOpen ? `${styles.body}` : `${styles.body} ${styles.hide}`}
+        tabIndex={tabIndex}
       >
         <Header>
           <button

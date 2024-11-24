@@ -8,17 +8,25 @@ import { adminRoutes } from "./features/Admin/adminRoutes.tsx";
 import Home from "./pages/Home/Home.tsx";
 import { ThemeProvider } from "./features/Theme/ThemeProvider.tsx";
 import Layout from "./components/ui/Layout.tsx";
+import { artistRoutes } from "./features/Artists/artistRoutes.tsx";
+import { artWorkRoutes } from "./features/ArtWorks/artWorkRoutes.tsx";
+import { expositionRoutes } from "./features/Expositions/expositionRoutes.tsx";
 
 const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: (
-        <Layout>
-          <Home />
-        </Layout>
-      ),
+      element: <Layout />,
       errorElement: <NotFoundPage />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        ...artistRoutes,
+        ...artWorkRoutes,
+        ...expositionRoutes,
+      ],
     },
     ...adminRoutes,
   ],

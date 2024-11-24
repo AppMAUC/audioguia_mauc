@@ -1,0 +1,14 @@
+.title {
+    width: 100%;
+    font-size: var(--title-like-1);
+    color: var(--color-text);
+    font-weight: bold;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}

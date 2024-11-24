@@ -1,0 +1,159 @@
+.card_list {
+  width: 100%;
+  height: 75%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.card_button {
+  display: flex;
+  justify-content: center;
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--p-size);
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  padding: 0px;
+}
+
+.edit {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-25);
+  background-color: var(--color-bg);
+  border: none;
+  color: var(--color-state);
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  border-radius: var(--border-radius);
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.edit_icon {
+  width: 100px;
+  height: 100px;
+  padding-left: 8px;
+  fill: var(--color-state);
+}
+
+.add_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 14.86%;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  position: absolute;
+  top: -24px;
+  left: 40%;
+}
+
+.add_button:hover {
+  background-color: var(--color-secondary);
+}
+
+.add_icon {
+  fill: var(--color-bg);
+}
+
+.edit:hover {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-secondary-muted);
+}
+
+.card_link {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+
+.card {
+  width: 20%;
+  height: 100%;
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  transition: transform 0.3s;
+}
+
+.card.relative {
+  position: relative;
+}
+
+.image_container {
+  position: relative; /* Torna o contêiner um contexto para posicionamento */
+  width: 100%;
+  height: 100%;
+  border-radius: 11px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image_container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+}
+
+.title {
+  font-family: var(--font-family-base);
+  font-size: var(--p-size);
+  font-weight: bold;
+  color: var(--color-text-black);
+}
+
+.subtitle1 {
+  margin-top: var(--spacing-5);
+  font-family: var(--font-family-primary);
+  font-size: var(--p-size);
+  color: var(--color-placeholder);
+  font-weight: bold;
+}
+
+.subtitle2 {
+  margin-top: var(--spacing-5);
+  color: var(--color-placeholder);
+  font-family: var(--font-family-base);
+  font-size: var(--title-like-4);
+  font-weight: bold;
+}
+
+.info {
+  background-color: var(--color-info);
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  flex-direction: column;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  border-radius: var(--border-radius);
+  position: absolute;
+  bottom: 0px;
+  z-index: 10;
+}

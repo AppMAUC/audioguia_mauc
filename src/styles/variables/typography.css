@@ -7,8 +7,9 @@
 
   /* Tamanhos de fonte 
     p, h3, title-like-1, title-like-2, button
-  */ 
-  --font-size-df: 16px; 
+  */
+  --font-size-df: 16px;
+  --font-size-dk: 24px;
   --font-size-sm: 1.2rem;
   --font-size-md: 1.44rem;
   --font-size-lg: 1.728rem;
@@ -25,7 +26,23 @@
   --h2-size-md: 1.8rem;
   --h2-size-lg: 2.16rem;
 
+  /* P */
+  --p-size-df: 16px;
+  --p-size-sm: 19.2px;
+  --p-size-md: 23.04px;
+  --p-size-lg: 27.648px;
+
   /* SPANS */
+
+  --title-like-1-df: 2.25rem;
+  --title-like-1-sm: 2.4rem;
+  --title-like-1-md: 2.55rem;
+  --title-like-1-lg: 2.6rem;
+
+  --title-like-2-df: 1.8rem;
+  --title-like-2-sm: 2.16rem;
+  --title-like-2-md: 2.592rem;
+  --title-like-2-lg: 2.6rem;
 
   --title-like-3-df: 1rem;
   --title-like-3-sm: 1.2rem;
@@ -42,4 +59,11 @@
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
+}
+
+[size="mb"] {
+  --font-size-df: 16px;
+}
+[size="dk"] {
+  --font-size-df: 24px;
 }

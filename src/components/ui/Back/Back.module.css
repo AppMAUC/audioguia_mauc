@@ -1,0 +1,19 @@
+.back {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.5rem;
+  fill: var(--color-primary);
+}
+
+.title {
+  font-size: var(--title-like-1);
+  font-weight: bold;
+  color: var(--color-text);
+}

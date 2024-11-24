@@ -12,6 +12,7 @@
   right: 0;
   z-index: 100;
   border-radius: 10px;
+  box-sizing: border-box;
 }
 
 @media (min-width: 412px) {
@@ -38,13 +39,13 @@
 }
 
 .close {
-  fill: var(--color-white);
+  fill: var(--color-text-white);
 }
 
 .h3 {
   font-size: 20px;
   font-family: var(--font-family-third);
-  color: var(--color-white);
+  color: var(--color-text-white);
   font-weight: 600;
 }
 
@@ -76,6 +77,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 3vh;
+  box-sizing: border-box;
 }
 
 .footer button {
@@ -87,7 +89,7 @@
 
 .footer p {
   width: 70%;
-  font-size: var(--title-like-4-sm);
+  font-size: var(--p-size);
   font-family: var(--font-family-third);
   color: var(--color-text);
   font-weight: 600;
@@ -116,18 +118,19 @@
   padding: 10px 20px;
   gap: 10px;
   margin-bottom: 2vh;
+  box-sizing: border-box;
 }
 
 .button {
-  width: 8em;
-  height: 8em;
+  width: 150px;
+  height: 150px;
   display: column;
   justify-content: center;
   align-items: center;
   background-color: var(--color-bg);
   border-radius: 10px;
   padding: 10px 10px;
-  gap: var(--10---default, 10px);
+  gap: 10px;
   color: #000;
   font-size: var(--font-size);
   font-family: var(--font-family-third);
@@ -146,7 +149,7 @@
   color: var(--color-text);
   text-align: center;
   font-family: var(--font-family-third);
-  font-size: var(--font-size);
+  font-size: var(--p-size);
   font-weight: var(--font-weight-bold);
   line-height: normal;
   overflow: hidden;
@@ -198,5 +201,6 @@
   to {
     transform: translateY(100%);
     opacity: 0;
+    display: none;
   }
 }

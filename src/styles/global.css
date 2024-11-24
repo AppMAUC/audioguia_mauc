@@ -3,6 +3,7 @@
 @import "./variables/spacing";
 @import "./variables/transitions";
 @import "./variables/typography";
+@import "./variables/others";
 @import "./themes.css";
 
 /* globals.css */
@@ -23,6 +24,7 @@ button {
 h1 {
   font-size: var(--h1-size);
   color: var(--color-secondary);
+  box-sizing: border-box;
 }
 
 h2 {
@@ -30,13 +32,14 @@ h2 {
   color: var(--color-primary);
 }
 
+p {
+  font-size: var(--p-size);
+  color: var(--color-text);
+}
+
 a {
   text-decoration: none;
   color: var(--color-white);
-}
-
-p {
-  font-size: var(--font-size);
 }
 
 .svg1 {
@@ -47,15 +50,36 @@ p {
   fill: var(--color-secondary);
 }
 
+[size="mb"] {
+  #layout-desktop {
+    padding: 25%;
+    background-image: url("../assets/images/bg-desktop.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  };
+  #inner-desktop {
+    display: none;
+  };
+}
+
 /* Estilos para tablets */
 @media (min-width: 768px) {
   .container {
     flex-direction: row;
   }
 
-  body {
-    font-size: 18px;
+  #inner {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #inner-desktop {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
   }
 }
 
@@ -65,16 +89,87 @@ p {
     max-width: 1200px;
     margin: 0 auto;
   }
-
-  body {
+  #layout {
+    padding: 25%;
     background-image: url("../assets/images/bg-desktop.png");
     background-repeat: no-repeat;
     background-size: cover;
   }
 
-  #root {
+  #inner {
     display: none;
   }
 }
 
+input {
+  width: 95%;
+  height: 40px;
+  border: 2px solid var(--color-primary);
+  border-radius: 10px;
+  margin-top: var(--spacing-5);
+  margin-bottom: var(--spacing-5);
+  padding-left: var(--spacing-15);
+}
 
+input::placeholder {
+  color: var(--color-placeholder);
+  font-size: var(--p-size);
+  font-family: var(--font-family-base);
+  font-weight: bold;
+}
+
+input:focus-visible {
+  outline-color: var(--color-secondary);
+}
+
+input[type="submit"] {
+  width: 100%;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: var(--p-size);
+  font-family: var(--font-family-primary);
+  font-weight: bold;
+  border-radius: 10px;
+  margin-top: var(--spacing-15);
+}
+
+input[type="submit"]:hover {
+  background-color: var(--color-primary-accent);
+}
+input[type="submit"]:disabled {
+  background-color: var(--color-input);
+  color: var(--color-placeholder);
+}
+
+button.primary {
+  background: var(--color-primary);
+}
+
+button.secondary {
+  background: var(--color-secondary);
+}
+
+button.success {
+  background: var(--color-success);
+}
+
+button.danger {
+  background: var(--color-danger);
+}
+
+button.warning {
+  background: var(--color-warning);
+}
+
+.msg {
+  align-self: center;
+  font-size: var(--p-size);
+  font-family: var(--font-family-base);
+  color: var(--color-success);
+  font-weight: bold;
+  margin-top: var(--spacing-15);
+}
+
+.msg.error {
+  color: var(--color-error);
+}
