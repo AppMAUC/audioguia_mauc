@@ -119,7 +119,7 @@ export default function AuthProvider({ children }: AuthProviderProps) {
             setIsRefreshing(false);
             return api(originalRequest);
           } catch (error) {
-            // localStorage.removeItem("token");
+            localStorage.removeItem("token");
             setError(error as requestError);
             setCurrentAdmin(null);
             setToken(null);
