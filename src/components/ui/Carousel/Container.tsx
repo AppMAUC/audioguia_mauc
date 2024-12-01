@@ -1,19 +1,21 @@
 import styles from "./Carousel.module.css";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, PropsWithChildren } from "react";
 import React from "react";
 
 interface ContainerProps {
   children: React.ReactNode;
   focusedIndex: number;
   setFocusedIndex: (index: number) => void;
+  padding?: string;
 }
 
 const Container = ({
   children,
   focusedIndex,
   setFocusedIndex,
+  padding = "0 20px",
 }: ContainerProps) => {
   const carousel = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
@@ -27,6 +29,7 @@ const Container = ({
     <motion.div
       ref={carousel}
       className={styles.carousel}
+      style={{ padding: padding }}
       whileTap={{ cursor: "grabbing" }}
     >
       <motion.div
@@ -48,35 +51,53 @@ const Container = ({
 };
 
 interface ItemProps {
-  image: string;
-  author: string;
-  dateEnds: string;
-  title: string;
-  link: string;
+  image?: string;
+  dateEnds?: string;
+  title?: string;
+  link?: string;
+  borderRadius?: string;
+  style?: React.CSSProperties;
 }
 
-const Item = ({ image, dateEnds, title, link }: ItemProps) => {
+const Item = ({
+  image,
+  link,
+  style,
+  children,
+}: PropsWithChildren & ItemProps) => {
   return (
     <motion.div
       className={`${styles.item}`}
       style={{
         background: `linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), url(${image})`,
         backgroundSize: "cover",
+        ...style,
       }}
     >
-      <NavLink to={`/artworks/${link}`} className={styles.none}>
-        <h3 className={styles.h3}>{title}</h3>
-        <h3
-          className={styles.h3}
-          style={{ paddingBottom: "var(--spacing-15)" }}
-        >
-          {dateEnds}
-        </h3>
+      <NavLink to={link ? link : ""} className={styles.none}>
+        {children}
       </NavLink>
     </motion.div>
   );
 };
 
-Container.Item = Item;
+const Title = ({ title }: { title: string }) => {
+  return <h3 className={styles.h3}>{title}</h3>;
+};
 
-export default Container;
+const Date = ({ date }: { date: string }) => {
+  return (
+    <h3 className={styles.h3} style={{ paddingBottom: "var(--spacing-15)" }}>
+      {date}
+    </h3>
+  );
+};
+
+const Card = {
+  Container,
+  Item,
+  Title,
+  Date,
+};
+
+export default Card;

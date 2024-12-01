@@ -1,6 +1,5 @@
 // src/components/Layout.tsx
 import Navbar from "../navigation/Navbar";
-import Footer from "../navigation/Footer";
 import { Outlet } from "react-router-dom";
 
 interface LayoutProps {
@@ -25,13 +24,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           >
             {children}
           </main>
-          <footer style={{width: "100%", height: "10vh"}}>
-          </footer>
+          <footer style={{ width: "100%", height: "10vh" }}></footer>
         </div>
       </div>
     );
   }
-
   return (
     <div id="layout">
       <div id="inner">
@@ -39,7 +36,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <main>
           <Outlet />
         </main>
-        <Footer />
+        {!currentUrl.includes("about") && (
+          <footer style={{ width: "100%", height: "10vh" }}></footer>
+        )}
       </div>
     </div>
   );

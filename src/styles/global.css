@@ -56,10 +56,10 @@ a {
     background-image: url("../assets/images/bg-desktop.png");
     background-repeat: no-repeat;
     background-size: cover;
-  };
+  }
   #inner-desktop {
     display: none;
-  };
+  }
 }
 
 /* Estilos para tablets */
@@ -100,47 +100,6 @@ a {
     display: none;
   }
 }
-
-input {
-  width: 95%;
-  height: 40px;
-  border: 2px solid var(--color-primary);
-  border-radius: 10px;
-  margin-top: var(--spacing-5);
-  margin-bottom: var(--spacing-5);
-  padding-left: var(--spacing-15);
-}
-
-input::placeholder {
-  color: var(--color-placeholder);
-  font-size: var(--p-size);
-  font-family: var(--font-family-base);
-  font-weight: bold;
-}
-
-input:focus-visible {
-  outline-color: var(--color-secondary);
-}
-
-input[type="submit"] {
-  width: 100%;
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  font-size: var(--p-size);
-  font-family: var(--font-family-primary);
-  font-weight: bold;
-  border-radius: 10px;
-  margin-top: var(--spacing-15);
-}
-
-input[type="submit"]:hover {
-  background-color: var(--color-primary-accent);
-}
-input[type="submit"]:disabled {
-  background-color: var(--color-input);
-  color: var(--color-placeholder);
-}
-
 button.primary {
   background: var(--color-primary);
 }
@@ -172,4 +131,12 @@ button.warning {
 
 .msg.error {
   color: var(--color-error);
+}
+
+.msg.warning {
+  color: var(--color-secondary);
+}
+
+.msg.info {
+  color: var(--color-text-gray);
 }

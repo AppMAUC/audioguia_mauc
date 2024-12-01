@@ -15,9 +15,15 @@ interface MenuProps {
   isOpen: boolean;
   tabIndex: number;
   setModalOpen: () => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLDivElement>) => void;
 }
 
-const AccessibilityMenu = ({ isOpen, setModalOpen, tabIndex }: MenuProps) => {
+const AccessibilityMenu = ({
+  isOpen,
+  setModalOpen,
+  tabIndex,
+  onKeyDown,
+}: MenuProps) => {
   const { fontSize, spacing, changeFontSize, changeSpacing, reset } =
     useAccessibility();
   const { toggleTheme, theme } = useTheme();
@@ -31,6 +37,7 @@ const AccessibilityMenu = ({ isOpen, setModalOpen, tabIndex }: MenuProps) => {
     <>
       <div
         onClick={setModalOpen}
+        onKeyDown={onKeyDown}
         className={
           isOpen ? styles.container : `${styles.container} ${styles.hide}`
         }

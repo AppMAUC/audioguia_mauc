@@ -6,6 +6,9 @@ import AdminDashboard from "./pages/AdminDashboard";
 import { adminArtistRoutes } from "../Artists/artistRoutes";
 import { adminExpositionRoutes } from "../Expositions/expositionRoutes";
 import { adminArtWorkRoutes } from "../ArtWorks/artWorkRoutes";
+import Profile from "./pages/Profile";
+import Register from "./pages/Register";
+import Edit from "./pages/Edit";
 
 export const adminRoutes = [
   {
@@ -28,7 +31,15 @@ export const adminRoutes = [
         path: "profile",
         element: (
           <Layout>
-            <h1>Profile</h1>
+            <Profile />
+          </Layout>
+        ),
+      },
+      {
+        path: "profile/:id",
+        element: (
+          <Layout>
+            <Edit />
           </Layout>
         ),
       },
@@ -39,13 +50,13 @@ export const adminRoutes = [
   },
   {
     path: "/admin",
-    element: <ProtectedRoute allowedRole={2} />,
+    element: <ProtectedRoute allowedRole={1} />,
     children: [
       {
         path: "register",
         element: (
           <Layout>
-            <h1>Register</h1>
+            <Register />
           </Layout>
         ),
       },
@@ -54,14 +65,6 @@ export const adminRoutes = [
         element: (
           <Layout>
             <AdminDashboard />
-          </Layout>
-        ),
-      },
-      {
-        path: "profile/:id",
-        element: (
-          <Layout>
-            <h1>:id</h1>
           </Layout>
         ),
       },

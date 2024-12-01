@@ -1,12 +1,10 @@
 import {
   HomeIcon,
   DescriptionIcon,
-  LanguageIcon,
-  HistoryIcon,
   CloseIcon,
-  MailIcon,
-  FeedbackIcon,
   DrawIcon,
+  BrushIcon,
+  PalleteIcon,
 } from "../../../assets/index.ts";
 
 import styles from "./Menu.module.css";
@@ -57,13 +55,9 @@ const Menu = ({ isOpen, setModalOpen, tabIndex }: MenuProps) => {
               <Container.Text>Sobre o Mauc</Container.Text>
             </Container.Item>
             <>
-              <NavLink to="https://mauc.ufc.br/pt/arquivo/">Arquivo</NavLink>
-              <NavLink to="https://mauc.ufc.br/pt/biblioteca/">
-                Biblioteca
-              </NavLink>
-              <NavLink to="https://mauc.ufc.br/pt/nucleo-de-comunicacao/">
-                Núcleos
-              </NavLink>
+              <NavLink to="/arquivo">Arquivo</NavLink>
+              <NavLink to="/biblioteca">Biblioteca</NavLink>
+              <NavLink to="/nucleos">Núcleos</NavLink>
               <NavLink to="https://mauc.ufc.br/pt/ferias-no-mauc-cursos-e-oficinas/">
                 Cursos e oficinas
               </NavLink>
@@ -77,21 +71,13 @@ const Menu = ({ isOpen, setModalOpen, tabIndex }: MenuProps) => {
             <DrawIcon className="svg1" />
             <Container.Text>Exposições</Container.Text>
           </Container.Item>
-          <Container.Item link={"/history"} onClick={setModalOpen}>
-            <HistoryIcon className="svg1" />
-            <Container.Text>Histórico</Container.Text>
+          <Container.Item link={"/artworks"} onClick={setModalOpen}>
+            <PalleteIcon className="svg1" />
+            <Container.Text>Obras de Arte</Container.Text>
           </Container.Item>
-          <Container.Item link={"/contacts"} onClick={setModalOpen}>
-            <MailIcon className="svg1" />
-            <Container.Text>Contatos do Mauc</Container.Text>
-          </Container.Item>
-          <Container.Item link={"/feedback"} onClick={setModalOpen}>
-            <FeedbackIcon className="svg1" />
-            <Container.Text>Reportar Problema</Container.Text>
-          </Container.Item>
-          <Container.Item link={"/"} onClick={setModalOpen}>
-            <LanguageIcon className="svg1" />
-            <Container.Text>Mudar o Idioma</Container.Text>
+          <Container.Item link={"/artists"} onClick={setModalOpen}>
+            <BrushIcon className="svg1" />
+            <Container.Text>Artistas</Container.Text>
           </Container.Item>
         </Container.Items>
         <div className={styles.buttons}>

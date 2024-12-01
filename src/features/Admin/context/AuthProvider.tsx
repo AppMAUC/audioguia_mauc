@@ -71,6 +71,7 @@ export default function AuthProvider({ children }: AuthProviderProps) {
       setAuth(true);
       setCurrentAdmin(response.data.data);
     } catch (error) {
+      setError(error as requestError);
       setCurrentAdmin(null);
     } finally {
       setLoading(false);
@@ -119,6 +120,7 @@ export default function AuthProvider({ children }: AuthProviderProps) {
             return api(originalRequest);
           } catch (error) {
             localStorage.removeItem("token");
+            setError(error as requestError);
             setCurrentAdmin(null);
             setToken(null);
             setIsRefreshing(false);

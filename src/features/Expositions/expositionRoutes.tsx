@@ -1,11 +1,14 @@
 import Layout from "../../components/ui/Layout";
-import ExpositionDashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard";
+import Edit from "./pages/Edit";
 import Exposition from "./pages/Exposition";
+import Expositions from "./pages/Expositions";
+import Register from "./pages/Register";
 
 export const expositionRoutes = [
   {
     path: "/expositions",
-    element: <Exposition />,
+    element: <Expositions />,
   },
   {
     path: "/expositions/:id",
@@ -18,7 +21,7 @@ export const adminExpositionRoutes = [
     path: "expositions",
     element: (
       <Layout>
-        <ExpositionDashboard />
+        <Dashboard />
       </Layout>
     ),
   },
@@ -26,7 +29,7 @@ export const adminExpositionRoutes = [
     path: "expositions/new",
     element: (
       <Layout>
-        <h1>New Exposition</h1>
+        <Register />
       </Layout>
     ),
   },
@@ -34,7 +37,7 @@ export const adminExpositionRoutes = [
     path: "expositions/:id",
     element: (
       <Layout>
-        <Exposition />
+        <Edit />
       </Layout>
     ),
   },

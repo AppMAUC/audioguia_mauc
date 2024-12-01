@@ -1,12 +1,7 @@
 // CSS
 import styles from "./Navbar.module.css";
 
-import {
-  MenuIcon,
-  MaucHomeIcon,
-  AccessbilityIcon,
-  AccountIcon,
-} from "../../../assets";
+import { MenuIcon, MaucHomeIcon, AccessbilityIcon } from "../../../assets";
 
 // Components
 import { Link } from "react-router-dom";
@@ -14,18 +9,30 @@ import Menu from "../Menu";
 import Search from "../../ui/Inputs/Search";
 import Install from "../../Install/Install";
 // Hooks
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../../features/Admin/hooks/useAuth";
 import AccessibilityMenu from "../../../features/Accessibility/AccessibilityMenu";
+import AccountPopover from "../Popover";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [openAccessibility, setAccessibility] = useState(false);
-  const { auth, logout } = useAuth();
+  const { auth } = useAuth();
 
-  const handleLogout = async () => {
-    await logout();
-  };
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Tab") {
+        setOpen(false);
+        setAccessibility(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <>
@@ -60,16 +67,9 @@ const Navbar = () => {
             {auth && (
               <>
                 <div className={`${styles.nav_search_desk}`}>
-                  <Search />
+                  {/* <Search /> */}
+                  <AccountPopover />
                 </div>
-                <button
-                  tabIndex={1}
-                  className={styles.menu_button}
-                  onClick={handleLogout}
-                  title="Sair"
-                >
-                  <AccountIcon className="svg2" width={40} height={40} />
-                </button>
               </>
             )}
             <button

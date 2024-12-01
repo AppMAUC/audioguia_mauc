@@ -1,6 +1,6 @@
 import { CloseIcon, SearchIcon } from "../../../../../assets";
 import styles from "./Modal.module.css";
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
 interface ModalProps {
   isOpen: boolean;
@@ -88,7 +88,10 @@ const SuggestionItem2 = ({ label, removeItem }: Suggestion) => {
       <SearchIcon className={styles.search} />
       <div className={styles.inner}>
         <span className={styles.label}>{label}</span>
-        <button onClick={() => removeItem && removeItem(label)}>
+        <button
+          title={"Fechar"}
+          onClick={() => removeItem && removeItem(label)}
+        >
           <CloseIcon className={styles.close} />
         </button>
       </div>

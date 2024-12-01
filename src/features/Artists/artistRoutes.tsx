@@ -1,6 +1,9 @@
 import Layout from "../../components/ui/Layout";
+import Artist from "./pages/Artist";
 import Artists from "./pages/Artists";
-import ArtistDashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard";
+import Edit from "./pages/Edit";
+import Register from "./pages/Register";
 
 export const artistRoutes = [
   {
@@ -9,7 +12,7 @@ export const artistRoutes = [
   },
   {
     path: "/artists/:id",
-    element: <Artists />,
+    element: <Artist />,
   },
 ];
 
@@ -18,7 +21,7 @@ export const adminArtistRoutes = [
     path: "artists",
     element: (
       <Layout>
-        <ArtistDashboard />
+        <Dashboard />
       </Layout>
     ),
   },
@@ -26,7 +29,7 @@ export const adminArtistRoutes = [
     path: "artists/new",
     element: (
       <Layout>
-        <h1>new</h1>
+        <Register />
       </Layout>
     ),
   },
@@ -34,7 +37,7 @@ export const adminArtistRoutes = [
     path: "artists/:id",
     element: (
       <Layout>
-        <h1>:id</h1>
+        <Edit />
       </Layout>
     ),
   },

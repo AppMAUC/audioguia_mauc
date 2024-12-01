@@ -52,7 +52,7 @@
 
   .nav_search_desk {
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     width: 30%;
     max-width: 1200px;

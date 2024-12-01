@@ -44,11 +44,16 @@ const Install: React.FC = () => {
   };
 
   return (
-    <div>
+    <>
       {showInstallButton && (
-        <Button onClick={handleInstallClick}>Instalar Aplicativo</Button>
+        <Button
+          onClick={handleInstallClick}
+          style={{ marginLeft: "var(--spacing-25)" }}
+        >
+          Instalar
+        </Button>
       )}
-    </div>
+    </>
   );
 };
 

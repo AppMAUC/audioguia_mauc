@@ -14,6 +14,7 @@ type Size = "mb" | "dk";
 interface ThemeContextProps {
   theme: Theme;
   toggleTheme: (newTheme: Theme) => void;
+  sizeWidth: Size;
 }
 
 interface ThemeProviderProps {
@@ -25,6 +26,7 @@ const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [theme, setTheme] = useState<Theme>("default");
   const [width, setWidth] = useState<number>(window.innerWidth);
+  const [sizeWidth, setSizeWidth] = useState<Size>("mb");
   const { startConfig } = useAccessibility();
 
   useEffect(() => {
@@ -41,8 +43,10 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   useEffect(() => {
     if (width > 1024) {
       setSize("dk");
+      setSizeWidth("dk");
     } else {
       setSize("mb");
+      setSizeWidth("mb");
     }
   }, [width]);
 
@@ -76,7 +80,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, sizeWidth }}>
       {children}
     </ThemeContext.Provider>
   );

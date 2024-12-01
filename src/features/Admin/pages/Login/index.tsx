@@ -1,6 +1,8 @@
 import styles from "./Login.module.css";
 // Components
 import Message from "../../../../components/ui/Feedback/Message";
+import { Input } from "../../../../components/ui/Inputs";
+
 // Hooks
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
@@ -21,8 +23,10 @@ const loginSchema = z.object({
   password: z.string().min(5, "Senha deve ter no mínimo 5 caracteres"),
 });
 
+type FormProps = z.infer<typeof loginSchema>;
+
 const Login = () => {
-  const { login, loading, error, auth } = useAuth();
+  const { login, error, auth } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,11 +38,8 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<{
-    email: string;
-    password: string;
-  }>({
+    formState: { errors, isSubmitting },
+  } = useForm<FormProps>({
     resolver: zodResolver(loginSchema),
   });
 
@@ -48,7 +49,6 @@ const Login = () => {
       password,
     };
 
-    // await login(admin);
     const res = await login(admin);
     if (res) {
       navigate("/admin/dashboard");
@@ -59,7 +59,10 @@ const Login = () => {
     <div className={styles.container}>
       <section className={styles.section}>
         <div className={styles.inner}>
-          <NavLink to={"/"}>
+          <NavLink
+            to={"/"}
+            style={{ display: "flex", justifyContent: "center" }}
+          >
             <MaucLogo className={styles.mauc} />
           </NavLink>
           <h2 className={styles.h2}>Administrador</h2>
@@ -69,27 +72,22 @@ const Login = () => {
             <LineElement />
           </div>
           <form onSubmit={handleSubmit(loginAdmin)} className={styles.form}>
-            <label className={styles.label} htmlFor="email">
-              E-mail
-            </label>
-            <input type="email" required {...register("email")} />
-            {errors.email && (
-              <Message msg={errors.email?.message} type={"error"} />
-            )}
-            <label className={styles.label} htmlFor="password">
-              Insira sua senha
-            </label>
-            <input
-              {...register("password")}
-              placeholder=""
-              type="password"
-              required
+            <Input
+              type="email"
+              helperText={errors.email?.message}
+              label={"E-mail"}
+              {...register("email")}
             />
-            {errors.password && (
-              <Message msg={errors.password?.message} type={"error"} />
+            <Input
+              type="password"
+              helperText={errors.password?.message}
+              label={"Insira sua senha"}
+              {...register("password")}
+            />
+            {!isSubmitting && <Input type="submit" value="Entrar" />}
+            {isSubmitting && (
+              <Input type="submit" value="Entrando..." disabled />
             )}
-            {!loading && <input type="submit" value="Entrar" />}
-            {loading && <input type="submit" value="Entrar" disabled />}
             {error && (
               <Message msg={error?.response?.data?.message} type={"error"} />
             )}

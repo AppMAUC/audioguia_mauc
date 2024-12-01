@@ -12,13 +12,13 @@
   width: 100%; /* largura carrossel 412 */
   height: 57.7vw; /* altura carrossel */
   cursor: grab;
-  padding: 0 20px;
   overflow: hidden;
 }
 
 .item {
   height: 100%; /* altura item */
-  min-width: 45.8%; /* largura item */
+  min-width: 45.8%; 
+  /* width: 300px; */
   display: flex;
   flex-direction: column;
   justify-content: end;

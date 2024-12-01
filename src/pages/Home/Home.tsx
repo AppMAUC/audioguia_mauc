@@ -1,49 +1,27 @@
 // CSS
 import styles from "./Home.module.css";
-// Assets
-import { Image1, Image2, Image3, Image4, Image5, MaucHome } from "../../assets";
+import { MaucHome } from "../../assets";
 import Carousel from "../../components/ui/Carousel";
 import Content from "../../components/ui/Content";
 import { NavLink } from "react-router-dom";
+import ExpositionService from "../../features/Expositions/api/ExpositionService";
+import { Exposition } from "../../features/Expositions/types/Exposition";
+import { useQuery } from "@tanstack/react-query";
+import Mobile from "../../components/ui/Mobile";
 
 const Home = () => {
-  const images = [
-    {
-      id: "1",
-      image: Image1,
-      author: "L. Da Vinci",
-      dateEnds: "30/12/2021",
-      title: "Ariana",
-    },
-    {
-      id: "2",
-      image: Image2,
-      author: "L. Da Vinci",
-      dateEnds: "30/12/2021",
-      title: "Ariana",
-    },
-    {
-      id: "3",
-      image: Image3,
-      author: "L. Da Vinci",
-      dateEnds: "30/12/2021",
-      title: "Ariana",
-    },
-    {
-      id: "4",
-      image: Image4,
-      author: "L. Da Vinci",
-      dateEnds: "30/12/2021",
-      title: "Ariana",
-    },
-    {
-      id: "5",
-      image: Image5,
-      author: "L. Da Vinci",
-      dateEnds: "30/12/2021",
-      title: "Ariana",
-    },
-  ];
+  const {
+    data: expositions,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["expositions/all"],
+    queryFn: async () => await ExpositionService.getAll<Exposition>(),
+  });
+
+  if (isLoading) return <Mobile.Loading />;
+
+  if (isError) return <Mobile.Error404/>;
 
   return (
     <div className={styles.home}>
@@ -57,14 +35,17 @@ const Home = () => {
       </Content>
       <Content>
         <Content.Title>Exposições Temporárias</Content.Title>
-        <Carousel images={images} />
-        <NavLink to="/expositions" className={styles.navLink}>
-          Ver mais
-        </NavLink>
+        <Carousel
+          link="expositions"
+          items={expositions?.data.filter((item) => item.type == 2) || []}
+        />
       </Content>
       <Content>
         <Content.Title>Exposições de Longa Duração</Content.Title>
-        <Carousel images={images.slice(2)} />
+        <Carousel
+          link="expositions"
+          items={expositions?.data.filter((item) => item.type == 1) || []}
+        />
         <NavLink to="/expositions" className={styles.navLink}>
           Ver mais
         </NavLink>

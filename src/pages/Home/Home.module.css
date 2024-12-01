@@ -19,7 +19,7 @@
 
 .navLink {
   width: auto;
-  color: var(--color-primary);
+  color: var(--color-link-highlight);
   font-family: var(--font-family-primary);
   font-size: var(--h2-size);
   font-style: normal;
@@ -32,5 +32,5 @@
 }
 
 .navLink:visited {
-  color: var(--color-primary);
+  color: var(--color-link-highlight);
 }

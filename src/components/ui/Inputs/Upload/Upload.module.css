@@ -1,0 +1,120 @@
+.container {
+  display: flex;
+  width: 100%;
+  height: 160px;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: var(--spacing-25);
+}
+
+.file {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--spacing-5);
+}
+
+.preview {
+  width: 100%;
+  object-fit: cover;
+  height: 420px;
+}
+
+.container_clone {
+  display: flex;
+  width: 100%;
+}
+
+.span {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: var(--color-state);
+}
+
+.preview {
+  margin-bottom: 10px;
+}
+
+.label {
+  font-size: var(--p-size);
+  font-weight: regular;
+  font-family: var(--font-family-base);
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-top: var(--spacing-10);
+  margin-bottom: var(--spacing-5);
+}
+
+.label.required::after {
+  content: " *";
+  color: var(--color-error);
+}
+
+.file_drop_zone {
+  width: 100%;
+  height: 180px;
+  border: 2px solid var(--color-primary);
+  color: var(--color-state);
+  font-size: var(--p-size);
+  font-family: var(--font-family-base);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: bold;
+  display: flex;
+  justify-items: center;
+  border-radius: var(--border-radius);
+  padding: 20px;
+  cursor: pointer;
+  position: absolute;
+  margin-top: var(--spacing-5);
+  margin-bottom: var(--spacing-5);
+  background-color: var(--color-bg);
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.file_drop_zone:disabled {
+  border-color: var(--color-state);
+  cursor: none;
+}
+
+.file_drop_zone::-webkit-file-upload-button {
+  display: none;
+}
+
+.icon {
+  fill: var(--color-state);
+  margin-top: 40px;
+}
+
+.file_drop_zone::before {
+  content: attr(data-text);
+  display: block;
+  margin-top: 105px;
+  text-align: center;
+  line-height: 200px;
+}
+
+.custom_file_upload {
+  font-family: var(--font-family-base);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  position: relative;
+  z-index: 2;
+  top: 5px;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+}
+
+.helper_text {
+  font-size: var(--title-like-4);
+  font-weight: bold;
+  font-family: var(--font-family-base);
+  color: var(--color-error);
+  margin-top: var(--spacing-5);
+  margin-bottom: var(--spacing-5);
+}

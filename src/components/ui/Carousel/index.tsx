@@ -1,36 +1,31 @@
-import Container from "./Container";
-
-interface Image {
-  id: string;
-  image: string;
-  author: string;
-  dateEnds: string;
-  title: string;
-}
+import Card from "./Container";
 
 interface CarouselProps {
-  images: Image[];
+  items: any[];
+  link?: string;
+  style?: React.CSSProperties;
 }
 
-const Carousel = ({ images }: CarouselProps) => {
+const Carousel = ({ items, link, style }: CarouselProps) => {
   return (
-    <Container
+    <Card.Container
       focusedIndex={0}
       setFocusedIndex={function (): void {
         throw new Error("Function not implemented.");
       }}
     >
-      {images.slice(0, 3).map((image) => (
-        <Container.Item
-          key={image.id}
-          image={image.image}
-          author={image.author}
-          dateEnds={image.dateEnds}
-          title={image.title}
-          link={image.id}
-        />
+      {items.slice(0, 3).map((item: any) => (
+        <Card.Item
+          key={item.image?.url}
+          image={item.image?.url}
+          link={`/${link}/${item._id}`}
+          style={style}
+        >
+          <Card.Title title={item.title} />
+          <Card.Date date={item.dateEnds.split("T")[0].replace(/-/g, "/")} />
+        </Card.Item>
       ))}
-    </Container>
+    </Card.Container>
   );
 };
 

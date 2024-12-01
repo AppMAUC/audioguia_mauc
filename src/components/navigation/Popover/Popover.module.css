@@ -1,0 +1,108 @@
+.menu_button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  align-self: flex-end;
+}
+
+.popover {
+  position: absolute;
+  width: 350px;
+  top: 28px; /* Adjust as needed */
+  right: 210px;
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.popover_content {
+  padding: var(--spacing-25);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: var(--color-text);
+  font-size: var(--p-size);
+}
+
+.logout span {
+  margin-top: 3px;
+}
+
+.logout:hover {
+  color: var(--color-secondary);
+}
+
+.icon {
+  fill: var(--color-text);
+  width: 27px;
+  height: 27px;
+}
+
+.icon.hover {
+  fill: var(--color-secondary);
+}
+
+.profile_button {
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg);
+  padding: var(--spacing-10);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  font-size: var(--p-size);
+}
+
+.profile_button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
+
+.h3 {
+  font-size: var(--tilte-like-3);
+  font-weight: bold;
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+  margin-bottom: var(--spacing-5);
+}
+
+.p {
+  font-size: var(--tilte-like-4);
+  color: var(--color-text-gray);
+  font-family: var(--font-family-base);
+  margin-bottom: var(--spacing-10);
+}
+
+.profile_image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.menu_button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+  }
+  

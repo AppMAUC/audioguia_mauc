@@ -1,13 +1,18 @@
 import Layout from "../../components/ui/Layout";
+import Artworks from "./pages/ArtWorks";
+import Artwork from "./pages/ArtWork";
+import Dashboard from "./pages/Dashboard";
+import Register from "./pages/Register";
+import Edit from "./pages/Edit";
 
 export const artWorkRoutes = [
   {
     path: "/artworks",
-    element: <h1>Artworks</h1>,
+    element: <Artworks />,
   },
   {
     path: "/artworks/:id",
-    element: <h1>:id</h1>,
+    element: <Artwork />,
   },
 ];
 
@@ -16,7 +21,7 @@ export const adminArtWorkRoutes = [
     path: "artworks",
     element: (
       <Layout>
-        <h1>Artworks</h1>
+        <Dashboard />
       </Layout>
     ),
   },
@@ -24,7 +29,7 @@ export const adminArtWorkRoutes = [
     path: "artworks/new",
     element: (
       <Layout>
-        <h1>new</h1>
+        <Register />
       </Layout>
     ),
   },
@@ -32,7 +37,7 @@ export const adminArtWorkRoutes = [
     path: "artworks/:id",
     element: (
       <Layout>
-        <h1>:id</h1>
+        <Edit />
       </Layout>
     ),
   },
