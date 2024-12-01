@@ -111,7 +111,7 @@ export default function AuthProvider({ children }: AuthProviderProps) {
             const response = await api.post(
               "/admin/refresh-token",
               {},
-              requestConfig()
+              requestConfig(true)
             );
             setToken(response.data.token);
             originalRequest.headers.Authorization = `Bearer ${response.data.token}`;

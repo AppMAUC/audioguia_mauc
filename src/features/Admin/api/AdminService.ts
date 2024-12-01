@@ -58,7 +58,6 @@ class AdminAPI {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        timeout: 5000,
       });
       return response.data as ServerCreateResponse;
     } catch (error) {
@@ -77,7 +76,6 @@ class AdminAPI {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        timeout: 5000,
       });
       return response.data as ServerUpdateResponse;
     } catch (error) {
