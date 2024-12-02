@@ -1,50 +1,108 @@
-# React + TypeScript + Vite
+---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# AudioGuia MAUC 🎨🎧  
+![Logo do Projeto](public/pwa-192x192.svg)  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🖼️ Visão Geral  
+O **AudioGuia MAUC** é um aplicativo web que oferece guias de áudio interativos e acessíveis para visitantes do Museu de Arte da UFC. Desenvolvido com **React** e **TypeScript**, o projeto prioriza acessibilidade e uma experiência de usuário otimizada.  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🏗️ Arquitetura do Projeto  
 
-- Configure the top-level `parserOptions` property like this:
+O frontend é modular e utiliza boas práticas de organização:  
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 📂 Estrutura de Pastas  
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+```bash  
+src/  
+├── components/       # Componentes reutilizáveis (botões, cards, etc.)  
+├── features/         # Funcionalidades organizadas (e.g., exposição, busca, login)  
+├── hooks/            # Custom hooks (e.g., usePreview, useAuth)  
+├── styles/           # CSS Modules organizados por tema e responsividade  
+├── utils/            # Funções auxiliares e helpers  
+└── App.tsx           # Arquivo principal do React  
+```  
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+---
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## ✨ Funcionalidades Principais  
+
+1. **Exploração de Exposições:**  
+   - Navegue pelas exposições e obras do museu com detalhes enriquecidos.  
+
+2. **Guias de Áudio:**  
+   - Áudios em Português e Inglês, com suporte a áudio descrição.  
+
+3. **Busca Avançada:**  
+   - Pesquise exposições e obras com facilidade.  
+
+4. **Administração (Frontend):**  
+   - Integração com funcionalidades administrativas para o gerenciamento de conteúdos (acesso exclusivo para admins).  
+
+5. **Acessibilidade:**  
+   - Design inclusivo e suporte a navegação em dispositivos móveis (PWA).  
+
+---
+
+## 🚀 Como Executar o Frontend  
+
+### 📋 Pré-requisitos  
+- **Node.js** (>= 16.x)  
+- **npm** ou **yarn**  
+
+### 🔧 Passos  
+
+#### 1. Clonar o Repositório  
+```bash  
+git clone https://github.com/appmauc/audioguia_mauc.git  
+cd audioguia_mauc-frontend  
+```  
+
+#### 2. Instalar Dependências  
+```bash  
+npm install  
+```  
+
+#### 3. Configurar Variáveis de Ambiente  
+Crie um arquivo `.env` na raiz com:  
+```env  
+VITE_API_URL=https://audioguia-mauc-api.vercel.app/  
+```  
+
+#### 4. Rodar o Projeto  
+```bash  
+npm run dev  
+```  
+
+---
+
+## 🌟 Tecnologias Utilizadas  
+
+- **React** (TypeScript)  
+- **React Router** (roteamento)  
+- **React Hook Form + Zod** (validação de formulários)  
+- **Axios** (requisições HTTP)  
+- **CSS Modules** (estilização modular e temas)  
+
+---
+
+## 🤝 Contribuição  
+
+1. Faça um fork do repositório.  
+2. Crie uma branch com sua funcionalidade (`git checkout -b feature/nova-feature`).  
+3. Commit suas alterações (`git commit -m 'Adiciona nova funcionalidade'`).  
+4. Submeta um pull request.  
+
+---
+
+## 🧑‍🤝‍🧑 Devs  
+
+- **[Victor Emanuel Tomaz](https://github.com/victor280504)**  
+
+---
+
+
+**Desenvolvido com ❤️ para o MAUC**  
