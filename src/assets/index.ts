@@ -51,3 +51,7 @@ export { default as GithubIcon } from "./icons/github.svg?react";
 export { default as ErrorImage } from "./images/error.svg?react";
 export { default as Error404Image } from "./images/error404.svg?react";
 export { default as MaucHome } from "./images/mauc-home.png";
+export { default as Biblioteca } from "./images/biblioteca.jpg";
+export { default as Comunicacao } from "./images/comunica_mauc.jpg";
+export { default as Educativo } from "./images/n_educativo.jpg";
+export { default as Arquivo } from "./images/arquivo.jpg";
