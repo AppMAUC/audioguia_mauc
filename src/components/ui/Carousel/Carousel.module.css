@@ -17,9 +17,13 @@
 
 .item {
   height: 100%; /* altura item */
-  min-width: 45.8%; 
+  min-width: 45.8%;
+  max-width: 45.8%;
   /* width: 300px; */
+  /* height: 100%; */
+  /* width: 170px; */
   display: flex;
+  box-sizing: border-box;
   flex-direction: column;
   justify-content: end;
 }

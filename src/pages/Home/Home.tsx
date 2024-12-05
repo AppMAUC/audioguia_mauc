@@ -21,7 +21,7 @@ const Home = () => {
 
   if (isLoading) return <Mobile.Loading />;
 
-  if (isError) return <Mobile.Error404/>;
+  if (isError) return <Mobile.Error404 />;
 
   return (
     <div className={styles.home}>
@@ -37,6 +37,7 @@ const Home = () => {
         <Content.Title>Exposições Temporárias</Content.Title>
         <Carousel
           link="expositions"
+          num={3}
           items={expositions?.data.filter((item) => item.type == 2) || []}
         />
       </Content>
@@ -44,6 +45,7 @@ const Home = () => {
         <Content.Title>Exposições de Longa Duração</Content.Title>
         <Carousel
           link="expositions"
+          num={3}
           items={expositions?.data.filter((item) => item.type == 1) || []}
         />
         <NavLink to="/expositions" className={styles.navLink}>

@@ -24,7 +24,11 @@ const Carousel = ({ items, link, style }: CarouselProps) => {
           link={`/${link}/${item._id}`}
           style={style}
         >
-          <Item.Column gap="var(--spacing-5)" width="70%" paddingLeft="var(--spacing-5)">
+          <Item.Column
+            gap="var(--spacing-5)"
+            width="70%"
+            paddingLeft="var(--spacing-5)"
+          >
             <Card.Title title={item.title} />
             <Card.Date date={item.year} />
           </Item.Column>
