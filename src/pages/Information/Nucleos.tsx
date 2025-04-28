@@ -1,6 +1,6 @@
 import Mobile from "../../components/ui/Mobile";
 import Item from "../../components/ui/Item";
-import { MailIcon } from "../../assets";
+import { MailIcon, Comunicacao, Educativo } from "../../assets";
 
 const Nucleos = () => {
   return (
@@ -8,10 +8,7 @@ const Nucleos = () => {
       <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "20px" }}>
         Núcleos
       </Mobile.Title>
-      <Mobile.ImageDefault
-        src="https://via.placeholder.com/150"
-        alt="Ícone de chamada"
-      />
+      <Mobile.ImageDefault src={Comunicacao} alt="Ícone de chamada" />
       <Mobile.Title
         style={{
           paddingLeft: "20px",
@@ -30,8 +27,7 @@ const Nucleos = () => {
         <MailIcon
           style={{
             fill: "var(--color-primary)",
-            width: "24px",
-            height: "24px",
+            height: "auto",
             paddingLeft: "20px",
           }}
         />
@@ -62,6 +58,7 @@ const Nucleos = () => {
           pesquisadoras/es, autoridades externas ou da instituição).
         </p>
       </Item.Container>
+      <Mobile.ImageDefault src={Educativo} alt="Ícone de chamada" />
       <Mobile.Title
         style={{
           paddingLeft: "20px",
@@ -80,8 +77,7 @@ const Nucleos = () => {
         <MailIcon
           style={{
             fill: "var(--color-primary)",
-            width: "24px",
-            height: "24px",
+            height: "auto",
             paddingLeft: "20px",
           }}
         />

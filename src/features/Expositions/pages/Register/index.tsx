@@ -149,14 +149,14 @@ const Register = () => {
             />
             <Input
               type="date"
-              label="Data de nascimento do artista"
+              label="Data de inicio da Exposição"
               required
               helperText={errors.dateStarts?.message?.toString()}
               {...register("dateStarts")}
             />
             <Input
               type="date"
-              label="Data de nascimento do artista"
+              label="Data de término da exposição"
               required
               helperText={errors.dateEnds?.message?.toString()}
               {...register("dateEnds")}

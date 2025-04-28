@@ -4,9 +4,10 @@ interface CarouselProps {
   items: any[];
   link?: string;
   style?: React.CSSProperties;
+  num: number;
 }
 
-const Carousel = ({ items, link, style }: CarouselProps) => {
+const Carousel = ({ items, link, style, num = 3 }: CarouselProps) => {
   return (
     <Card.Container
       focusedIndex={0}
@@ -14,7 +15,7 @@ const Carousel = ({ items, link, style }: CarouselProps) => {
         throw new Error("Function not implemented.");
       }}
     >
-      {items.slice(0, 3).map((item: any) => (
+      {items.slice(0, num).map((item: any) => (
         <Card.Item
           key={item.image?.url}
           image={item.image?.url}
@@ -22,7 +23,7 @@ const Carousel = ({ items, link, style }: CarouselProps) => {
           style={style}
         >
           <Card.Title title={item.title} />
-          <Card.Date date={item.dateEnds.split("T")[0].replace(/-/g, "/")} />
+          <Card.Date date={new Date(item.dateEnds).toLocaleDateString('pt-BR')} />
         </Card.Item>
       ))}
     </Card.Container>

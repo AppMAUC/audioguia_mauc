@@ -1,6 +1,7 @@
 import Mobile from "../../components/ui/Mobile";
 import Item from "../../components/ui/Item";
 import { CallIcon, MailIcon } from "../../assets";
+import { Arquivo as Image } from "../../assets";
 
 const Arquivo = () => {
   return (
@@ -8,10 +9,7 @@ const Arquivo = () => {
       <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "20px" }}>
         Arquivo
       </Mobile.Title>
-      <Mobile.ImageDefault
-        src="https://via.placeholder.com/150"
-        alt="Ícone de chamada"
-      />
+      <Mobile.ImageDefault src={Image} alt="Ícone de chamada" />
       <Mobile.Title
         style={{
           paddingLeft: "20px",
@@ -30,9 +28,9 @@ const Arquivo = () => {
         <CallIcon
           style={{
             fill: "var(--color-primary)",
-            width: "24px",
-            height: "24px",
+            width: "auto",
             paddingLeft: "20px",
+            paddingRight: "10px",
           }}
         />
         <p
@@ -54,8 +52,7 @@ const Arquivo = () => {
         <MailIcon
           style={{
             fill: "var(--color-primary)",
-            width: "24px",
-            height: "24px",
+            height: "auto",
             paddingLeft: "20px",
           }}
         />

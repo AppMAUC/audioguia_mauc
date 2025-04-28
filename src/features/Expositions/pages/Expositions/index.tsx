@@ -36,7 +36,7 @@ const Expositions = () => {
           paddingLeft: "20px",
         }}
       >
-        Todos as Exposições
+        Todas as Exposições
       </Mobile.Title>
       <Item.Container>
         <Item.Column gap="var(--spacing-0)">

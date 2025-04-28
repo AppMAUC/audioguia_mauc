@@ -82,7 +82,6 @@ a {
     align-items: center;
   }
 }
-
 /* Estilos para desktops */
 @media (min-width: 1024px) {
   .container {

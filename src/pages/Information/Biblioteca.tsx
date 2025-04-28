@@ -1,6 +1,7 @@
 import Mobile from "../../components/ui/Mobile";
 import Item from "../../components/ui/Item";
 import { CallIcon, MailIcon } from "../../assets";
+import { Biblioteca as Image } from "../../assets";
 
 const Biblioteca = () => {
   return (
@@ -8,19 +9,7 @@ const Biblioteca = () => {
       <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "20px" }}>
         Biblioteca
       </Mobile.Title>
-      <Mobile.ImageDefault
-        src="https://via.placeholder.com/150"
-        alt="Ícone de chamada"
-      />
-      <Mobile.Title
-        style={{
-          paddingLeft: "20px",
-          paddingTop: "20px",
-          color: "var(--color-text)",
-        }}
-      >
-        Arquivo Institucional
-      </Mobile.Title>
+      <Mobile.ImageDefault src={Image} alt="Ícone de chamada" />
       <Item.Row
         justify="start"
         align="center"
@@ -30,9 +19,9 @@ const Biblioteca = () => {
         <CallIcon
           style={{
             fill: "var(--color-primary)",
-            width: "24px",
-            height: "24px",
+            width: "auto",
             paddingLeft: "20px",
+            paddingRight: "10px",
           }}
         />
         <p
@@ -54,8 +43,7 @@ const Biblioteca = () => {
         <MailIcon
           style={{
             fill: "var(--color-primary)",
-            width: "24px",
-            height: "24px",
+            height: "auto",
             paddingLeft: "20px",
           }}
         />

@@ -33,26 +33,30 @@ const schema = z.object({
   suport: z.string(),
   year: z.string(),
   dimension: z.string(),
-  audioGuia: z.array(
-    z.union([
-      z.string(),
-      z.instanceof(FileList).transform((list, ctx) => {
-        const file = list[0];
-        const lang = ctx.path[1] === 0 ? "br" : "en"; // Determina o idioma baseado no índice
-        return file ? addSuffixToFileName(file, lang) : "";
-      }),
-    ])
-  ),
-  audioDesc: z.array(
-    z.union([
-      z.string(),
-      z.instanceof(FileList).transform((list, ctx) => {
-        const file = list[0];
-        const lang = ctx.path[1] === 0 ? "br" : "en"; // Determina o idioma baseado no índice
-        return file ? addSuffixToFileName(file, lang) : "";
-      }),
-    ])
-  ),
+  audioGuia: z
+    .array(
+      z.union([
+        z.string(),
+        z.instanceof(FileList).transform((list, ctx) => {
+          const file = list[0];
+          const lang = ctx.path[1] === 0 ? "br" : "en"; // Determina o idioma baseado no índice
+          return file ? addSuffixToFileName(file, lang) : "";
+        }),
+      ])
+    )
+    .optional(),
+  audioDesc: z
+    .array(
+      z.union([
+        z.string(),
+        z.instanceof(FileList).transform((list, ctx) => {
+          const file = list[0];
+          const lang = ctx.path[1] === 0 ? "br" : "en"; // Determina o idioma baseado no índice
+          return file ? addSuffixToFileName(file, lang) : "";
+        }),
+      ])
+    )
+    .optional(),
 });
 
 const Register = () => {
@@ -155,7 +159,6 @@ const Register = () => {
               <Upload.Input
                 accept="audio/mpeg"
                 fileType="audio"
-                required
                 label="Áudio Descrição em protuguês"
                 helperText={errors.audioDesc?.message?.toString()}
                 {...register("audioDesc.0")}
@@ -163,7 +166,6 @@ const Register = () => {
               <Upload.Input
                 accept="audio/mpeg"
                 fileType="audio"
-                required
                 label="Áudio guia em português"
                 helperText={errors.audioGuia?.message?.toString()}
                 {...register("audioGuia.0")}
@@ -171,7 +173,6 @@ const Register = () => {
               <Upload.Input
                 accept="audio/mpeg"
                 fileType="audio"
-                required
                 label="Áudio guia em inglês"
                 helperText={errors.audioGuia?.message?.toString()}
                 {...register("audioGuia.1")}

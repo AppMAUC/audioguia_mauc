@@ -1,6 +1,6 @@
 import styles from "./Carousel.module.css";
 import { motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useRef, useEffect, PropsWithChildren } from "react";
 import React from "react";
 
@@ -74,9 +74,9 @@ const Item = ({
         ...style,
       }}
     >
-      <NavLink to={link ? link : ""} className={styles.none}>
+      <Link to={link ? link : ""} className={styles.card_link}>
         {children}
-      </NavLink>
+      </Link>
     </motion.div>
   );
 };
