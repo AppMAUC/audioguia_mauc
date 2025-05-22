@@ -8,10 +8,9 @@ import ExpositionService from "../../features/Expositions/api/ExpositionService"
 import { Exposition } from "../../features/Expositions/types/Exposition";
 import { useQuery } from "@tanstack/react-query";
 import Mobile from "../../components/ui/Mobile";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 
 import bgHero from "../../assets/images/bg-hero.jpg";
-import maucLogo from "../../assets/images/mauc-logo.svg";
 
 const Home = () => {
   const {
