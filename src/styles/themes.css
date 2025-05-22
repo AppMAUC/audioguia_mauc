@@ -23,7 +23,7 @@
   --color-primary-accent: var(--color-blue-accent);
   --color-primary-muted: var(--color-blue-muted);
   --color-link-highlight: var(--color-blue-default);
-  --color-secondary: var(--color-brown-default);
+  --color-secondary: var(--color-black-default);
   --color-secondary-accent: var(--color-brown-accent);
   --color-secondary-muted: var(--color-brown-muted);
 }

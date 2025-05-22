@@ -32,7 +32,8 @@ const Expositions = () => {
       <Mobile.Title
         style={{
           color: "var(--color-text)",
-          marginTop: "var(--spacing-25)",
+          marginTop: "140px",
+          marginBottom: "var(--spacing-10-md)",
           paddingLeft: "20px",
         }}
       >

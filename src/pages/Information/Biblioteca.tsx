@@ -6,15 +6,15 @@ import { Biblioteca as Image } from "../../assets";
 const Biblioteca = () => {
   return (
     <section>
-      <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "20px" }}>
+      <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "140px", marginBottom: "var(--spacing-10-md)" }}>
         Biblioteca
       </Mobile.Title>
-      <Mobile.ImageDefault src={Image} alt="Ícone de chamada" />
+      <Mobile.ImageDefault src={Image} alt="Ícone de chamada"/>
       <Item.Row
         justify="start"
         align="center"
         gap="var(--spacing-5)"
-        marginTop="var(--spacing-10)"
+        marginTop="var(--spacing-25-sm)"
       >
         <CallIcon
           style={{

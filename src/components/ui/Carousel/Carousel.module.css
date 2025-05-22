@@ -26,6 +26,7 @@
   box-sizing: border-box;
   flex-direction: column;
   justify-content: end;
+  border-radius: var(--border-radius);
 }
 
 .a {
@@ -59,7 +60,8 @@
   font-size: var(--h2-size);
   color: var(--color-text-white);
   margin-left: 0.4em;
-  font-weight: bold;
+  font-weight: 600;
+  font-family: var(--font-family-third);
 }
 
 .item.focused {
