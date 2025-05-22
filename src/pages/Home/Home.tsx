@@ -8,6 +8,9 @@ import ExpositionService from "../../features/Expositions/api/ExpositionService"
 import { Exposition } from "../../features/Expositions/types/Exposition";
 import { useQuery } from "@tanstack/react-query";
 import Mobile from "../../components/ui/Mobile";
+import { useRef } from "react";
+
+import bgHero from "../../assets/images/bg-hero.jpg";
 
 const Home = () => {
   const {
@@ -23,15 +26,30 @@ const Home = () => {
 
   if (isError) return <Mobile.Error404 />;
 
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  
+  const nextSectionRef = useRef<HTMLDivElement | null>(null);
+
+  const handleStartClick = () => {
+    nextSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className={styles.home}>
+      <div className={styles.hero} ref={heroRef} style={{ backgroundImage: `url(${bgHero})` }}>
+        {/* <img src={maucLogo} alt="Logo do MAUC" className={styles.heroLogo} /> */}
+        <button onClick={handleStartClick}>Iniciar visita</button>
+        <div ref={nextSectionRef} className={styles.gap}/>
+      </div>
+
       <Content>
-        <Content.Title>Bem vindo(a) ao Aplicativo Mauc</Content.Title>
-        <Content.Image src={MaucHome} alt="Museu de Arte Contemporânea" />
-        <Content.Desc color="black">
-          O Mauc possui nove ambientes destinados às exposições de longa duração
-          e três dedicados às exposições de média e curta duração (temporárias).
-        </Content.Desc>
+          <Content.Title>Audioguia MAUC</Content.Title>
+          <Content.ImageWrapper>
+             <Content.Image src={MaucHome} alt="Museu de Arte Contemporânea" />
+          </Content.ImageWrapper>
+          <Content.Desc color="black">
+            O Mauc possui 9 ambientes para exposições de longa duração e 3 para temporárias.
+          </Content.Desc>
       </Content>
       <Content>
         <Content.Title>Exposições Temporárias</Content.Title>

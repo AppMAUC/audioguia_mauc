@@ -38,6 +38,9 @@ const Artist = () => {
   return (
     <section className={styles.section}>
       <div
+        style={{
+          marginTop: "120px",
+        }}
         className={styles.image_container}
         onClick={() => setOpenImage((prev) => !prev)}
       >

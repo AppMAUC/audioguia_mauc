@@ -2,14 +2,16 @@
 import Navbar from "../navigation/Navbar";
 import { Outlet } from "react-router-dom";
 
+import { useLocation } from "react-router-dom";
+
 interface LayoutProps {
   children?: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const currentUrl = window.location.href;
+  const location = useLocation();
 
-  if (currentUrl.includes("admin")) {
+  if (location.pathname.includes("admin")) {
     return (
       <div id="layout-desktop">
         <div id="inner-desktop">
@@ -36,7 +38,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <main>
           <Outlet />
         </main>
-        {!currentUrl.includes("about") && (
+        {!location.pathname.includes("about") && (
           <footer style={{ width: "100%", height: "10vh" }}></footer>
         )}
       </div>

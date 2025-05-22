@@ -31,8 +31,13 @@ const Desc = ({ children, color }: IDesc) => {
   return <p className={`${styles.desc} ${styles[color]}`}>{children}</p>;
 };
 
+const ImageWrapper = ({ children }: IContent) => {
+  return <div className={styles.imageWrapper}>{children}</div>;
+};
+
 Content.Title = Title;
 Content.Desc = Desc;
 Content.Image = Image;
+Content.ImageWrapper = ImageWrapper;
 
 export default Content;

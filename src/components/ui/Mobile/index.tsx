@@ -232,34 +232,35 @@ const AudioPlayer = ({ src, type }: { src: string; type: string }) => {
 
 const Share = () => {
   const [message, setMessage] = useState(false);
-  const handleShareClick = async () => {
+
+  const handleShareClick = async (e: React.MouseEvent) => {
+    e.preventDefault(); 
     try {
       await navigator.clipboard.writeText(window.location.href);
-
       setMessage(true);
-      setTimeout(() => {
-        setMessage(false);
-      }, 3000);
+      setTimeout(() => setMessage(false), 3000);
     } catch (err) {
       console.error("Falha ao copiar o link: ", err);
     }
   };
 
   return (
-    <>
+    <div className={styles.share_wrapper}>
       <button
         className={styles.button}
         title="Share"
         onClick={handleShareClick}
+        type="button" 
       >
         <ShareIcon className={styles.share} />
       </button>
       <span
         className={`${styles.copy_message} ${message ? "" : styles.hidden}`}
+        role="alert"
       >
-        Link copiado com sucesso
+        Link copiado com sucesso!
       </span>
-    </>
+    </div>
   );
 };
 

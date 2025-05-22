@@ -19,6 +19,7 @@ interface MenuProps {
 }
 
 const Menu = ({ isOpen, setModalOpen, tabIndex }: MenuProps) => {
+  
   return (
     <>
       <div
@@ -41,31 +42,12 @@ const Menu = ({ isOpen, setModalOpen, tabIndex }: MenuProps) => {
             <CloseIcon className="svg2" />
           </button>
         </Container.Nav>
+
         <Container.Items>
+
           <Container.Item link={"/"} onClick={setModalOpen}>
             <HomeIcon className="svg1" />
             <Container.Text>Home</Container.Text>
-          </Container.Item>
-          <Container.Suspense>
-            <Container.Item
-              link={"https://mauc.ufc.br/pt/sobre-o-mauc/"}
-              onClick={setModalOpen}
-            >
-              <DescriptionIcon className="svg1" />
-              <Container.Text>Sobre o Mauc</Container.Text>
-            </Container.Item>
-            <>
-              <NavLink to="/arquivo">Arquivo</NavLink>
-              <NavLink to="/biblioteca">Biblioteca</NavLink>
-              <NavLink to="/nucleos">Núcleos</NavLink>
-              <NavLink to="https://mauc.ufc.br/pt/ferias-no-mauc-cursos-e-oficinas/">
-                Cursos e oficinas
-              </NavLink>
-            </>
-          </Container.Suspense>
-          <Container.Item link={"/about"} onClick={setModalOpen}>
-            <DescriptionIcon className="svg1" />
-            <Container.Text>Sobre o App</Container.Text>
           </Container.Item>
           <Container.Item link={"/expositions"} onClick={setModalOpen}>
             <DrawIcon className="svg1" />
@@ -79,15 +61,30 @@ const Menu = ({ isOpen, setModalOpen, tabIndex }: MenuProps) => {
             <BrushIcon className="svg1" />
             <Container.Text>Artistas</Container.Text>
           </Container.Item>
+
+          <Container.Suspense>
+            <div className={styles.item}>
+              <DescriptionIcon className="svg1" />
+              <Container.Text>Sobre</Container.Text>
+            </div>
+            <>
+            <NavLink to="/about" onClick={setModalOpen}>Sobre o App</NavLink>
+            <NavLink to="/arquivo" onClick={setModalOpen}>Arquivo</NavLink>
+            <NavLink to="/biblioteca" onClick={setModalOpen}>Biblioteca</NavLink>
+            <NavLink to="/nucleos" onClick={setModalOpen}>Núcleos</NavLink>
+            </>
+          </Container.Suspense>
+
         </Container.Items>
+
         <div className={styles.buttons}>
           <Button>
             <NavLink to="https://forms.office.com/r/8DaNFyn2Ev">
-              Agende sua Visita
+              Agende a sua visita
             </NavLink>
           </Button>
           <Button>
-            <NavLink to="https://mauc.ufc.br/pt/">Saiba mais</NavLink>
+            <NavLink to="https://mauc.ufc.br/pt/sobre-o-mauc/">Saiba mais</NavLink>
           </Button>
         </div>
       </div>
