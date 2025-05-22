@@ -56,7 +56,7 @@
   font-size: 14px;
   font-family: var(--font-family-base);
   color: var(--color-primary);
-  font-weight: var(--font-weight-bold);
+  font-weight: 800;
 }
 
 .suspense {
@@ -64,7 +64,6 @@
   flex-direction: row;
   align-items: center;
   justify-items: end;
-  gap: 30px;
 }
 
 .nav {
@@ -145,8 +144,9 @@
   flex-direction: column;
   align-items: start;
   padding-left: 10px;
-  margin-left: 60px;
-  gap: 5px;
+  margin-left: 42px;
+  gap: 15px;
+  color: #598bab;
 }
 
 .background {

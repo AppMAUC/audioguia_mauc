@@ -16,8 +16,9 @@ const About = () => {
         <Mobile.Title
           style={{
             paddingLeft: "20px",
-            paddingTop: "20px",
+            paddingTop: "140px",
             textAlign: "start",
+            paddingBottom: "var(--spacing-25-df)"
           }}
         >
           Sobre o App
@@ -69,7 +70,7 @@ const About = () => {
             <Github user="appmauc" />
           </Link>
         </Item.Row>
-        <Item.Container padding="0 20px">
+        <Item.Container padding="0 20px" marginTop="20px">
           <p
             style={{
               fontSize: "var(--h2-size)",
@@ -93,7 +94,7 @@ const About = () => {
             <Mobile.Title
               style={{
                 color: "var(--color-text)",
-                marginTop: "var(--spacing-25)",
+                marginTop: "var(--spacing-25-sm)",
               }}
             >
               Colaboradores

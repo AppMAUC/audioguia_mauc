@@ -7,7 +7,7 @@
   justify-content: space-between;
   background-color: var(--color-input);
   color: var(--color-bg-accent);
-  border-radius: 10px;
+  border-radius: 25px;
 }
 
 .search_icon {
@@ -20,11 +20,12 @@
   width: 80%;
   height: 100%;
   font-size: var(--p-size);
+  font-family: var(--font-family-base);
   background-color: var(--color-input);
   color: var(--color-placeholder);
   border: none;
-  border-radius: 10px;
-  padding: 0px 8px;
+  border-radius: 25px;
+  padding: 0px 15px 4px 15px;
 }
 
 .search_input::placeholder {

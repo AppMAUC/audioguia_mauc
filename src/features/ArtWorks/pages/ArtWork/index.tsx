@@ -8,6 +8,10 @@ import { useQuery } from "@tanstack/react-query";
 import ArtWorkService from "../../api/ArtWorkService";
 import { ArtWork as ArtWorkByID } from "../../types/ArtWork";
 import { useParams } from "react-router-dom";
+import ArtistService from "../../../Artists/api/ArtistService";
+import { Artist as ArtistByID } from "../../../Artists/types/Artist";
+import { NavLink } from "react-router-dom";
+
 
 const ArtWork = () => {
   const { id } = useParams();
@@ -18,6 +22,11 @@ const ArtWork = () => {
   } = useQuery({
     queryKey: ["artWorks/id", id],
     queryFn: async () => await ArtWorkService.getById<ArtWorkByID>(id || ""),
+  });
+
+  const { data: artists } = useQuery({
+  queryKey: ["artists/all"],
+  queryFn: async () => await ArtistService.getAll<ArtistByID>(),
   });
 
   const { data: artWorks } = useQuery({
@@ -42,6 +51,9 @@ const ArtWork = () => {
   return (
     <section className={styles.section}>
       <div
+        style={{
+          marginTop: "120px",
+        }}
         className={styles.image_container}
         onClick={() => setOpenImage((prev) => !prev)}
       >
@@ -66,22 +78,38 @@ const ArtWork = () => {
           display="flex"
           flexDirection="column"
           gap="var(--spacing-10)"
-          marginBottom="var(--spacing-25)"
+          marginBottom="var(--spacing-15-sm)"
         >
           <Mobile.Subtitle>Autor</Mobile.Subtitle>
-          <Mobile.AuthorTitle>{artWorkData?.author}</Mobile.AuthorTitle>
+          
+
+          {(() => {
+  const matchingArtist = artists?.data.find(
+    (artist) => artist.name.toLowerCase() === artWorkData?.author.toLowerCase()
+  );
+  return matchingArtist ? (
+    <NavLink to={`/artists/${matchingArtist._id}`} className="text-blue-600 hover:underline">
+      <Mobile.AuthorTitle>{artWorkData?.author}</Mobile.AuthorTitle>
+    </NavLink>
+  ) : (
+    <Mobile.AuthorTitle>{artWorkData?.author}</Mobile.AuthorTitle>
+  );
+})()}
+
+
+
         </Item.Container>
-        <Mobile.Subtitle>Ouvir audiodescrição</Mobile.Subtitle>
-        <Mobile.AudioPlayer
-          src={artWorkData?.audioDesc[0].url || ""}
-          type="audio/mpeg"
-        />
-        <Item.Container marginTop="var(--spacing-25)">
-          <Mobile.Subtitle>Ouvir sobre a obra</Mobile.Subtitle>
+        <Mobile.Subtitle>Sobre a obra</Mobile.Subtitle>
           <Mobile.AudioPlayer
             src={artWorkData?.audioGuia[0].url || ""}
             type="audio/mpeg"
           />
+        <Item.Container marginTop="var(--spacing-15-sm)">
+          <Mobile.Subtitle>Audiodescrição</Mobile.Subtitle>
+          <Mobile.AudioPlayer
+          src={artWorkData?.audioDesc[0].url || ""}
+          type="audio/mpeg"
+           />
         </Item.Container>
         <Mobile.DescriptionWithLimit>
           {artWorkData?.description}

@@ -52,7 +52,7 @@ const Search = () => {
             color: "var(--color-state)",
             fontFamily: "var(--font-family-base)",
             fontWeight: "bold",
-            marginTop: "50px",
+            marginTop: "140px",
           }}
         >
           Nenhum Resultado econtrado...
@@ -62,7 +62,7 @@ const Search = () => {
 
   return (
     <>
-      <Item.Container padding="20px">
+      <Item.Container padding="20px" marginTop= "140px">
         {artists && artists?.length > 0 && (
           <Mobile.Title style={{ color: "var(--color-text)" }}>
             Artistas

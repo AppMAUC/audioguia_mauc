@@ -18,6 +18,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [openAccessibility, setAccessibility] = useState(false);
   const { auth } = useAuth();
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -34,10 +35,19 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 0); 
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
   return (
     <>
-      <div className={styles.nav_clone}></div>
-      <nav className={styles.nav}>
+      <div id="navbarclone" className={styles.nav_clone}></div>
+      <nav id="navbar" className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`}>
         <div className={styles.nav_itens}>
           <Link
             tabIndex={1}
@@ -88,7 +98,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <div className={`${styles.search} `}>
+      <div id="searchbar" className={`${styles.search} `}>
         <Search />
       </div>
     </>

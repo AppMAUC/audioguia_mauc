@@ -35,6 +35,9 @@ const Exposition = () => {
   return (
     <section className={styles.section}>
       <div
+        style={{
+          marginTop: "140px",
+        }}
         className={styles.image_container}
         onClick={() => setOpenImage((prev) => !prev)}
       >
@@ -70,7 +73,7 @@ const Exposition = () => {
           display="flex"
           flexDirection="column"
           gap="var(--spacing-10)"
-          marginBottom="var(--spacing-25)"
+          marginBottom="var(--spacing-25-sm)"
         ></Item.Container>
         <Mobile.DescriptionWithLimit>
           {expositionData?.description}

@@ -44,10 +44,10 @@ const Suspense = ({ children }: SuspenseProps) => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div className={styles.suspense}>
+      <div className={styles.suspense} onClick={() => setOpen(!open)}>
         {children[0]}
-        <button className={styles.suspense_btn} onClick={() => setOpen(!open)}>
-          {open ? <ArrowUp width={20} height={20} className="svg1"/> : <ArrowDown width={20} height={20} className="svg1"/>}
+        <button className={styles.suspense_btn}>
+          {open ? <ArrowUp width={20} height={20} className="svg1" /> : <ArrowDown width={20} height={20} className="svg1" />}
         </button>
       </div>
       <div
