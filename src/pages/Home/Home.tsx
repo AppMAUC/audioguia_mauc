@@ -13,6 +13,9 @@ import { useRef } from "react";
 import bgHero from "../../assets/images/bg-hero.jpg";
 
 const Home = () => {
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const nextSectionRef = useRef<HTMLDivElement | null>(null);
+
   const {
     data: expositions,
     isLoading,
@@ -25,10 +28,6 @@ const Home = () => {
   if (isLoading) return <Mobile.Loading />;
 
   if (isError) return <Mobile.Error404 />;
-
-  const heroRef = useRef<HTMLDivElement | null>(null);
-  
-  const nextSectionRef = useRef<HTMLDivElement | null>(null);
 
   const handleStartClick = () => {
     nextSectionRef.current?.scrollIntoView({ behavior: "smooth" });
