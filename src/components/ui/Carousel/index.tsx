@@ -8,6 +8,7 @@ interface CarouselProps {
 }
 
 const Carousel = ({ items, link, style, num = 3 }: CarouselProps) => {
+   console.log('Carousel items:', items); 
   return (
     <Card.Container
       focusedIndex={0}
