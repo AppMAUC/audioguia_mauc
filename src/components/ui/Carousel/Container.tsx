@@ -65,6 +65,7 @@ const Item = ({
   style,
   children,
 }: PropsWithChildren & ItemProps) => {
+  console.log('Rendering item with image:', image);
   return (
     <motion.div
       className={`${styles.item}`}
