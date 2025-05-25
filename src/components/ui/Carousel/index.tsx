@@ -19,7 +19,7 @@ const Carousel = ({ items, link, style, num = 3 }: CarouselProps) => {
       {items.slice(0, num).map((item: any) => (
         <Card.Item
           key={item.image?.url}
-          image={item.image?.url}
+          image={encodeURI(item.image?.url)}
           link={`/${link}/${item._id}`}
           style={style}
         >
