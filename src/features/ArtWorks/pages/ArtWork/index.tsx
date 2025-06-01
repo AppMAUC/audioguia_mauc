@@ -96,14 +96,8 @@ const ArtWork = () => {
   );
 })()}
 
-
-
         </Item.Container>
-        <Mobile.Subtitle>Sobre a obra</Mobile.Subtitle>
-          <Mobile.AudioPlayer
-            src={artWorkData?.audioGuia[0].url || ""}
-            type="audio/mpeg"
-          />
+
         <Item.Container marginTop="var(--spacing-15-sm)">
           <Mobile.Subtitle>Audiodescrição</Mobile.Subtitle>
           <Mobile.AudioPlayer
@@ -111,6 +105,25 @@ const ArtWork = () => {
           type="audio/mpeg"
            />
         </Item.Container>
+
+         <Mobile.Subtitle>Sobre a obra (PT)</Mobile.Subtitle>
+          <Mobile.AudioPlayer
+            src={artWorkData?.audioGuia[0].url || ""}
+            type="audio/mpeg"
+          />
+
+          <Item.Container marginTop="var(--spacing-15-sm)">
+            <Mobile.Subtitle>About the artwork (EN)</Mobile.Subtitle>
+            {artWorkData?.audioGuia?.[1]?.url ? (
+              <Mobile.AudioPlayer
+                src={artWorkData.audioGuia[1].url}
+                type="audio/mpeg"
+              />
+            ) : (
+              <p>Áudio ainda não disponível</p>
+            )}
+          </Item.Container>
+
         <Mobile.DescriptionWithLimit>
           {artWorkData?.description}
         </Mobile.DescriptionWithLimit>
