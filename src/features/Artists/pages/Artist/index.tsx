@@ -61,14 +61,33 @@ const Artist = () => {
           <Mobile.Title>{artistData?.name}</Mobile.Title>
           <Mobile.Share />
         </Item.Row>
-        <Mobile.Subtitle>Biografia</Mobile.Subtitle>
-        <Mobile.AudioPlayer
-          src={artistData?.audioGuia[0].url || ""}
-          type="audio/mpeg"
-        />
+
+       <Mobile.Subtitle>Biografia (PT)</Mobile.Subtitle>
+        {artistData?.audioGuia?.[0]?.url ? (
+          <Mobile.AudioPlayer
+            src={artistData.audioGuia[0].url}
+            type="audio/mpeg"
+          />
+        ) : (
+          <p>Áudio em português ainda não disponível</p>
+        )}
+
+        <Item.Container marginTop="var(--spacing-15-sm)">
+          <Mobile.Subtitle>Biography (EN)</Mobile.Subtitle>
+          {artistData?.audioGuia?.[1]?.url ? (
+            <Mobile.AudioPlayer
+              src={artistData.audioGuia[1].url}
+              type="audio/mpeg"
+            />
+          ) : (
+            <p>English audio not available yet</p>
+          )}
+        </Item.Container>
+
         <Mobile.DescriptionWithLimit>
           {artistData?.biography}
         </Mobile.DescriptionWithLimit>
+
         {artistData && artistData?.artWorks.length > 0 && (
           <>
             <Mobile.Title2>Obras de {artistData?.name}</Mobile.Title2>
