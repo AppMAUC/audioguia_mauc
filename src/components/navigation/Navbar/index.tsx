@@ -72,7 +72,10 @@ const Navbar = () => {
             setModalOpen={() => setAccessibility(!openAccessibility)}
           />
 
-          <Install />
+          {/* <div style={{ position: 'relative', zIndex: 1001 }}> */}
+            <Install />
+          {/* </div> */}
+
           <div className={styles.divider}>
             {auth && (
               <>
