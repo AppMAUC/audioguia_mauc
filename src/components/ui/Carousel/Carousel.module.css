@@ -53,7 +53,6 @@
   color: var(--color-text-white);
   font-size: var(--font-size);
   padding-bottom: var(--spacing-15);
-  padding-top: var(--spacing-0-md);
   margin-left: 0.5em;
 }
 
