@@ -42,12 +42,12 @@ const Home = () => {
       </div>
 
       <Content>
-          <Content.Title>Audioguia MAUC</Content.Title>
+          <Content.Title>Audioguia Mauc</Content.Title>
           <Content.ImageWrapper>
              <Content.Image src={MaucHome} alt="Museu de Arte Contemporânea" />
           </Content.ImageWrapper>
           <Content.Desc color="black">
-            O Mauc possui 9 ambientes para exposições de longa duração e 3 para temporárias.
+            O Museu de Arte da Universidade Federal do Ceará (Mauc) possui 9 ambientes para exposições de longa duração e 3 para temporárias.
           </Content.Desc>
       </Content>
       <Content>
