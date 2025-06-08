@@ -83,7 +83,7 @@ const Item = ({
 };
 
 const Title = ({ title }: { title: string }) => {
-  return <h3 className={styles.h3} style={{ paddingBottom: "var(--spacing-15)" }}>{title}</h3>;
+  return <h3 className={styles.h3}>{title}</h3>;
 };
 
 const Date = ({ date }: { date: string }) => {

@@ -24,6 +24,7 @@ const Carousel = ({ items, link, style, num = 3 }: CarouselProps) => {
           style={style}
         >
           <Card.Title title={item.title} />
+          <p style={{ paddingBottom: "15px"}} />
           {/* <Card.Date date={new Date(item.dateEnds).toLocaleDateString('pt-BR')} /> */}
         </Card.Item>
       ))}
