@@ -36,13 +36,13 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-  const handleScroll = () => {
-    setScrolled(window.scrollY > 0); 
-  };
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
 
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -53,6 +53,7 @@ const Navbar = () => {
             tabIndex={1}
             to={auth ? "/admin/dashboard" : "/"}
             className={styles.item_link}
+            aria-label="Ir para a página inicial"
           >
             <MaucHomeIcon className="svg1" />
           </Link>
@@ -73,7 +74,7 @@ const Navbar = () => {
           />
 
           {/* <div style={{ position: 'relative', zIndex: 1001 }}> */}
-            <Install />
+          <Install />
           {/* </div> */}
 
           <div className={styles.divider}>

@@ -56,6 +56,7 @@ const Artist = () => {
           />
         </button>
       </div>
+
       <Mobile.Container>
         <Item.Row align="center" justify="space-between">
           <Mobile.Title>{artistData?.name}</Mobile.Title>
@@ -65,6 +66,7 @@ const Artist = () => {
         <Mobile.AudioPlayer
           src={artistData?.audioGuia[0].url || ""}
           type="audio/mpeg"
+          ariaLabelPrefix={`da biografia de ${artistData?.name}`}
         />
         <Mobile.DescriptionWithLimit>
           {artistData?.biography}
@@ -81,6 +83,7 @@ const Artist = () => {
         )}
         <Item.Row width="100%" height="100px"></Item.Row>
       </Mobile.Container>
+
     </section>
   );
 };

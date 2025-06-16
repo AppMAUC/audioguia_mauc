@@ -90,9 +90,10 @@ const Title2 = ({ children }: PropsWithChildren) => {
   return <h2 className={styles.h2}>{children}</h2>;
 };
 
-const Subtitle = ({ children }: PropsWithChildren) => {
-  return <h2 className={styles.subtitle}>{children}</h2>;
+const Subtitle = ({ children, ...props }: PropsWithChildren<React.HTMLAttributes<HTMLHeadingElement>>) => {
+  return <h2 className={styles.subtitle} {...props}>{children}</h2>;
 };
+
 
 const Description = ({ children }: PropsWithChildren) => {
   return (
@@ -147,7 +148,15 @@ const DescriptionWithLimit = ({
   );
 };
 
-const AudioPlayer = ({ src, type }: { src: string; type: string }) => {
+const AudioPlayer = ({
+  src,
+  type,
+  ariaLabelPrefix = "Áudio",
+}: {
+  src: string;
+  type: string;
+  ariaLabelPrefix?: string;
+}) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const sliderRef = useRef<HTMLInputElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -204,7 +213,7 @@ const AudioPlayer = ({ src, type }: { src: string; type: string }) => {
         typeof={type}
       ></audio>
       <div className={styles.controls}>
-        <button onClick={handlePlayPause} className={styles.play_pause_button}>
+        <button aria-label={isPlaying ? `Pausar áudio ${ariaLabelPrefix}` : `Reproduzir áudio ${ariaLabelPrefix}`} onClick={handlePlayPause} className={styles.play_pause_button}>
           {isPlaying ? (
             <PauseIcon className={styles.play_pause_button_icon} />
           ) : (
@@ -215,6 +224,11 @@ const AudioPlayer = ({ src, type }: { src: string; type: string }) => {
           {Math.floor(currentTime / 60)}:
           {("0" + Math.floor(currentTime % 60)).slice(-2)}{" "}
         </span>
+
+        {/* <label htmlFor="audio-slider" className="sr-only">
+          Ajustar progresso do áudio
+        </label> */}
+
         <input
           ref={sliderRef}
           className={styles.slider}
@@ -224,8 +238,10 @@ const AudioPlayer = ({ src, type }: { src: string; type: string }) => {
           step="0.1"
           value={currentTime}
           onChange={handleSliderChange}
+          aria-label={`Barra de progresso do áudio ${ariaLabelPrefix}`}
         />
       </div>
+
     </div>
   );
 };
@@ -234,7 +250,7 @@ const Share = () => {
   const [message, setMessage] = useState(false);
 
   const handleShareClick = async (e: React.MouseEvent) => {
-    e.preventDefault(); 
+    e.preventDefault();
     try {
       await navigator.clipboard.writeText(window.location.href);
       setMessage(true);
@@ -250,7 +266,7 @@ const Share = () => {
         className={styles.button}
         title="Share"
         onClick={handleShareClick}
-        type="button" 
+        type="button"
       >
         <ShareIcon className={styles.share} />
       </button>

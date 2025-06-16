@@ -38,17 +38,17 @@ const Home = () => {
       <div className={styles.hero} ref={heroRef} style={{ backgroundImage: `url(${bgHero})` }}>
         {/* <img src={maucLogo} alt="Logo do MAUC" className={styles.heroLogo} /> */}
         <button onClick={handleStartClick}>Iniciar visita</button>
-        <div ref={nextSectionRef} className={styles.gap}/>
+        <div ref={nextSectionRef} className={styles.gap} />
       </div>
 
       <Content>
-          <Content.Title>Audioguia Mauc</Content.Title>
-          <Content.ImageWrapper>
-             <Content.Image src={MaucHome} alt="Museu de Arte Contemporânea" />
-          </Content.ImageWrapper>
-          <Content.Desc color="black">
-            O Museu de Arte da Universidade Federal do Ceará (Mauc) possui 9 ambientes para exposições de longa duração e 3 para temporárias.
-          </Content.Desc>
+        <Content.Title>Audioguia Mauc</Content.Title>
+        <Content.ImageWrapper>
+          <Content.Image src={MaucHome} alt="Museu de Arte Contemporânea" />
+        </Content.ImageWrapper>
+        <Content.Desc color="black">
+          O Museu de Arte da Universidade Federal do Ceará (Mauc) possui nove ambientes para exposições de longa duração e três para temporárias.
+        </Content.Desc>
       </Content>
       <Content>
         <Content.Title>Exposições Temporárias</Content.Title>
