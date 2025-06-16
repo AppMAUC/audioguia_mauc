@@ -25,8 +25,8 @@ const ArtWork = () => {
   });
 
   const { data: artists } = useQuery({
-  queryKey: ["artists/all"],
-  queryFn: async () => await ArtistService.getAll<ArtistByID>(),
+    queryKey: ["artists/all"],
+    queryFn: async () => await ArtistService.getAll<ArtistByID>(),
   });
 
   const { data: artWorks } = useQuery({
@@ -81,48 +81,53 @@ const ArtWork = () => {
           marginBottom="var(--spacing-15-sm)"
         >
           <Mobile.Subtitle>Autor</Mobile.Subtitle>
-          
+
 
           {(() => {
-  const matchingArtist = artists?.data.find(
-    (artist) => artist.name.toLowerCase() === artWorkData?.author.toLowerCase()
-  );
-  return matchingArtist ? (
-    <NavLink to={`/artists/${matchingArtist._id}`} className="text-blue-600 hover:underline">
-      <Mobile.AuthorTitle>{artWorkData?.author}</Mobile.AuthorTitle>
-    </NavLink>
-  ) : (
-    <Mobile.AuthorTitle>{artWorkData?.author}</Mobile.AuthorTitle>
-  );
-})()}
+            const matchingArtist = artists?.data.find(
+              (artist) => artist.name.toLowerCase() === artWorkData?.author.toLowerCase()
+            );
+            return matchingArtist ? (
+              <NavLink to={`/artists/${matchingArtist._id}`} className="text-blue-600 hover:underline">
+                <Mobile.AuthorTitle>{artWorkData?.author}</Mobile.AuthorTitle>
+              </NavLink>
+            ) : (
+              <Mobile.AuthorTitle>{artWorkData?.author}</Mobile.AuthorTitle>
+            );
+          })()}
 
         </Item.Container>
 
         <Item.Container marginTop="var(--spacing-15-sm)">
           <Mobile.Subtitle>Audiodescrição</Mobile.Subtitle>
           <Mobile.AudioPlayer
-          src={artWorkData?.audioDesc[0].url || ""}
-          type="audio/mpeg"
-           />
+            src={artWorkData?.audioDesc[0].url || ""}
+            type="audio/mpeg"
+            ariaLabelPrefix="da audiodescrição"
+          />
         </Item.Container>
 
-         <Mobile.Subtitle>Sobre a obra (PT)</Mobile.Subtitle>
+        <Item.Container marginTop="var(--spacing-15-sm)">
+          <Mobile.Subtitle>Sobre a obra (PT)</Mobile.Subtitle>
           <Mobile.AudioPlayer
             src={artWorkData?.audioGuia[0].url || ""}
             type="audio/mpeg"
+            ariaLabelPrefix="Sobre a Obra em Português"
           />
+        </Item.Container>
 
-          <Item.Container marginTop="var(--spacing-15-sm)">
-            <Mobile.Subtitle>About the artwork (EN)</Mobile.Subtitle>
-            {artWorkData?.audioGuia?.[1]?.url ? (
-              <Mobile.AudioPlayer
-                src={artWorkData.audioGuia[1].url}
-                type="audio/mpeg"
-              />
-            ) : (
-              <p>Áudio ainda não disponível</p>
-            )}
-          </Item.Container>
+        <Item.Container marginTop="var(--spacing-15-sm)">
+          <Mobile.Subtitle>About the artwork (EN)</Mobile.Subtitle>
+          {artWorkData?.audioGuia?.[1]?.url ? (
+            <Mobile.AudioPlayer
+              src={artWorkData.audioGuia[1].url}
+              type="audio/mpeg"
+              ariaLabelPrefix="Sobre a obra em inglês"
+            />
+          ) : (
+            <p>Áudio ainda não disponível</p>
+          )}
+        </Item.Container>
 
         <Mobile.DescriptionWithLimit>
           {artWorkData?.description}

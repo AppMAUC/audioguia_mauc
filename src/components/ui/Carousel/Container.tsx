@@ -40,9 +40,9 @@ const Container = ({
         {React.Children.map(children, (child, index) =>
           child
             ? React.cloneElement(child as React.ReactElement, {
-                isFocused: index === focusedIndex,
-                setFocusedIndex,
-              })
+              isFocused: index === focusedIndex,
+              setFocusedIndex,
+            })
             : null
         )}
       </motion.div>
@@ -67,15 +67,17 @@ const Item = ({
 }: PropsWithChildren & ItemProps) => {
   console.log('Rendering item with image:', image);
   return (
+
+
     <motion.div
-      className={`${styles.item}`}
+      className={styles.item}
       style={{
         background: `linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), url(${image})`,
         backgroundSize: "cover",
         ...style,
       }}
     >
-      <Link to={link ? link : ""} className={styles.card_link}>
+      <Link to={link ? link : ""} className={styles.a} aria-label={`Acessar página`}>
         {children}
       </Link>
     </motion.div>
