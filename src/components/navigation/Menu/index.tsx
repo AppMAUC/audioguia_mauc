@@ -19,7 +19,7 @@ interface MenuProps {
 }
 
 const Menu = ({ isOpen, setModalOpen, tabIndex }: MenuProps) => {
-  
+
   return (
     <>
       <div
@@ -55,7 +55,7 @@ const Menu = ({ isOpen, setModalOpen, tabIndex }: MenuProps) => {
           </Container.Item>
           <Container.Item link={"/artworks"} onClick={setModalOpen}>
             <PalleteIcon className="svg1" />
-            <Container.Text>Obras de Arte</Container.Text>
+            <Container.Text>Obras</Container.Text>
           </Container.Item>
           <Container.Item link={"/artists"} onClick={setModalOpen}>
             <BrushIcon className="svg1" />
@@ -68,10 +68,10 @@ const Menu = ({ isOpen, setModalOpen, tabIndex }: MenuProps) => {
               <Container.Text>Sobre</Container.Text>
             </div>
             <>
-            <NavLink to="/about" onClick={setModalOpen}>Sobre o App</NavLink>
-            <NavLink to="/arquivo" onClick={setModalOpen}>Arquivo</NavLink>
-            <NavLink to="/biblioteca" onClick={setModalOpen}>Biblioteca</NavLink>
-            <NavLink to="/nucleos" onClick={setModalOpen}>Núcleos</NavLink>
+              <NavLink to="/about" onClick={setModalOpen}>Sobre o App</NavLink>
+              <NavLink to="/arquivo" onClick={setModalOpen}>Arquivo</NavLink>
+              <NavLink to="/biblioteca" onClick={setModalOpen}>Biblioteca</NavLink>
+              <NavLink to="/nucleos" onClick={setModalOpen}>Núcleos</NavLink>
             </>
           </Container.Suspense>
 
