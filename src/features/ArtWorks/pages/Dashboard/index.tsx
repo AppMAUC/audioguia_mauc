@@ -44,7 +44,7 @@ const Dashboard = () => {
         {artWorks && <ArtWorkList data={artWorks.data} />}
       </section>
 
-      <div className="pagination-buttons" style={{ fontFamily: "Lato, sans-serif", marginTop: "1rem", textAlign: "center" }}>
+      <div className="pagination-buttons" style={{ fontFamily: "Lato, sans-serif", marginTop: "3rem", textAlign: "center", position: "relative", zIndex: 1000, }}>
         <button
           onClick={() => {
             if (page > 1) setPage(page - 1);
