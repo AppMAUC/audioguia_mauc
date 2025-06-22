@@ -52,6 +52,7 @@ const Dashboard = () => {
           Anterior
         </button>
 
+
         <span>Página {page} de {artWorks?.pages || "?"}</span>
 
         <button
