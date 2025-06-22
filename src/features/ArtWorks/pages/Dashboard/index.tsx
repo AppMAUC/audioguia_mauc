@@ -10,6 +10,7 @@ import Mobile from "../../../../components/ui/Mobile";
 
 const Dashboard = () => {
   const [page, setPage] = useState(1);
+  console.log("Página atual:", page);
 
   const {
     data: artWorks,
@@ -43,26 +44,38 @@ const Dashboard = () => {
         {artWorks && <ArtWorkList data={artWorks.data} />}
       </section>
 
-      <div className="pagination-buttons" style={{ fontFamily: "Lato, sans-serif", marginTop: "2rem", textAlign: "center" }}>
+      <div className="pagination-buttons" style={{ fontFamily: "Lato, sans-serif", marginTop: "1rem", textAlign: "center" }}>
         <button
-          onClick={() => setPage((old) => Math.max(old - 1, 1))}
+          onClick={() => {
+            if (page > 1) setPage(page - 1);
+          }}
           disabled={page <= 1}
-          style={{ marginRight: "1rem" }}
+          style={{
+            marginRight: "1rem",
+            cursor: page <= 1 ? "not-allowed" : "pointer",
+          }}
         >
           Anterior
         </button>
 
-
-        <span>Página {page} de {artWorks?.pages || "?"}</span>
+        <span style={{ fontFamily: "Lato, sans-serif" }}>
+          Página {page} de {artWorks?.pages || "?"}
+        </span>
 
         <button
-          onClick={() => setPage((old) => (artWorks?.next ? old + 1 : old))}
+          onClick={() => {
+            if (artWorks?.next) setPage(page + 1);
+          }}
           disabled={!artWorks?.next}
-          style={{ marginLeft: "1rem" }}
+          style={{
+            marginLeft: "1rem",
+            cursor: artWorks?.next ? "pointer" : "not-allowed",
+          }}
         >
           Próximo
         </button>
       </div>
+
     </div>
   );
 };
