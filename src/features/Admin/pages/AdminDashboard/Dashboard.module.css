@@ -1,21 +1,22 @@
 .dashboard {
-    width: 100%;
-    max-width: 1200px;
-    flex-direction: column;
-    margin-top: 140px;
-  }
-  
-  .header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-  }
-  
-  .h1 {
-    font-size: var(--title-like-2);
-    font-weight: bold;
-    color: var(--color-text);
-    margin-bottom: var(--spacing-15);
-  }
+  width: 100%;
+  max-width: 1200px;
+  flex-direction: column;
+  margin-top: 140px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.h1 {
+  font-size: var(--title-like-2);
+  font-weight: bold;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-15);
+  font-family: var(--font-family-base);
+}

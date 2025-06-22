@@ -43,10 +43,10 @@ const Dashboard = () => {
         {artWorks && <ArtWorkList data={artWorks.data} />}
       </section>
 
-      <div className="pagination-buttons" style={{ marginTop: "1rem", textAlign: "center" }}>
+      <div className="pagination-buttons" style={{ fontFamily: "Lato, sans-serif", marginTop: "2rem", textAlign: "center" }}>
         <button
           onClick={() => setPage((old) => Math.max(old - 1, 1))}
-          disabled={!artWorks?.prev}
+          disabled={page <= 1}
           style={{ marginRight: "1rem" }}
         >
           Anterior
