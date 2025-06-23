@@ -53,6 +53,9 @@ const Edit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [dataIsLoading, setdataIsLoading] = useState(false);
+
+  const [artworksPage, setArtworksPage] = useState(1);
+
   const [serverError, setServerError] = useState(false);
   const {
     register,
@@ -93,10 +96,11 @@ const Edit = () => {
     ServerError | ServerUpdateResponse | null
   >(null);
 
-  const { data: artworks } = useQuery({
-    queryKey: ["artWorks/all"],
-    queryFn: async () => await ArtWorkService.getAll<ArtWork>(),
+  const { data: artworks, isLoading: artworksLoading } = useQuery({
+    queryKey: ["artWorks/all", artworksPage],
+    queryFn: async () => await ArtWorkService.getAll<ArtWork>(artworksPage),
   });
+
 
   const onSubmit = async (
     data: FieldValue<typeof schema> & Record<string, any>
@@ -283,11 +287,10 @@ const Edit = () => {
                   fontFamily: "var(--font-family-base)",
                   fontSize: "var(--h3-size)",
                   fontWeight: "bold",
-                  color: `${
-                    !watch("artWorks") || watch("artWorks")?.length == 0
-                      ? "var(--color-error)"
-                      : "var(--color-text-gray)"
-                  }`,
+                  color: `${!watch("artWorks") || watch("artWorks")?.length == 0
+                    ? "var(--color-error)"
+                    : "var(--color-text-gray)"
+                    }`,
                 }}
               >
                 (
@@ -306,7 +309,7 @@ const Edit = () => {
                   }}
                 >
                   {errors.artWorks.message?.toString() ==
-                  "Formato de dado inválido."
+                    "Formato de dado inválido."
                     ? "Selecione ao menos duas obras"
                     : errors.artWorks.message?.toString()}
                 </p>
@@ -323,6 +326,34 @@ const Edit = () => {
                 value={artwork._id}
               />
             ))}
+
+            {/* Botões de paginação abaixo dos checkboxes */}
+            {artworks && (
+              <div style={{ marginTop: "1rem", textAlign: "center" }}>
+                <button
+                  onClick={() => setArtworksPage((old) => Math.max(old - 1, 1))}
+                  disabled={artworksPage <= 1 || !artworks?.prev}
+                  style={{ marginRight: "1rem" }}
+                >
+                  Anterior
+                </button>
+
+                <span>
+                  Página {artworksPage} de {artworks?.pages || "?"}
+                </span>
+
+                <button
+                  onClick={() =>
+                    setArtworksPage((old) => (artworks?.next ? old + 1 : old))
+                  }
+                  disabled={!artworks?.next}
+                  style={{ marginLeft: "1rem" }}
+                >
+                  Próximo
+                </button>
+              </div>
+            )}
+
           </section>
         </form>
         <Item.Row width="100%" height="100px" align="center" justify="center">
