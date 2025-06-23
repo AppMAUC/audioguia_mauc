@@ -96,7 +96,10 @@ const Edit = () => {
     ServerError | ServerUpdateResponse | null
   >(null);
 
-  const { data: artworks, isLoading: artworksLoading } = useQuery({
+  const {
+    data: artworks,
+    // isLoading: artworksLoading
+  } = useQuery({
     queryKey: ["artWorks/all", artworksPage],
     queryFn: async () => await ArtWorkService.getAll<ArtWork>(artworksPage),
   });
