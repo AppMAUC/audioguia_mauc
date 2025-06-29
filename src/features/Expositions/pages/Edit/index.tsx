@@ -35,6 +35,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ArtWork } from "../../../ArtWorks/types/ArtWork";
 import ArtWorkService from "../../../ArtWorks/api/ArtWorkService";
 import { CheckBox } from "../../../../components/ui/Inputs/CheckBox";
+import PaginationControls from "../../../../components/ui/Pagination/PaginationControls";
 
 const schema = z.object({
   title: z.string().optional(),
@@ -53,16 +54,17 @@ const Edit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [dataIsLoading, setdataIsLoading] = useState(false);
+  const [serverError, setServerError] = useState(false);
 
   const [artworksPage, setArtworksPage] = useState(1);
 
-  const [serverError, setServerError] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors, dirtyFields, isDirty, isSubmitting },
     watch,
     setError,
+    setValue,
   } = useForm({
     defaultValues: async () => {
       try {
@@ -91,6 +93,17 @@ const Edit = () => {
     },
     resolver: zodResolver(schema),
   });
+
+  const selectedArtworks = watch("artWorks") || [];
+
+  const toggleArtwork = (id: string) => {
+    const newSelected = selectedArtworks.includes(id)
+      ? selectedArtworks.filter((x: string) => x !== id)
+      : [...selectedArtworks, id];
+    setValue("artWorks", newSelected, { shouldDirty: true });
+  };
+
+
 
   const [message, setMessage] = useState<
     ServerError | ServerUpdateResponse | null
@@ -325,36 +338,21 @@ const Edit = () => {
                 year={artwork.year}
                 author={artwork.author}
                 image={artwork.image.url}
-                {...register("artWorks")}
                 value={artwork._id}
+                checked={selectedArtworks.includes(artwork._id)}
+                onChange={() => toggleArtwork(artwork._id)}
               />
             ))}
 
             {/* Botões de paginação abaixo dos checkboxes */}
             {artworks && (
-              <div style={{ marginTop: "1rem", textAlign: "center" }}>
-                <button
-                  onClick={() => setArtworksPage((old) => Math.max(old - 1, 1))}
-                  disabled={artworksPage <= 1 || !artworks?.prev}
-                  style={{ marginRight: "1rem" }}
-                >
-                  Anterior
-                </button>
-
-                <span>
-                  Página {artworksPage} de {artworks?.pages || "?"}
-                </span>
-
-                <button
-                  onClick={() =>
-                    setArtworksPage((old) => (artworks?.next ? old + 1 : old))
-                  }
-                  disabled={!artworks?.next}
-                  style={{ marginLeft: "1rem" }}
-                >
-                  Próximo
-                </button>
-              </div>
+              <PaginationControls
+                page={artworksPage}
+                setPage={setArtworksPage}
+                hasNext={!!artworks.next}
+                hasPrev={!!artworks.prev}
+                totalPages={artworks.pages}
+              />
             )}
 
           </section>

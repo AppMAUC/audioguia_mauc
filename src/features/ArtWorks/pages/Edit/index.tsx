@@ -161,7 +161,7 @@ const Edit = () => {
   return (
     <div className={styles.dashboard}>
       <header className={styles.header}>
-        <Back>Editar Artista</Back>
+        <Back>Editar Obra</Back>
       </header>
       <div
         style={{

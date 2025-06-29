@@ -24,6 +24,7 @@ import { useQuery } from "@tanstack/react-query";
 import ArtWorkService from "../../../ArtWorks/api/ArtWorkService";
 import { ArtWork } from "../../../ArtWorks/types/ArtWork";
 import { CheckBox } from "../../../../components/ui/Inputs/CheckBox";
+import PaginationControls from "../../../../components/ui/Pagination/PaginationControls";
 
 const schema = z.object({
   name: z.string(),
@@ -55,6 +56,7 @@ const Register = () => {
     formState: { errors, isSubmitting, isDirty },
     watch,
     setError,
+    setValue,
   } = useForm({
     resolver: zodResolver(schema),
   });
@@ -65,9 +67,12 @@ const Register = () => {
 
   const navigate = useNavigate();
 
+  const [artworksPage, setArtworksPage] = useState(1);
+  const [selectedArtworks, setSelectedArtworks] = useState<string[]>([]);
+
   const { data: artworks } = useQuery({
-    queryKey: ["artWorks/all"],
-    queryFn: async () => await ArtWorkService.getAll<ArtWork>(),
+    queryKey: ["artWorks/all", artworksPage],
+    queryFn: async () => await ArtWorkService.getAll<ArtWork>(artworksPage),
   });
 
   const onSubmit = async (data: FieldValue<typeof schema>) => {
@@ -90,6 +95,16 @@ const Register = () => {
       }
     }
   };
+
+  const toggleArtwork = (id: string) => {
+    setSelectedArtworks((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    );
+  };
+
+  useEffect(() => {
+    setValue("artWorks", selectedArtworks);
+  }, [selectedArtworks, setValue]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -212,11 +227,10 @@ const Register = () => {
                   fontFamily: "var(--font-family-base)",
                   fontSize: "var(--h3-size)",
                   fontWeight: "bold",
-                  color: `${
-                    !watch("artWorks") || watch("artWorks")?.length == 0
-                      ? "var(--color-error)"
-                      : "var(--color-text-gray)"
-                  }`,
+                  color: `${!watch("artWorks") || watch("artWorks")?.length == 0
+                    ? "var(--color-error)"
+                    : "var(--color-text-gray)"
+                    }`,
                 }}
               >
                 (
@@ -235,7 +249,7 @@ const Register = () => {
                   }}
                 >
                   {errors.artWorks.message?.toString() ==
-                  "Formato de dado inválido."
+                    "Formato de dado inválido."
                     ? "Selecione ao menos duas obras"
                     : errors.artWorks.message?.toString()}
                 </p>
@@ -248,10 +262,20 @@ const Register = () => {
                 year={artwork.year}
                 author={artwork.author}
                 image={artwork.image.url}
-                {...register("artWorks")}
                 value={artwork._id}
+                checked={selectedArtworks.includes(artwork._id)}
+                onChange={() => toggleArtwork(artwork._id)}
               />
             ))}
+
+            <PaginationControls
+              page={artworksPage}
+              setPage={setArtworksPage}
+              hasNext={!!artworks?.next}
+              hasPrev={!!artworks?.prev}
+              totalPages={artworks?.pages}
+            />
+
           </section>
         </form>
       </div>
