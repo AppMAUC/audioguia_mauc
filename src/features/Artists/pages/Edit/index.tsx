@@ -10,6 +10,7 @@ import Message from "../../../../components/ui/Feedback/Message";
 import Item from "../../../../components/ui/Item";
 import DeleteWithConfirmation from "../../../../components/ui/Inputs/Delete";
 import Mobile from "../../../../components/ui/Mobile";
+import PaginationControls from "../../../../components/ui/Pagination/PaginationControls";
 
 // Hooks
 import { FieldValue, useForm } from "react-hook-form";
@@ -64,12 +65,16 @@ const Edit = () => {
   const [dataIsLoading, setdataIsLoading] = useState(false);
   const [serverError, setServerError] = useState(false);
 
+  // Estado para paginação da lista de obras
+  const [artworksPage, setArtworksPage] = useState(1);
+
   const {
     register,
     handleSubmit,
     formState: { errors, dirtyFields, isDirty, isSubmitting },
     watch,
     setError,
+    setValue,
   } = useForm({
     defaultValues: async () => {
       try {
@@ -103,9 +108,20 @@ const Edit = () => {
   >(null);
 
   const { data: artworks } = useQuery({
-    queryKey: ["artWorks/all"],
-    queryFn: async () => await ArtWorkService.getAll<ArtWork>(),
+    queryKey: ["artWorks/all", artworksPage],
+    queryFn: async () => await ArtWorkService.getAll<ArtWork>(artworksPage),
   });
+
+  // Seleção atual de obras no form (array de ids)
+  const selectedArtworks = watch("artWorks") || [];
+
+  // Função para alternar seleção de uma obra
+  const toggleArtwork = (id: string) => {
+    const newSelected = selectedArtworks.includes(id)
+      ? selectedArtworks.filter((x: string) => x !== id)
+      : [...selectedArtworks, id];
+    setValue("artWorks", newSelected, { shouldDirty: true });
+  };
 
   const onSubmit = async (
     data: FieldValue<typeof schema> & Record<string, any>
@@ -272,11 +288,10 @@ const Edit = () => {
                   fontFamily: "var(--font-family-base)",
                   fontSize: "var(--h3-size)",
                   fontWeight: "bold",
-                  color: `${
-                    !watch("artWorks") || watch("artWorks")?.length == 0
-                      ? "var(--color-error)"
-                      : "var(--color-text-gray)"
-                  }`,
+                  color: `${!watch("artWorks") || watch("artWorks")?.length == 0
+                    ? "var(--color-error)"
+                    : "var(--color-text-gray)"
+                    }`,
                 }}
               >
                 (
@@ -295,7 +310,7 @@ const Edit = () => {
                   }}
                 >
                   {errors.artWorks.message?.toString() ==
-                  "Formato de dado inválido."
+                    "Formato de dado inválido."
                     ? "Selecione ao menos duas obras"
                     : errors.artWorks.message?.toString()}
                 </p>
@@ -308,10 +323,25 @@ const Edit = () => {
                 year={artwork.year}
                 author={artwork.author}
                 image={artwork.image.url}
-                {...register("artWorks")}
                 value={artwork._id}
+                checked={selectedArtworks.includes(artwork._id)}
+                onChange={() => toggleArtwork(artwork._id)}
               />
             ))}
+
+            {/* Paginação */}
+            {artworks && (
+              <PaginationControls
+                page={artworksPage}
+                setPage={setArtworksPage}
+                hasNext={!!artworks.next}
+                hasPrev={!!artworks.prev}
+                totalPages={artworks.pages}
+              />
+            )}
+
+
+
           </section>
         </form>
       </div>
