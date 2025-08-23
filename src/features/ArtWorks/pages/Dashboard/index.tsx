@@ -7,10 +7,10 @@ import { useQuery } from "@tanstack/react-query";
 import ArtWorkService from "../../api/ArtWorkService";
 import { ArtWork } from "../../types/ArtWork";
 import Mobile from "../../../../components/ui/Mobile";
+import PaginationControls from "../../../../components/ui/Pagination/PaginationControls";
 
 const Dashboard = () => {
   const [page, setPage] = useState(1);
-  console.log("Página atual:", page);
 
   const {
     data: artWorks,
@@ -19,7 +19,7 @@ const Dashboard = () => {
   } = useQuery({
     queryKey: ["artWorks/all", page],
     queryFn: async () => await ArtWorkService.getAll<ArtWork>(page),
-    // keepPreviousData: true, // REMOVIDO para evitar erro
+    // keepPreviousData: true, // 
   });
 
   useEffect(() => {
@@ -40,41 +40,20 @@ const Dashboard = () => {
         <Back>Obras de Arte</Back>
         <AddButton link="/admin/artworks/new" />
       </header>
+
       <section className={styles.section}>
         {artWorks && <ArtWorkList data={artWorks.data} />}
       </section>
 
-      <div className="pagination-buttons" style={{ fontFamily: "Lato, sans-serif", marginTop: "3rem", textAlign: "center", position: "relative", zIndex: 1000, }}>
-        <button
-          onClick={() => {
-            if (page > 1) setPage(page - 1);
-          }}
-          disabled={page <= 1}
-          style={{
-            marginRight: "1rem",
-            cursor: page <= 1 ? "not-allowed" : "pointer",
-          }}
-        >
-          Anterior
-        </button>
-
-        <span style={{ fontFamily: "Lato, sans-serif" }}>
-          Página {page} de {artWorks?.pages || "?"}
-        </span>
-
-        <button
-          onClick={() => {
-            if (artWorks?.next) setPage(page + 1);
-          }}
-          disabled={!artWorks?.next}
-          style={{
-            marginLeft: "1rem",
-            cursor: artWorks?.next ? "pointer" : "not-allowed",
-          }}
-        >
-          Próximo
-        </button>
-      </div>
+      {artWorks && (
+        <PaginationControls
+          page={page}
+          setPage={setPage}
+          hasNext={!!artWorks?.next}
+          hasPrev={!!artWorks?.prev}
+          totalPages={artWorks?.pages}
+        />
+      )}
 
     </div>
   );
