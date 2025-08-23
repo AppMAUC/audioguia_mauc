@@ -1,27 +1,30 @@
 // components
 import Mobile from "../../../../components/ui/Mobile";
 import Item from "../../../../components/ui/Item";
+import PaginationControls from "../../../../components/ui/Pagination/PaginationControls";
 
 // Hooks
 import { useQuery } from "@tanstack/react-query";
 import ArtistService from "../../api/ArtistService";
 import ArtistList from "../../components/Mobile/ArtistList";
 import { Artist } from "../../types/Artist";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Artists = () => {
+  const [page, setPage] = useState(1);
+
   const {
     data: artists,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["artists/all"],
-    queryFn: async () => await ArtistService.getAll<Artist>(),
+    queryKey: ["artists/all", page],
+    queryFn: async () => await ArtistService.getAll<Artist>(page),
   });
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [page]);
 
   if (isLoading) {
     return <Mobile.Loading />;
@@ -48,6 +51,17 @@ const Artists = () => {
           <ArtistList artists={artists?.data ?? []} />
         </Item.Column>
       </Item.Container>
+
+      {artists && (
+        <PaginationControls
+          page={page}
+          setPage={setPage}
+          hasNext={!!artists?.next}
+          hasPrev={!!artists?.prev}
+          totalPages={artists?.pages}
+        />
+      )}
+
     </section>
   );
 };

@@ -8,6 +8,20 @@ export class ArtistService extends apiService {
     super(api, "/artists");
   }
 
+  getAll<T>(page = 1, limit = 10): Promise<{
+    data: T[];
+    pages: number;
+    items: number;
+    next: number | null;
+    prev: number | null;
+    first: number;
+    last: number;
+  }> {
+    return this.api
+      .get(`${this.path}?page=${page}&limit=${limit}`)
+      .then((res) => res.data);
+  }
+
   public async getById<T>(id: string): Promise<T> {
     try {
       const response = await this.api
