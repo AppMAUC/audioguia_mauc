@@ -1,27 +1,30 @@
 // components
 import Mobile from "../../../../components/ui/Mobile";
 import Item from "../../../../components/ui/Item";
+import PaginationControls from "../../../../components/ui/Pagination/PaginationControls";
 
 // Hooks
 import { useQuery } from "@tanstack/react-query";
 import ExpositionService from "../../api/ExpositionService";
 import ExpositionList from "../../components/Mobile/ExpositionList";
 import { Exposition } from "../../types/Exposition";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Expositions = () => {
+  const [page, setPage] = useState(1);
+
   const {
     data: expositions,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["expositions/all"],
-    queryFn: async () => await ExpositionService.getAll<Exposition>(),
+    queryKey: ["expositions/all", page],
+    queryFn: async () => await ExpositionService.getAll<Exposition>(page),
   });
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [page]);
 
   if (isLoading) return <Mobile.Loading />;
 
@@ -39,11 +42,23 @@ const Expositions = () => {
       >
         Todas as Exposições
       </Mobile.Title>
+
       <Item.Container>
         <Item.Column gap="var(--spacing-0)">
           <ExpositionList expositions={expositions?.data ?? []} />
         </Item.Column>
       </Item.Container>
+
+      {expositions && (
+        <PaginationControls
+          page={page}
+          setPage={setPage}
+          hasNext={!!expositions?.next}
+          hasPrev={!!expositions?.prev}
+          totalPages={expositions?.pages}
+        />
+      )}
+
     </section>
   );
 };
