@@ -148,6 +148,8 @@ const DescriptionWithLimit = ({
   );
 };
 
+const audioPlayers: HTMLAudioElement[] = [];
+
 const AudioPlayer = ({
   src,
   type,
@@ -162,6 +164,37 @@ const AudioPlayer = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    // registra o player na lista global
+    if (!audioPlayers.includes(audio)) {
+      audioPlayers.push(audio);
+    }
+
+    const handlePlay = () => {
+      // pausa todos os outros players
+      audioPlayers.forEach((player) => {
+        if (player !== audio && !player.paused) {
+          player.pause();
+        }
+      });
+      setIsPlaying(true);
+    };
+
+    const handlePause = () => setIsPlaying(false);
+
+    audio.addEventListener("play", handlePlay);
+    audio.addEventListener("pause", handlePause);
+
+    return () => {
+      audio.removeEventListener("play", handlePlay);
+      audio.removeEventListener("pause", handlePause);
+    };
+  }, []);
+
 
   const handleLoadedMetadata = () => {
     if (audioRef.current) {
@@ -182,7 +215,7 @@ const AudioPlayer = ({
       } else {
         audioRef.current.play();
       }
-      setIsPlaying(!isPlaying);
+      // setIsPlaying(!isPlaying);
     }
   };
 
