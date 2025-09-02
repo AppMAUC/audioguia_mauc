@@ -48,7 +48,7 @@ const Install: React.FC = () => {
       {showInstallButton && (
         <Button
           onClick={handleInstallClick}
-          style={{ marginLeft: "var(--spacing-25)", zIndex: 200 }}
+          style={{ marginLeft: "var(--spacing-25)", zIndex: 1000 }}
         >
           Instalar
         </Button>
