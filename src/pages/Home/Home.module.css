@@ -39,13 +39,14 @@
 .hero {
   height: 100vh;
   width: 100%;
+  z-index: -10;
   background-size: cover;
-  background-position: center center; 
+  background-position: center center;
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  position: relative; 
+  position: relative;
   margin-bottom: var(--spacing-25-md);
 }
 
@@ -55,7 +56,7 @@
   padding-bottom: 2rem;
 }
 
-.hero button{
+.hero button {
   padding: 12px 35px;
   background-color: var(--color-primary);
   font-family: var(--font-family-base);
@@ -65,12 +66,11 @@
   margin-bottom: 85px;
 }
 
-.capa{
+.capa {
   width: 100%;
   height: 100%;
 }
 
-.gap{
+.gap {
   height: 40px;
 }
-

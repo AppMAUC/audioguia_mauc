@@ -12,7 +12,7 @@
   background-color: transparent;
   position: fixed;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .navScrolled {
@@ -28,7 +28,7 @@
   height: 60px;
   background-color: var(--color-bg);
   background-color: transparent;
-  z-index: 999;
+  z-index: 99;
   position: absolute;
 }
 
@@ -42,7 +42,7 @@
   width: 100%;
   background-color: rgba(255, 255, 255, 0);
   position: absolute;
-   top: 60px; 
+  top: 60px;
   margin-top: 15px;
   z-index: 1;
 }
@@ -67,6 +67,7 @@
     width: 30%;
     max-width: 1200px;
   }
+
   .line {
     display: flex;
     align-self: start;
@@ -78,6 +79,7 @@
     border-bottom: 2px solid var(--color-secondary);
     padding: 25px 20px;
   }
+
   .nav_clone {
     margin: 0;
     height: 106px;

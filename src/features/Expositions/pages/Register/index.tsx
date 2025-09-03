@@ -42,7 +42,7 @@ const schema = z.object({
   dateStarts: z.string(),
   dateEnds: z.string(),
   type: z.enum(["1", "2"]).transform(Number),
-  artWorks: z.array(z.string()),
+  artWorks: z.array(z.string()).optional().default([]),
 });
 
 const Register = () => {
@@ -261,10 +261,7 @@ const Register = () => {
                     color: "var(--color-error)",
                   }}
                 >
-                  {errors.artWorks.message?.toString() ==
-                    "Formato de dado inválido."
-                    ? "Selecione ao menos duas obras"
-                    : errors.artWorks.message?.toString()}
+                  {errors.artWorks.message?.toString()}
                 </p>
               )}
             </Item.Row>
