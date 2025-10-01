@@ -4,6 +4,8 @@ import {
   AppIcon,
   GithubIcon,
   MailIcon,
+  AppMaucLogo1,
+  MaucLogo,
   PPCABlackLogo,
   ProcultBlackLogo,
 } from "../../assets";
@@ -90,14 +92,15 @@ const About = () => {
             exposições futuras. Aproveite sua visita ao museu com o
             nosso aplicativo!
           </p>
+
           <Item.Column gap="var(--spacing-10)">
             <Mobile.Title
               style={{
-                color: "var(--color-text)",
+                color: "var(--color-blue-accent)",
                 marginTop: "var(--spacing-25-sm)",
               }}
             >
-              Colaboradores
+              Realização
             </Mobile.Title>
             <Item.Column margin="10px">
               <Item.Container marginLeft={"3px"}>
@@ -140,7 +143,25 @@ const About = () => {
               </p>
 
               <Email email="victoremanuel.vetn@alu.ufc.br" />
+
+              <p
+                style={{
+                  fontSize: "var(--h2-size)",
+                  marginTop: "var(--spacing-10)",
+                  marginBottom: "var(--spacing-5)",
+                  paddingLeft: "3px",
+                  color: "var(--color-text)",
+                  fontWeight: "bold",
+                  fontFamily: "var(--font-family-base)",
+                  lineHeight: "1.2",
+                }}
+              >
+                Mateus Marques de Aquino
+              </p>
+
+              <Email email="mateusaquinomr@gmail.com" />
             </Item.Column>
+
             <Item.Column margin="10px">
               <Item.Container marginLeft={"3px"}>
                 <Mobile.Subtitle>Bolsista Designer</Mobile.Subtitle>
@@ -161,8 +182,94 @@ const About = () => {
               </p>
 
               <Email email="angelovinicius@alu.ufc.br" />
+
+              <p
+                style={{
+                  fontSize: "var(--h2-size)",
+                  marginTop: "var(--spacing-10)",
+                  marginBottom: "var(--spacing-5)",
+                  paddingLeft: "3px",
+                  color: "var(--color-text)",
+                  fontWeight: "bold",
+                  fontFamily: "var(--font-family-base)",
+                  lineHeight: "1.2",
+                }}
+              >
+                Giovanna Olivati Quintana
+              </p>
+
+              <Email email="giovannaolivati@alu.ufc.br" />
+
+
+              <p
+                style={{
+                  fontSize: "var(--h2-size)",
+                  marginTop: "var(--spacing-10)",
+                  marginBottom: "var(--spacing-5)",
+                  paddingLeft: "3px",
+                  color: "var(--color-text)",
+                  fontWeight: "bold",
+                  fontFamily: "var(--font-family-base)",
+                  lineHeight: "1.2",
+                }}
+              >
+                Mateus Marques de Aquino
+              </p>
+
+              <Email email="mateusaquinomr@gmail.com" />
             </Item.Column>
+
           </Item.Column>
+
+          <Item.Column gap="var(--spacing-10)">
+            <Mobile.Title
+              style={{
+                color: "var(--color-blue-accent)",
+                marginTop: "var(--spacing-25-sm)",
+              }}
+            >
+              Colaboração
+            </Mobile.Title>
+            <Item.Column margin="10px">
+              <Item.Container marginLeft={"3px"}>
+                <Mobile.Subtitle>Coordenadores</Mobile.Subtitle>
+              </Item.Container>
+              <p
+                style={{
+                  fontSize: "var(--h2-size)",
+                  marginTop: "var(--spacing-10)",
+                  marginBottom: "var(--spacing-5)",
+                  paddingLeft: "3px",
+                  color: "var(--color-text)",
+                  fontWeight: "bold",
+                  fontFamily: "var(--font-family-base)",
+                  lineHeight: "1.2",
+                }}
+              >
+                Kathleen Raelle de Paiva Silveira
+              </p>
+
+              <Email email="kathleen@ufc.br" />
+
+              <p
+                style={{
+                  fontSize: "var(--h2-size)",
+                  marginTop: "var(--spacing-10)",
+                  marginBottom: "var(--spacing-5)",
+                  paddingLeft: "3px",
+                  color: "var(--color-blue-default)",
+                  fontWeight: "bold",
+                  fontFamily: "var(--font-family-base)",
+                  lineHeight: "1.2",
+                }}
+              >
+                Acesse a ficha técnica completa.
+              </p>
+            </Item.Column>
+
+
+          </Item.Column>
+
           <Mobile.Subtitle>
             Esse projeto foi realizado com o apoio da Pró-Reitoria de Cultura da
             Universidade Federal do Ceará e do Programa de Promoção da Cultura
@@ -176,8 +283,11 @@ const About = () => {
           marginTop="30px"
           gap="var(--spacing-25)"
         >
+          <AppMaucLogo1 style={{ width: "100px", height: "75px" }} />
+          <MaucLogo style={{ width: "100px", height: "75px" }} />
           <PPCABlackLogo style={{ width: "100px", height: "75px" }} />
           <ProcultBlackLogo style={{ width: "100px", height: "75px" }} />
+
         </Item.Container>
         <Item.Container
           display="flex"

@@ -22,6 +22,8 @@ export { default as StateIcon } from "./icons/state.svg?react";
 export { default as TypeIcon } from "./icons/type.svg?react";
 export { default as SpacingIcon } from "./icons/spacing.svg?react";
 export { default as ContrastIcon } from "./icons/contrast.svg?react";
+export { default as AppMaucLogo } from "./images/app-mauc-logo.svg?react";
+export { default as AppMaucLogo1 } from "./images/app-mauc-logo-1.svg?react";
 export { default as MaucLogo } from "./images/mauc-logo.svg?react";
 export { default as PPCALogo } from "./images/ppca-logo.svg?react";
 export { default as ProcultLogo } from "./images/procult-logo.svg?react";

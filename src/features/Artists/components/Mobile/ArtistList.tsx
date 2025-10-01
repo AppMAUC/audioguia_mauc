@@ -7,19 +7,20 @@ interface ArtistListProps {
 
 const ArtistList = ({ artists }: ArtistListProps) => {
   return (
-    <>
+    <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
       {artists.map((item: Artist) => (
-        <ArtistItem
-          key={item._id}
-          id={item._id}
-          name={item.name}
-          image={item.image.url}
-          date={item.birthDate.split("-")[0]}
-          link={"/Artists/" + item._id}
-          biography={item.biography}
-        />
+        <li key={item._id}>
+          <ArtistItem
+            id={item._id}
+            name={item.name}
+            image={item.image.url}
+            date={item.birthDate.split("-")[0]}
+            link={"/Artists/" + item._id}
+            biography={item.biography}
+          />
+        </li>
       ))}
-    </>
+    </ul>
   );
 };
 
