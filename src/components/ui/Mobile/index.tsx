@@ -80,7 +80,7 @@ const Title = ({
   style,
 }: PropsWithChildren & { style?: React.CSSProperties }) => {
   return (
-    <h1 title="Título" aria-label="Título" className={styles.h1} style={style}>
+    <h1 className={styles.h1} style={style}>
       {children}
     </h1>
   );
