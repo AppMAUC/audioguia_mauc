@@ -6,10 +6,10 @@ import { Arquivo as Image } from "../../assets";
 const Arquivo = () => {
   return (
     <section>
-      <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "140px", paddingBottom: "var(--spacing-10-md)"}}>
+      <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "140px", paddingBottom: "var(--spacing-10-md)" }}>
         Arquivo
       </Mobile.Title>
-      <Mobile.ImageDefault src={Image} alt="Ícone de chamada" />
+      <Mobile.ImageDefault src={Image} alt="imagem do depósito de arquivos institucionais " />
       <Mobile.Title
         style={{
           paddingLeft: "20px",
@@ -19,6 +19,7 @@ const Arquivo = () => {
       >
         Arquivo Institucional
       </Mobile.Title>
+
       <Item.Row
         justify="start"
         align="center"
@@ -32,6 +33,7 @@ const Arquivo = () => {
             paddingLeft: "20px",
             paddingRight: "10px",
           }}
+          aria-label="Número de telefone do Arquivo Institucional"
         />
         <p
           style={{
@@ -43,6 +45,7 @@ const Arquivo = () => {
           +55 85 3366 7480
         </p>
       </Item.Row>
+
       <Item.Row
         justify="start"
         align="center"
@@ -55,6 +58,7 @@ const Arquivo = () => {
             height: "auto",
             paddingLeft: "20px",
           }}
+          aria-label="Email do Arquivo Institucional: "
         />
         <p
           style={{
@@ -66,7 +70,8 @@ const Arquivo = () => {
           arquivomauc@ufc.br{" "}
         </p>
       </Item.Row>
-      <Item.Container padding="0 20px" marginBottom= "35px">
+
+      <Item.Container padding="0 20px" marginBottom="35px">
         <p
           style={{
             fontSize: "var(--font-size)",
@@ -85,6 +90,7 @@ const Arquivo = () => {
           e para a memória artística do Ceará.
         </p>
       </Item.Container>
+
       <Mobile.Title
         style={{
           paddingLeft: "20px",
@@ -94,6 +100,7 @@ const Arquivo = () => {
       >
         Arquivo Histórico – Jean-Pierre Chabloz{" "}
       </Mobile.Title>
+
       <Item.Container padding="0 20px">
         <p
           style={{

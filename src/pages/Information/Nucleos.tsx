@@ -5,10 +5,12 @@ import { MailIcon, Comunicacao, Educativo } from "../../assets";
 const Nucleos = () => {
   return (
     <section>
-      <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "140px", marginBottom: "var(--spacing-10-md)"}}>
+      <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "140px", marginBottom: "var(--spacing-10-md)" }}>
         Núcleos
       </Mobile.Title>
-      <Mobile.ImageDefault src={Comunicacao} alt="Ícone de chamada" />
+
+      <Mobile.ImageDefault src={Comunicacao} alt="Logo Núcleo de Comunicação do MAUC" />
+
       <Mobile.Title
         style={{
           paddingLeft: "20px",
@@ -18,6 +20,7 @@ const Nucleos = () => {
       >
         Núcleo de Comunicação{" "}
       </Mobile.Title>
+
       <Item.Row
         justify="start"
         align="center"
@@ -30,6 +33,7 @@ const Nucleos = () => {
             height: "auto",
             paddingLeft: "20px",
           }}
+          aria-label="E-mail do Núcleo de Comunicação"
         />
         <p
           style={{
@@ -58,7 +62,8 @@ const Nucleos = () => {
           pesquisadoras/es, autoridades externas ou da instituição).
         </p>
       </Item.Container>
-      <Mobile.ImageDefault src={Educativo} alt="Ícone de chamada" />
+
+      <Mobile.ImageDefault src={Educativo} alt="Imagem do MAUC por dentro" />
       <Mobile.Title
         style={{
           paddingLeft: "20px",
@@ -80,6 +85,7 @@ const Nucleos = () => {
             height: "auto",
             paddingLeft: "20px",
           }}
+          aria-label="E-mail do Núcleo Educativo"
         />
         <p
           style={{

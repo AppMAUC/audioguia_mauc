@@ -18,19 +18,20 @@ const ArtistItem = ({
   link,
   biography,
 }: ArtistItemProps) => {
+
+  const href = link || "#";
+
   return (
     <article>
       <Link
-        to={link || "#"}
+        to={href}
         style={{ textDecoration: "none", color: "inherit", display: "block" }}
-        aria-label={`Ver mais detalhes do artista ${name ?? ""}`}
       >
         <Item.Container marginBottom="var(--spacing-5)">
           <Mobile.ImageDefault
             src={image || ""}
             alt={`Foto do artista ${name ?? ""}`}
           />
-
           <Item.Column padding="20px">
             {/* Mantendo Mobile.Title */}
             <Mobile.Title>{name}</Mobile.Title>

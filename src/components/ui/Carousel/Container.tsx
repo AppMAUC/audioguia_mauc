@@ -9,16 +9,20 @@ interface ContainerProps {
   focusedIndex: number;
   setFocusedIndex: (index: number) => void;
   padding?: string;
+  ariaLabelledBy?: string;
 }
+
 
 const Container = ({
   children,
   focusedIndex,
   setFocusedIndex,
   padding = "0 20px",
+  ariaLabelledBy,
 }: ContainerProps) => {
   const carousel = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
+
   useEffect(() => {
     if (carousel.current) {
       setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
@@ -30,6 +34,10 @@ const Container = ({
       ref={carousel}
       className={styles.carousel}
       style={{ padding: padding }}
+      role="region"
+      aria-roledescription="carrossel"
+      aria-labelledby={ariaLabelledBy}
+      tabIndex={0}
       whileTap={{ cursor: "grabbing" }}
     >
       <motion.div
@@ -52,22 +60,30 @@ const Container = ({
 
 interface ItemProps {
   image?: string;
+  date?: string;
   dateEnds?: string;
   title?: string;
   link?: string;
   borderRadius?: string;
   style?: React.CSSProperties;
+  itemType?: string;
 }
 
 const Item = ({
   image,
   link,
   style,
+  title,
+  date,
+  itemType = "item",
   children,
 }: PropsWithChildren & ItemProps) => {
-  console.log('Rendering item with image:', image);
-  return (
+  // console.log('Rendering item with image:', image);
 
+  const ariaLabel = `Acessar página da ${itemType} ${title || ""}${date ? `. Data: ${date}` : ""
+    }`;
+
+  return (
 
     <motion.div
       className={styles.item}
@@ -77,7 +93,7 @@ const Item = ({
         ...style,
       }}
     >
-      <Link to={link ? link : ""} className={styles.a} aria-label={`Acessar página`}>
+      <Link to={link ? link : ""} className={styles.a} aria-label={ariaLabel}>
         {children}
       </Link>
     </motion.div>

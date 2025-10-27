@@ -7,9 +7,9 @@ interface ArtistListProps {
 
 const ArtistList = ({ artists }: ArtistListProps) => {
   return (
-    <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+    <ul role="list" aria-label="Lista de Artistas" style={{ listStyle: "none", padding: 0, margin: 0 }}>
       {artists.map((item: Artist) => (
-        <li key={item._id}>
+        <li key={item._id} role="listitem">
           <ArtistItem
             id={item._id}
             name={item.name}

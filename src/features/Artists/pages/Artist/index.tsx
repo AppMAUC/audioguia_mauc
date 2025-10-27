@@ -42,17 +42,19 @@ const Artist = () => {
           marginTop: "120px",
         }}
         className={styles.image_container}
-        onClick={() => setOpenImage((prev) => !prev)}
       >
         <Mobile.Image
           isOpen={openImage}
           src={artistData?.image.url || ""}
-          alt={artistData?.name || ""}
+          alt={artistData?.name
+            ? `Foto do artista ${artistData.name}`
+            : "Foto do artista"
+          }
+          onClose={() => setOpenImage(false)}
         />
-        <button title="Expandir Imagem" className={styles.image_button}>
+        <button title={openImage ? "Fechar imagem" : "Expandir imagem"} className={styles.image_button} onClick={() => setOpenImage((prev) => !prev)} aria-hidden="true" >
           <ExpandIcon
             className={styles.expand}
-            onClick={() => setOpenImage((prev) => !prev)}
           />
         </button>
       </div>
@@ -63,7 +65,7 @@ const Artist = () => {
           <Mobile.Share />
         </Item.Row>
 
-       <Mobile.Subtitle>Biografia (PT)</Mobile.Subtitle>
+        <Mobile.Subtitle>Biografia (PT)</Mobile.Subtitle>
         {artistData?.audioGuia?.[0]?.url ? (
           <Mobile.AudioPlayer
             src={artistData.audioGuia[0].url}
@@ -80,6 +82,7 @@ const Artist = () => {
             <Mobile.AudioPlayer
               src={artistData.audioGuia[1].url}
               type="audio/mpeg"
+              ariaLabelPrefix={`da biografia de ${artistData?.name} em inglês`}
             />
           ) : (
             <p>English audio not available yet</p>

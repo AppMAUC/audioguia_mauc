@@ -10,27 +10,32 @@ interface Props {
 
 const PaginationControls = ({ page, setPage, hasNext, hasPrev, totalPages }: Props) => {
     return (
-        <div style={{ marginTop: "2rem", textAlign: "center" }}>
+        <nav aria-label="Controles de paginação" style={{ marginTop: "2rem", textAlign: "center" }}>
             <button
                 onClick={() => setPage(prev => Math.max(prev - 1, 1))}
                 disabled={!hasPrev}
+                aria-label="Página anterior"
                 style={{ marginRight: "1rem" }}
             >
                 Anterior
             </button>
 
-            <span>
+            <span aria-live="polite" style={{
+                fontFamily: "var(--font-family-base)",
+                fontWeight: 600,
+            }}>
                 Página {page} {totalPages && `de ${totalPages}`}
             </span>
 
             <button
                 onClick={() => setPage(prev => (hasNext ? prev + 1 : prev))}
                 disabled={!hasNext}
+                aria-label="Próxima página"
                 style={{ marginLeft: "1rem" }}
             >
                 Próximo
             </button>
-        </div>
+        </nav>
     );
 };
 

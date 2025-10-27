@@ -59,6 +59,7 @@ a {
     background-repeat: no-repeat;
     background-size: cover;
   }
+
   #inner-desktop {
     display: none;
   }
@@ -84,12 +85,14 @@ a {
     align-items: center;
   }
 }
+
 /* Estilos para desktops */
 @media (min-width: 1024px) {
   .container {
     max-width: 1200px;
     margin: 0 auto;
   }
+
   #layout {
     padding: 25%;
     background-image: url("../assets/images/bg-desktop.png");
@@ -101,6 +104,7 @@ a {
     display: none;
   }
 }
+
 button.primary {
   background: var(--color-primary);
 }
@@ -140,4 +144,17 @@ button.warning {
 
 .msg.info {
   color: var(--color-text-gray);
+}
+
+/* Classe utilitária para esconder texto visualmente, mas manter acessível */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
