@@ -10,6 +10,8 @@ interface ItemProps {
   children: React.ReactNode;
   link: string;
   onClick?: () => void;
+  role?: string;
+  tabIndex?: number;
 }
 
 const Container = ({ children }: MenuProps) => {
@@ -28,9 +30,9 @@ const Items = ({ children }: MenuProps) => {
   return <div className={styles.items}>{children}</div>;
 };
 
-const Item = ({ children, link, onClick }: ItemProps) => {
+const Item = ({ children, link, onClick, role, tabIndex }: ItemProps) => {
   return (
-    <Link to={link} onClick={onClick} className={styles.item}>
+    <Link to={link} onClick={onClick} className={styles.item} role={role} tabIndex={tabIndex ?? 0} >
       {children}
     </Link>
   );
@@ -44,9 +46,9 @@ const Suspense = ({ children }: SuspenseProps) => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div className={styles.suspense} onClick={() => setOpen(!open)}>
+      <div className={styles.suspense} onClick={() => setOpen(!open)} tabIndex={0} role="button" aria-haspopup="true" aria-expanded={open ? "true" : "false"} >
         {children[0]}
-        <button className={styles.suspense_btn}>
+        <button className={styles.suspense_btn} aria-label={open ? "Fechar submenu" : "Abrir submenu"}>
           {open ? <ArrowUp width={20} height={20} className="svg1" /> : <ArrowDown width={20} height={20} className="svg1" />}
         </button>
       </div>

@@ -31,45 +31,60 @@ const Home = () => {
 
   const handleStartClick = () => {
     nextSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+    nextSectionRef.current?.focus();
   };
 
   return (
-    <div className={styles.home}>
-      <div className={styles.hero} ref={heroRef} style={{ backgroundImage: `url(${bgHero})` }}>
+    <main className={styles.home}>
+
+      <section className={styles.hero} ref={heroRef} style={{ backgroundImage: `url(${bgHero})` }} aria-label="Seção inicial do Audioguia Mauc">
         {/* <img src={maucLogo} alt="Logo do MAUC" className={styles.heroLogo} /> */}
-        <button onClick={handleStartClick}>Iniciar visita</button>
-        <div ref={nextSectionRef} className={styles.gap} />
-      </div>
+        <button onClick={handleStartClick} className={styles.startButton} aria-label="Iniciar visita pelo museu" aria-describedby="descricao-inicio">Iniciar visita</button>
+        <p id="descricao-inicio" className="sr-only">
+          Ao clicar, você será levado para a próxima seção com informações sobre o museu.
+        </p>
+        <div ref={nextSectionRef} tabIndex={-1} className={styles.gap} />
+      </section>
 
       <Content>
-        <Content.Title>Audioguia Mauc</Content.Title>
+        <Content.Title id="sobre-mauc">Audioguia Mauc</Content.Title>
         <Content.ImageWrapper>
-          <Content.Image src={MaucHome} alt="Museu de Arte Contemporânea" />
+          <Content.Image src={MaucHome} alt="Fachada do Museu de Arte da UFC" />
         </Content.ImageWrapper>
         <Content.Desc color="black">
           O Museu de Arte da Universidade Federal do Ceará (Mauc) possui nove ambientes para exposições de longa duração e três para temporárias.
         </Content.Desc>
       </Content>
+
       <Content>
-        <Content.Title>Exposições Temporárias</Content.Title>
+        <Content.Title id="carousel-exposicoes-temp">Exposições Temporárias</Content.Title>
         <Carousel
           link="expositions"
           num={3}
           items={expositions?.data.filter((item) => item.type == 2) || []}
+          itemType="exposição"
+          ariaLabelledBy="carousel-exposicoes-temp"
         />
       </Content>
+
       <Content>
-        <Content.Title>Exposições de Longa Duração</Content.Title>
+        <Content.Title id="carousel-exposicoes-longo">Exposições de Longa Duração</Content.Title>
         <Carousel
           link="expositions"
           num={3}
           items={expositions?.data.filter((item) => item.type == 1) || []}
+          itemType="exposição"
+          ariaLabelledBy="carousel-exposicoes-longo"
         />
-        <NavLink to="/expositions" className={styles.navLink}>
-          Ver mais
+
+        <NavLink to="/expositions" className={styles.navLink} aria-label="Ver todas as exposições" aria-describedby="descricao-vermais">
+          Ver mais exposições
         </NavLink>
+        <p id="descricao-vermais" className="sr-only">
+          Acessa a página com todas as exposições disponíveis no museu.
+        </p>
       </Content>
-    </div>
+    </main>
   );
 };
 

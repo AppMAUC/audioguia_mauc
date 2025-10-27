@@ -21,22 +21,24 @@ interface ImageProps {
   src: string;
   alt: string;
   isOpen?: boolean;
+  onClose?: () => void;
 }
 
 const Loading = () => {
   const { theme } = useTheme();
 
   return (
-    <div className={styles.loading}>
+    <div className={styles.loading} role="status" aria-live="polite">
       <Spinner
         animation="border"
         variant={theme == "dark" ? "light" : "dark"}
       />
+      <span className="sr-only">Carregando conteúdo</span>
     </div>
   );
 };
 
-const Image = ({ src, alt, isOpen }: ImageProps) => {
+const Image = ({ src, alt, isOpen, onClose }: ImageProps) => {
   return (
     <>
       <img
@@ -50,6 +52,7 @@ const Image = ({ src, alt, isOpen }: ImageProps) => {
             title="Fechar imagem"
             tabIndex={1}
             className={styles.close_button}
+            onClick={onClose}
           >
             <CloseIcon className={styles.close} />
           </button>
@@ -126,6 +129,7 @@ const DescriptionWithLimit = ({
     <>
       <p
         ref={paragraphRef}
+        id="descricao"
         className={`${styles.suspense} ${open ? "" : styles.hidden}`}
         style={style}
       >
@@ -135,6 +139,8 @@ const DescriptionWithLimit = ({
         <button
           onClick={() => setOpen(!open)}
           className={`${styles.suspense_button}`}
+          aria-expanded={open}
+          aria-controls="descricao"
         >
           <span>{open ? "Ler menos" : "Ler mais"}</span>
           {open ? (
@@ -380,7 +386,7 @@ const Error = ({
 
   const navigate = useNavigate();
   return (
-    <div className={styles.error}>
+    <div className={styles.error} role="alert">
       <ErrorImage className={styles.error_image} />
       <Mobile.Title
         style={{ fontSize: "var(--h1-size)", color: "var(--color-text)" }}

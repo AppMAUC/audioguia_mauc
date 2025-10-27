@@ -49,6 +49,7 @@ const Navbar = () => {
       <div id="navbarclone" className={styles.nav_clone}></div>
       <nav id="navbar" className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`}>
         <div className={styles.nav_itens}>
+
           <Link
             tabIndex={1}
             to={auth ? "/admin/dashboard" : "/"}
@@ -58,10 +59,13 @@ const Navbar = () => {
             <MaucHomeIcon className="svg1" />
           </Link>
 
+          {/* BOTÃO ACESSIBILIDADE */}
           <button
             onClick={() => setAccessibility(!openAccessibility)}
             className={`${styles.menu_button} ${styles.acces_icon}`}
             aria-label="Menu Acessibilidade"
+            aria-expanded={openAccessibility}
+            aria-controls="accessibility-menu"
             tabIndex={1}
           >
             <AccessbilityIcon width={40} height={40} />
@@ -86,15 +90,21 @@ const Navbar = () => {
                 </div>
               </>
             )}
+
+            {/* BOTÃO MENU HAMBURGUER */}
             <button
               tabIndex={1}
               onClick={() => setOpen(!open)}
               className={styles.menu_button}
+              aria-label="Abrir menu principal"
+              aria-expanded={open}
+              aria-controls="main-menu"
               title="Menu"
             >
               <MenuIcon className="svg2" width={40} height={40} />
             </button>
             <Menu
+              id="main-menu"
               tabIndex={-1}
               isOpen={open}
               setModalOpen={() => setOpen(!open)}
@@ -102,6 +112,8 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+
+      {/* CAMPO DE PESQUISA */}
       <div id="searchbar" className={`${styles.search} `}>
         <Search />
       </div>

@@ -9,7 +9,9 @@ const Biblioteca = () => {
       <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "140px", marginBottom: "var(--spacing-10-md)" }}>
         Biblioteca
       </Mobile.Title>
-      <Mobile.ImageDefault src={Image} alt="Ícone de chamada"/>
+
+      <Mobile.ImageDefault src={Image} alt="Imagem da biblioteca por dentro" />
+
       <Item.Row
         justify="start"
         align="center"
@@ -23,6 +25,7 @@ const Biblioteca = () => {
             paddingLeft: "20px",
             paddingRight: "10px",
           }}
+          aria-label="Número de telefone da Biblioteca"
         />
         <p
           style={{
@@ -34,6 +37,7 @@ const Biblioteca = () => {
           +55 85 3366 7481{" "}
         </p>
       </Item.Row>
+
       <Item.Row
         justify="start"
         align="center"
@@ -46,6 +50,7 @@ const Biblioteca = () => {
             height: "auto",
             paddingLeft: "20px",
           }}
+          aria-label="Email da Biblioteca"
         />
         <p
           style={{
@@ -57,6 +62,7 @@ const Biblioteca = () => {
           bibliotecamauc@ufc.br{" "}
         </p>
       </Item.Row>
+
       <Item.Container padding="0 20px">
         <p
           style={{
