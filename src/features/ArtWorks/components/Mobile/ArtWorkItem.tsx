@@ -20,14 +20,17 @@ const ArtWorkItem = ({
   link,
   description,
 }: ArtWorkItemProps) => {
+
+  const href = link || "#";
+  const imgAlt = title ? title : "Obra de arte";
+
   return (
     <Link
-      to={link || "#"}
+      to={href}
       style={{ textDecoration: "none", color: "inherit" }}
-      aria-label={`Acessar detalhes da obra ${title}`}
     >
       <Item.Container marginBottom="var(--spacing-5)">
-        <Mobile.ImageDefault src={image || ""} alt={title || ""} />
+        <Mobile.ImageDefault src={image || ""} alt={imgAlt} />
         <Item.Column padding="20px">
           <Mobile.Title>{title}</Mobile.Title>
           <p
@@ -40,6 +43,7 @@ const ArtWorkItem = ({
           >
             {date}
           </p>
+
           <Mobile.Subtitle>{author}</Mobile.Subtitle>
           <Mobile.Description>{description}</Mobile.Description>
           <Item.Row
@@ -48,7 +52,7 @@ const ArtWorkItem = ({
             width="100%"
             marginTop="var(--spacing-5)"
           >
-            <span style={{ textDecoration: "underline" }}>Ver mais</span>
+            <span aria-hidden="true" style={{ textDecoration: "underline" }}>Ver mais</span>
           </Item.Row>
         </Item.Column>
       </Item.Container>

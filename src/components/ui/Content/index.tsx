@@ -19,8 +19,8 @@ const Content = ({ children }: IContent) => {
   return <section className={styles.content}>{children}</section>;
 };
 
-const Title = ({ children }: IContent) => {
-  return <h1 className={styles.title}>{children}</h1>;
+const Title = ({ children, id }: IContent & { id?: string }) => {
+  return <h1 className={styles.title} id={id}>{children}</h1>;
 };
 
 const Image = ({ src, alt }: IImage) => {

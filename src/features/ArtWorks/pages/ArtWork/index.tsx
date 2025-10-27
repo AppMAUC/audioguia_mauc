@@ -55,25 +55,31 @@ const ArtWork = () => {
           marginTop: "120px",
         }}
         className={styles.image_container}
-        onClick={() => setOpenImage((prev) => !prev)}
       >
         <Mobile.Image
           isOpen={openImage}
           src={artWorkData?.image.url || ""}
-          alt={artWorkData?.title || ""}
+          alt={
+            artWorkData?.title
+              ? `Imagem da obra ${artWorkData.title}`
+              : "Imagem da obra"
+          }
+          onClose={() => setOpenImage(false)}
         />
-        <button title="Expandir Imagem" className={styles.image_button}>
+
+        <button title={openImage ? "Fechar imagem" : "Expandir imagem"} className={styles.image_button} onClick={() => setOpenImage((prev) => !prev)} aria-hidden="true">
           <ExpandIcon
             className={styles.expand}
-            onClick={() => setOpenImage((prev) => !prev)}
           />
         </button>
       </div>
+
       <Mobile.Container>
         <Item.Row align="center" justify="space-between">
           <Mobile.Title>{artWorkData?.title}</Mobile.Title>
           <Mobile.Share />
         </Item.Row>
+
         <Item.Container
           display="flex"
           flexDirection="column"
@@ -87,6 +93,7 @@ const ArtWork = () => {
             const matchingArtist = artists?.data.find(
               (artist) => artist.name.toLowerCase() === artWorkData?.author.toLowerCase()
             );
+
             return matchingArtist ? (
               <NavLink to={`/artists/${matchingArtist._id}`} className="text-blue-600 hover:underline">
                 <Mobile.AuthorTitle>{artWorkData?.author}</Mobile.AuthorTitle>
@@ -132,6 +139,7 @@ const ArtWork = () => {
         <Mobile.DescriptionWithLimit>
           {artWorkData?.description}
         </Mobile.DescriptionWithLimit>
+
         {artWorks?.data && artWorks.data.length > 0 && (
           <>
             <Mobile.Title2>Outras Obras</Mobile.Title2>

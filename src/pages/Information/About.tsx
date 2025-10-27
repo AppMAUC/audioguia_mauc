@@ -25,6 +25,7 @@ const About = () => {
         >
           Sobre o App
         </Mobile.Title>
+
         <Item.Row
           width="100%"
           height="auto"
@@ -33,8 +34,9 @@ const About = () => {
           gap="var(--spacing-10)"
           marginTop="var(--spacing-10)"
         >
-          <AppIcon style={{ width: "90%", height: "auto" }} />
+          <AppIcon style={{ width: "90%", height: "auto" }} role="img" aria-label="Logotipo do App MAUC" />
         </Item.Row>
+
         <Item.Row
           justify="start"
           padding="0 20px"
@@ -49,6 +51,7 @@ const About = () => {
               width: "24px",
               height: "24px",
             }}
+            aria-label="E-mail do MAUC"
           />
           <p
             style={{
@@ -60,6 +63,7 @@ const About = () => {
             {"appmauc@gmail.com"}{" "}
           </p>
         </Item.Row>
+
         <Item.Row
           justify="start"
           padding="0 20px"
@@ -68,10 +72,11 @@ const About = () => {
           marginTop="var(--spacing-10)"
           margin="var(--spacing-10)"
         >
-          <Link to="https://github.com/appmauc">
+          <Link to="https://github.com/appmauc" aria-label="Nome de usuário do GitHub">
             <Github user="appmauc" />
           </Link>
         </Item.Row>
+
         <Item.Container padding="0 20px" marginTop="20px">
           <p
             style={{
@@ -102,10 +107,12 @@ const About = () => {
             >
               Realização
             </Mobile.Title>
+
             <Item.Column margin="10px">
               <Item.Container marginLeft={"3px"}>
-                <Mobile.Subtitle>Orientadora</Mobile.Subtitle>
+                <Mobile.Subtitle>Orientador(a)</Mobile.Subtitle>
               </Item.Container>
+
               <p
                 style={{
                   fontSize: "var(--h2-size)",
@@ -120,9 +127,26 @@ const About = () => {
               >
                 Kathleen Raelle de Paiva Silveira
               </p>
-
               <Email email="kathleen@ufc.br" />
+
+              <p
+                style={{
+                  fontSize: "var(--h2-size)",
+                  marginTop: "var(--spacing-10)",
+                  marginBottom: "var(--spacing-5)",
+                  paddingLeft: "3px",
+                  color: "var(--color-text)",
+                  fontWeight: "bold",
+                  fontFamily: "var(--font-family-base)",
+                  lineHeight: "1.2",
+                }}
+              >
+                Prof. Dr. Alysson Diniz dos Santos  (docente do Curso de Sistemas Mídias Digitais)
+              </p>
+              <Email email="alysson@virtual.ufc.br" />
+
             </Item.Column>
+
             <Item.Column margin="10px">
               <Item.Container marginLeft={"3px"}>
                 <Mobile.Subtitle>Bolsista Desenvolvedor</Mobile.Subtitle>
@@ -276,6 +300,7 @@ const About = () => {
             Artística.
           </Mobile.Subtitle>
         </Item.Container>
+
         <Item.Container
           display="flex"
           flexDirection="row"
@@ -283,10 +308,10 @@ const About = () => {
           marginTop="30px"
           gap="var(--spacing-25)"
         >
-          <AppMaucLogo1 style={{ width: "100px", height: "75px" }} />
-          <MaucLogo style={{ width: "100px", height: "75px" }} />
-          <PPCABlackLogo style={{ width: "100px", height: "75px" }} />
-          <ProcultBlackLogo style={{ width: "100px", height: "75px" }} />
+          <AppMaucLogo1 style={{ width: "100px", height: "75px" }} arial-label="Logo do APP Mauc" />
+          <MaucLogo style={{ width: "100px", height: "75px" }} arial-label="Logo do MAUC" />
+          <PPCABlackLogo style={{ width: "100px", height: "75px" }} arial-label="Logo PPCA" />
+          <ProcultBlackLogo style={{ width: "100px", height: "75px" }} arial-label="Logo Procult" />
 
         </Item.Container>
         <Item.Container
@@ -312,6 +337,7 @@ const Email = ({ email }: { email: string }) => {
           width: "24px",
           height: "24px",
         }}
+        aria-label="E-mail"
       />
       <p
         style={{
@@ -334,6 +360,7 @@ const Github = ({ user }: { user: string }) => {
           width: "24px",
           height: "24px",
         }}
+        aria-label="Usuário do GitHub"
       />
       <p
         style={{

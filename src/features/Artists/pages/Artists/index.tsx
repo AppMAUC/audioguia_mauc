@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import ArtistService from "../../api/ArtistService";
 import ArtistList from "../../components/Mobile/ArtistList";
 import { Artist } from "../../types/Artist";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Artists = () => {
   const [page, setPage] = useState(1);
@@ -25,6 +25,16 @@ const Artists = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [page]);
+
+  const liveRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (artists && liveRef.current) {
+      const totalNaPagina = artists?.data?.length ?? 0;
+      const totalPaginas = artists?.pages ?? 1;
+      liveRef.current.textContent =
+        `Página ${page} de ${totalPaginas}. ${totalNaPagina} artistas carregados.`;
+    }
+  }, [artists, page]);
 
   if (isLoading) {
     return <Mobile.Loading />;
@@ -46,6 +56,13 @@ const Artists = () => {
       >
         Todos os Artistas
       </Mobile.Title>
+
+      <div
+        ref={liveRef}
+        aria-live="polite"
+        style={{ position: "absolute", left: -9999, top: "auto" }}
+      />
+
       <Item.Container>
         <Item.Column gap="var(--spacing-0)">
           <ArtistList artists={artists?.data ?? []} />

@@ -11,22 +11,22 @@ interface FlexProps {
   width?: string;
   height?: string;
   justify?:
-    | "flex-start"
-    | "center"
-    | "start"
-    | "end"
-    | "flex-end"
-    | "space-between"
-    | "space-around"
-    | "space-evenly";
+  | "flex-start"
+  | "center"
+  | "start"
+  | "end"
+  | "flex-end"
+  | "space-between"
+  | "space-around"
+  | "space-evenly";
   align?:
-    | "stretch"
-    | "center"
-    | "flex-end"
-    | "flex-start"
-    | "baseline"
-    | "space-between"
-    | "space-around";
+  | "stretch"
+  | "center"
+  | "flex-end"
+  | "flex-start"
+  | "baseline"
+  | "space-between"
+  | "space-around";
   gap?: string;
   margin?: string;
   marginTop?: string;
@@ -142,7 +142,7 @@ const Button = ({
   };
 
   return (
-    <button onClick={handleClick} className={styles.button} {...props}>
+    <button onClick={handleClick} className={styles.button} {...props} aria-label={`Abrir ${module} ${id}`}>
       {children}
     </button>
   );
@@ -157,7 +157,7 @@ const OneDate = ({
 }) => {
   return (
     <div className={styles.date}>
-      <CalendarIcon className={styles.calendar} />
+      <CalendarIcon className={styles.calendar} aria-hidden="true" />
       <span className={styles.date_span}>
         {initial} {date}
       </span>
@@ -172,7 +172,7 @@ const TwoDate = ({
 }: PropsWithChildren & { start: string; end: string; initial?: string }) => {
   return (
     <div className={styles.date}>
-      <CalendarIcon className={styles.calendar} />
+      <CalendarIcon className={styles.calendar} aria-hidden="true" />
       <span className={styles.date_span}>
         {initial} {start} {children} {end}
       </span>

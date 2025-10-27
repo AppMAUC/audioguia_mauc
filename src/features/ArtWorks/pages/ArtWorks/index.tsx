@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import ArtWorkService from "../../api/ArtWorkService";
 import ArtWorkList from "../../components/Mobile/ArtWorkList";
 import { ArtWork } from "../../types/ArtWork";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Artworks = () => {
   const [page, setPage] = useState(1);
@@ -25,6 +25,17 @@ const Artworks = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [page]);
+
+  const liveRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (artWorks && liveRef.current) {
+      const totalNaPagina = artWorks?.data?.length ?? 0;
+      const totalPaginas = artWorks?.pages ?? 1;
+      liveRef.current.textContent =
+        `Página ${page} de ${totalPaginas}. ${totalNaPagina} obras carregadas.`;
+    }
+  }, [artWorks, page]);
 
   if (isLoading) {
     return <Mobile.Loading />;
@@ -45,6 +56,13 @@ const Artworks = () => {
       >
         Todas as Obras
       </Mobile.Title>
+
+      <div
+        ref={liveRef}
+        aria-live="polite"
+        style={{ position: "absolute", left: -9999, top: "auto" }}
+      />
+
       <Item.Container>
         <Item.Column gap="var(--spacing-0)">
           {artWorks && <ArtWorkList artWork={artWorks?.data} />}{" "}
