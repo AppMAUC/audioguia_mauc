@@ -39,7 +39,7 @@ const Artist = () => {
     <section className={styles.section}>
       <div
         style={{
-          marginTop: "120px",
+          marginTop: "clamp(8.75rem, calc(5 * var(--spacing-25) + var(--spacing-15)), 9.375rem)",
         }}
         className={styles.image_container}
       >
@@ -76,7 +76,7 @@ const Artist = () => {
           <p>Áudio em português ainda não disponível</p>
         )}
 
-        <Item.Container marginTop="var(--spacing-15-sm)">
+        <Item.Container marginTop="var(--spacing-15)">
           <Mobile.Subtitle>Biography (EN)</Mobile.Subtitle>
           {artistData?.audioGuia?.[1]?.url ? (
             <Mobile.AudioPlayer

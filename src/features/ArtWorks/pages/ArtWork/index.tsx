@@ -52,7 +52,7 @@ const ArtWork = () => {
     <section className={styles.section}>
       <div
         style={{
-          marginTop: "120px",
+          marginTop: "clamp(8.75rem, calc(5 * var(--spacing-25) + var(--spacing-15)), 9.375rem)",
         }}
         className={styles.image_container}
       >
@@ -84,7 +84,7 @@ const ArtWork = () => {
           display="flex"
           flexDirection="column"
           gap="var(--spacing-10)"
-          marginBottom="var(--spacing-15-sm)"
+          marginBottom="var(--spacing-15)"
         >
           <Mobile.Subtitle>Autor</Mobile.Subtitle>
 
@@ -105,7 +105,7 @@ const ArtWork = () => {
 
         </Item.Container>
 
-        <Item.Container marginTop="var(--spacing-15-sm)">
+        <Item.Container marginTop="var(--spacing-15)">
           <Mobile.Subtitle>Audiodescrição</Mobile.Subtitle>
           <Mobile.AudioPlayer
             src={artWorkData?.audioDesc[0].url || ""}
@@ -114,7 +114,7 @@ const ArtWork = () => {
           />
         </Item.Container>
 
-        <Item.Container marginTop="var(--spacing-15-sm)">
+        <Item.Container marginTop="var(--spacing-15)">
           <Mobile.Subtitle>Sobre a obra (PT)</Mobile.Subtitle>
           <Mobile.AudioPlayer
             src={artWorkData?.audioGuia[0].url || ""}
@@ -123,7 +123,7 @@ const ArtWork = () => {
           />
         </Item.Container>
 
-        <Item.Container marginTop="var(--spacing-15-sm)">
+        <Item.Container marginTop="var(--spacing-15)">
           <Mobile.Subtitle>About the artwork (EN)</Mobile.Subtitle>
           {artWorkData?.audioGuia?.[1]?.url ? (
             <Mobile.AudioPlayer

@@ -31,7 +31,7 @@ const ArtWorkItem = ({
     >
       <Item.Container marginBottom="var(--spacing-5)">
         <Mobile.ImageDefault src={image || ""} alt={imgAlt} />
-        <Item.Column padding="20px">
+        <Item.Column padding="calc(var(--spacing-15) + var(--spacing-5)) 20px">
           <Mobile.Title>{title}</Mobile.Title>
           <p
             style={{
@@ -52,7 +52,7 @@ const ArtWorkItem = ({
             width="100%"
             marginTop="var(--spacing-5)"
           >
-            <span aria-hidden="true" style={{ textDecoration: "underline" }}>Ver mais</span>
+            <span aria-hidden="true" style={{ textDecoration: "underline", fontSize: "var(--p-size", fontFamily: "var(--font-family-base)" }}>Ver mais</span>
           </Item.Row>
         </Item.Column>
       </Item.Container>

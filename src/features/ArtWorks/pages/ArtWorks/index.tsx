@@ -49,8 +49,8 @@ const Artworks = () => {
       <Mobile.Title
         style={{
           color: "var(--color-text)",
-          marginTop: "140px",
-          marginBottom: "var(--spacing-10-md)",
+          marginTop: "clamp(8.75rem, calc(5 * var(--spacing-25) + var(--spacing-15)), 9.375rem)",
+          marginBottom: "var(--spacing-10)",
           paddingLeft: "20px",
         }}
       >

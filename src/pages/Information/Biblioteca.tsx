@@ -6,7 +6,7 @@ import { Biblioteca as Image } from "../../assets";
 const Biblioteca = () => {
   return (
     <section>
-      <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "140px", marginBottom: "var(--spacing-10-md)" }}>
+      <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "clamp(140px, calc(5 * var(--spacing-25) + var(--spacing-15)), 150px)", marginBottom: "var(--spacing-10)" }}>
         Biblioteca
       </Mobile.Title>
 
@@ -16,7 +16,7 @@ const Biblioteca = () => {
         justify="start"
         align="center"
         gap="var(--spacing-5)"
-        marginTop="var(--spacing-25-sm)"
+        marginTop="var(--spacing-25)"
       >
         <CallIcon
           style={{

@@ -36,23 +36,24 @@ const Exposition = () => {
     <section className={styles.section}>
       <div
         style={{
-          marginTop: "140px",
+          marginTop: "clamp(8.75rem, calc(5 * var(--spacing-25) + var(--spacing-15)), 9.375rem)",
         }}
         className={styles.image_container}
-        onClick={() => setOpenImage((prev) => !prev)}
       >
         <Mobile.Image
           isOpen={openImage}
           src={expositionData?.image.url || ""}
-          alt={expositionData?.title || ""}
+          alt={expositionData?.title ? `Imagem da exposição ${expositionData.title}` : "Imagem da exposição"}
+          onClose={() => setOpenImage(false)}
         />
-        <button title="Expandir Imagem" className={styles.image_button}>
+
+        <button title={openImage ? "Fechar imagem" : "Expandir imagem"} className={styles.image_button} onClick={() => setOpenImage((prev) => !prev)} aria-hidden="true">
           <ExpandIcon
             className={styles.expand}
-            onClick={() => setOpenImage((prev) => !prev)}
           />
         </button>
       </div>
+
       <Mobile.Container>
         <Item.Row align="center" justify="space-between">
           <Mobile.Title>{expositionData?.title}</Mobile.Title>
@@ -65,26 +66,32 @@ const Exposition = () => {
             fontFamily: "var(--font-family-base)",
             fontWeight: "bold",
           }}
+          aria-label={`Período da exposição: de ${expositionData?.dateStarts.split("T")[0].replace(/-/g, "/")} até ${expositionData?.dateEnds.split("T")[0].replace(/-/g, "/")}`}
         >
           {expositionData?.dateStarts.split("T")[0].replace(/-/g, "/")} -{" "}
           {expositionData?.dateEnds.split("T")[0].replace(/-/g, "/")}
         </p>
+
         <Item.Container
           display="flex"
           flexDirection="column"
           gap="var(--spacing-10)"
-          marginBottom="var(--spacing-25-sm)"
+          marginBottom="var(--spacing-25)"
         ></Item.Container>
+
         <Mobile.DescriptionWithLimit>
           {expositionData?.description}
         </Mobile.DescriptionWithLimit>
       </Mobile.Container>
+
       <Item.Row width="100%" height="100px"></Item.Row>
-      <div style={{ position: "absolute", top: "90%" }}>
+
+      <div style={{ position: "absolute", top: "90%" }} role="region" aria-label="Obras da exposição">
         {expositionData && expositionData?.artWorks?.length > 0 && (
           <ArtWorkList artWork={expositionData?.artWorks as ArtWork[]} />
         )}
       </div>
+
     </section>
   );
 };

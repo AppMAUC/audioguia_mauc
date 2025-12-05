@@ -5,7 +5,7 @@ import { MailIcon, Comunicacao, Educativo } from "../../assets";
 const Nucleos = () => {
   return (
     <section>
-      <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "140px", marginBottom: "var(--spacing-10-md)" }}>
+      <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "clamp(140px, calc(5 * var(--spacing-25) + var(--spacing-15)), 150px)", marginBottom: "var(--spacing-10)" }}>
         Núcleos
       </Mobile.Title>
 
@@ -14,7 +14,7 @@ const Nucleos = () => {
       <Mobile.Title
         style={{
           paddingLeft: "20px",
-          paddingTop: "var(--spacing-15-sm)",
+          paddingTop: "var(--spacing-15)",
           color: "var(--color-text)",
         }}
       >
@@ -45,7 +45,7 @@ const Nucleos = () => {
           comunicamauc@ufc.br{" "}
         </p>
       </Item.Row>
-      <Item.Container padding="0 20px" marginBottom="var(--spacing-25-md)">
+      <Item.Container padding="0 20px" marginBottom="var(--spacing-25)">
         <p
           style={{
             fontSize: "var(--font-size)",
