@@ -21,14 +21,14 @@
   width: auto;
   color: var(--color-link-highlight);
   font-family: var(--font-family-primary);
-  font-size: var(--font-size-sm);
+  font-size: var(--h2-size);
   font-style: normal;
   font-weight: var(--font-weight-bold);
   line-height: normal;
   text-decoration-line: underline;
   text-align: center;
   align-self: center;
-  margin-top: var(--spacing-25-md);
+  margin-top: var(--spacing-25);
   text-decoration: none;
 }
 
@@ -39,7 +39,7 @@
 .hero {
   height: 100vh;
   width: 100%;
-  z-index: -10;
+  /* z-index: -10; */
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -47,23 +47,41 @@
   justify-content: center;
   align-items: flex-end;
   position: relative;
-  margin-bottom: var(--spacing-25-md);
+  margin-bottom: var(--spacing-25);
 }
 
 .heroLogo {
   width: 50%;
   height: auto;
-  padding-bottom: 2rem;
+  padding-bottom: calc(var(--spacing-25) + var(--spacing-5));
 }
 
 .hero button {
   padding: 12px 35px;
   background-color: var(--color-primary);
   font-family: var(--font-family-base);
-  font-size: var(--l-size);
+  font-size: var(--title-like-3);
   color: #fff;
   border-radius: 25px;
-  margin-bottom: 85px;
+  margin-bottom: calc(3 * var(--spacing-25));
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  z-index: 1;
+}
+
+.hero * {
+  position: relative;
+  z-index: 2;
+}
+
+[data-theme="dark"] .hero::before {
+  background-color: rgba(0, 0, 0, 0.55);
 }
 
 .capa {
@@ -72,5 +90,8 @@
 }
 
 .gap {
-  height: 40px;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  display: block;
 }

@@ -6,14 +6,14 @@ import { Arquivo as Image } from "../../assets";
 const Arquivo = () => {
   return (
     <section>
-      <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "140px", paddingBottom: "var(--spacing-10-md)" }}>
+      <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "clamp(8.75rem, calc(5 * var(--spacing-25) + var(--spacing-15)), 9.375rem)", paddingBottom: "var(--spacing-10)" }}>
         Arquivo
       </Mobile.Title>
       <Mobile.ImageDefault src={Image} alt="imagem do depósito de arquivos institucionais " />
       <Mobile.Title
         style={{
           paddingLeft: "20px",
-          paddingTop: "var(--spacing-25-sm)",
+          paddingTop: "var(--spacing-25)",
           color: "var(--color-text)",
         }}
       >
@@ -71,7 +71,7 @@ const Arquivo = () => {
         </p>
       </Item.Row>
 
-      <Item.Container padding="0 20px" marginBottom="35px">
+      <Item.Container padding="0 20px" marginBottom="clamp(35px, calc(var(--spacing-25) + var(--spacing-10)), 40px)">
         <p
           style={{
             fontSize: "var(--font-size)",
@@ -94,7 +94,7 @@ const Arquivo = () => {
       <Mobile.Title
         style={{
           paddingLeft: "20px",
-          paddingTop: "var(--spacing-25-sm)",
+          paddingTop: "var(--spacing-25)",
           color: "var(--color-text)",
         }}
       >

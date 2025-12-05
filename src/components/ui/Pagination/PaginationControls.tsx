@@ -15,13 +15,21 @@ const PaginationControls = ({ page, setPage, hasNext, hasPrev, totalPages }: Pro
                 onClick={() => setPage(prev => Math.max(prev - 1, 1))}
                 disabled={!hasPrev}
                 aria-label="Página anterior"
-                style={{ marginRight: "1rem" }}
+                style={{
+                    marginRight: "1rem",
+                    fontSize: "var(--p-size)",
+                    color: hasPrev
+                        ? "var(--color-link-highlight)"
+                        : "var(--color-state)",
+                }}
             >
                 Anterior
             </button>
 
             <span aria-live="polite" style={{
                 fontFamily: "var(--font-family-base)",
+                color: "var(--color-text)",
+                fontSize: "var(--p-size)",
                 fontWeight: 600,
             }}>
                 Página {page} {totalPages && `de ${totalPages}`}
@@ -31,7 +39,13 @@ const PaginationControls = ({ page, setPage, hasNext, hasPrev, totalPages }: Pro
                 onClick={() => setPage(prev => (hasNext ? prev + 1 : prev))}
                 disabled={!hasNext}
                 aria-label="Próxima página"
-                style={{ marginLeft: "1rem" }}
+                style={{
+                    marginLeft: "1rem",
+                    fontSize: "var(--p-size)",
+                    color: hasNext
+                        ? "var(--color-link-highlight)"
+                        : "var(--color-state)"
+                }}
             >
                 Próximo
             </button>

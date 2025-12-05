@@ -31,12 +31,13 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(300px, auto)
-  ); /* Adapta-se ao tamanho do conteúdo */
-  column-gap: 5%; /* Aumenta o espaçamento horizontal */
-  row-gap: var(--spacing-25); /* Mantém o espaçamento vertical */
+  grid-template-columns: repeat(auto-fit,
+      minmax(300px, auto));
+  /* Adapta-se ao tamanho do conteúdo */
+  column-gap: 5%;
+  /* Aumenta o espaçamento horizontal */
+  row-gap: var(--spacing-25);
+  /* Mantém o espaçamento vertical */
 }
 
 .image {
@@ -96,6 +97,7 @@
   font-size: var(--p-size);
   font-weight: bold;
 }
+
 .info_value {
   font-family: var(--font-family-base);
   font-weight: bold;
@@ -110,13 +112,20 @@
   width: 95%;
   height: 38%;
   box-sizing: border-box;
-  overflow: hidden; /* Garante que o conteúdo extra seja escondido */
-  text-overflow: ellipsis; /* Adiciona reticências */
-  display: -webkit-box; /* Habilita o suporte para clamp */
-  -webkit-line-clamp: 5; /* Define o número máximo de linhas */
-  line-clamp: 5; /* Define o número máximo de linhas */
-  -webkit-box-orient: vertical; /* Orientação vertical obrigatória */
-  white-space: normal; /* Permite quebra de linha */
+  overflow: hidden;
+  /* Garante que o conteúdo extra seja escondido */
+  text-overflow: ellipsis;
+  /* Adiciona reticências */
+  display: -webkit-box;
+  /* Habilita o suporte para clamp */
+  -webkit-line-clamp: 5;
+  /* Define o número máximo de linhas */
+  line-clamp: 5;
+  /* Define o número máximo de linhas */
+  -webkit-box-orient: vertical;
+  /* Orientação vertical obrigatória */
+  white-space: normal;
+  /* Permite quebra de linha */
 }
 
 .date {

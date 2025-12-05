@@ -37,16 +37,16 @@ const Home = () => {
   return (
     <main className={styles.home}>
 
-      <section className={styles.hero} ref={heroRef} style={{ backgroundImage: `url(${bgHero})` }} aria-label="Seção inicial do Audioguia Mauc">
+      <section className={styles.hero} ref={heroRef} style={{ backgroundImage: `url(${bgHero})` }} aria-label="Seção inicial do Audioguia Mauc, com imagem ilustrativa da obra 'Duas Épocas' usada como capa">
         {/* <img src={maucLogo} alt="Logo do MAUC" className={styles.heroLogo} /> */}
         <button onClick={handleStartClick} className={styles.startButton} aria-label="Iniciar visita pelo museu" aria-describedby="descricao-inicio">Iniciar visita</button>
         <p id="descricao-inicio" className="sr-only">
           Ao clicar, você será levado para a próxima seção com informações sobre o museu.
         </p>
-        <div ref={nextSectionRef} tabIndex={-1} className={styles.gap} />
       </section>
 
       <Content>
+
         <Content.Title id="sobre-mauc">Audioguia Mauc</Content.Title>
         <Content.ImageWrapper>
           <Content.Image src={MaucHome} alt="Fachada do Museu de Arte da UFC" />
@@ -58,6 +58,7 @@ const Home = () => {
 
       <Content>
         <Content.Title id="carousel-exposicoes-temp">Exposições Temporárias</Content.Title>
+        <div ref={nextSectionRef} tabIndex={-1} className={styles.gap} />
         <Carousel
           link="expositions"
           num={3}

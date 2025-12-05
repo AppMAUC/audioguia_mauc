@@ -8,6 +8,7 @@ import {
   MaucLogo,
   PPCABlackLogo,
   ProcultBlackLogo,
+  LogosApp,
 } from "../../assets";
 import { Link } from "react-router-dom";
 
@@ -18,9 +19,9 @@ const About = () => {
         <Mobile.Title
           style={{
             paddingLeft: "20px",
-            paddingTop: "140px",
+            paddingTop: "clamp(8.75rem, calc(5 * var(--spacing-25) + var(--spacing-15)), 9.375rem)",
             textAlign: "start",
-            paddingBottom: "var(--spacing-25-df)"
+            paddingBottom: "var(--spacing-25)"
           }}
         >
           Sobre o App
@@ -34,7 +35,8 @@ const About = () => {
           gap="var(--spacing-10)"
           marginTop="var(--spacing-10)"
         >
-          <AppIcon style={{ width: "90%", height: "auto" }} role="img" aria-label="Logotipo do App MAUC" />
+          <AppMaucLogo1 style={{ width: "90%", height: "auto" }} role="img" arial-label="Logotipo do APP Mauc" />
+          {/* <AppIcon style={{ width: "90%", height: "auto" }} role="img" aria-label="Logotipo do App MAUC" /> */}
         </Item.Row>
 
         <Item.Row
@@ -77,7 +79,7 @@ const About = () => {
           </Link>
         </Item.Row>
 
-        <Item.Container padding="0 20px" marginTop="20px">
+        <Item.Container padding="0 20px" marginTop="calc(var(--spacing-15) + var(--spacing-5))">
           <p
             style={{
               fontSize: "var(--h2-size)",
@@ -102,13 +104,13 @@ const About = () => {
             <Mobile.Title
               style={{
                 color: "var(--color-blue-accent)",
-                marginTop: "var(--spacing-25-sm)",
+                marginTop: "var(--spacing-25)",
               }}
             >
               Realização
             </Mobile.Title>
 
-            <Item.Column margin="10px">
+            <Item.Column margin="var(--spacing-10)">
               <Item.Container marginLeft={"3px"}>
                 <Mobile.Subtitle>Orientador(a)</Mobile.Subtitle>
               </Item.Container>
@@ -147,7 +149,7 @@ const About = () => {
 
             </Item.Column>
 
-            <Item.Column margin="10px">
+            <Item.Column margin="var(--spacing-10)">
               <Item.Container marginLeft={"3px"}>
                 <Mobile.Subtitle>Bolsista Desenvolvedor</Mobile.Subtitle>
               </Item.Container>
@@ -186,7 +188,7 @@ const About = () => {
               <Email email="mateusaquinomr@gmail.com" />
             </Item.Column>
 
-            <Item.Column margin="10px">
+            <Item.Column margin="var(--spacing-10)">
               <Item.Container marginLeft={"3px"}>
                 <Mobile.Subtitle>Bolsista Designer</Mobile.Subtitle>
               </Item.Container>
@@ -249,12 +251,12 @@ const About = () => {
             <Mobile.Title
               style={{
                 color: "var(--color-blue-accent)",
-                marginTop: "var(--spacing-25-sm)",
+                marginTop: "var(--spacing-25)",
               }}
             >
               Colaboração
             </Mobile.Title>
-            <Item.Column margin="10px">
+            <Item.Column margin="var(--spacing-10)">
               <Item.Container marginLeft={"3px"}>
                 <Mobile.Subtitle>Coordenadores</Mobile.Subtitle>
               </Item.Container>
@@ -305,20 +307,21 @@ const About = () => {
           display="flex"
           flexDirection="row"
           justifyContent="center"
-          marginTop="30px"
+          marginTop="calc(var(--spacing-25) + var(--spacing-5))"
           gap="var(--spacing-25)"
         >
-          <AppMaucLogo1 style={{ width: "100px", height: "75px" }} arial-label="Logo do APP Mauc" />
+          {/* <AppMaucLogo1 style={{ width: "100px", height: "75px" }} arial-label="Logo do APP Mauc" />
           <MaucLogo style={{ width: "100px", height: "75px" }} arial-label="Logo do MAUC" />
           <PPCABlackLogo style={{ width: "100px", height: "75px" }} arial-label="Logo PPCA" />
-          <ProcultBlackLogo style={{ width: "100px", height: "75px" }} arial-label="Logo Procult" />
+          <ProcultBlackLogo style={{ width: "100px", height: "75px" }} arial-label="Logo Procult" /> */}
+          <LogosApp style={{ width: "98%", height: "auto" }} arial-label="Logos de realização, colaboração e apoio. Sendo elas PPCA, MAUC, PROCULT, SMD, LATAV/LEAD, FOTOGRAFIA TÁTIL, RÁDIO UNIVERSITÁRIA, PROINTER, PROGRAD E PRAE." />
 
         </Item.Container>
         <Item.Container
           display="flex"
           flexDirection="row"
           justifyContent="center"
-          marginTop="30px"
+          marginTop="calc(var(--spacing-25) + var(--spacing-5))"
           height="30px"
           gap="var(--spacing-25)"
         >

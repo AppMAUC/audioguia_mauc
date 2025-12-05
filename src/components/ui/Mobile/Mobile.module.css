@@ -159,7 +159,7 @@
   font-family: var(--font-family-primary);
   font-size: var(--h1-size);
   font-weight: var(--font-weight-bold);
-  color: var(--color-blue-default);
+  color: var(--color-primary);
 }
 
 .h2 {
@@ -233,7 +233,7 @@
   font-weight: var(--font-weight-regular);
   margin-top: var(--spacing-10);
   width: 100%;
-  margin-top: var(--spacing-15-sm);
+  margin-top: var(--spacing-15);
 }
 
 .suspense.hidden {
