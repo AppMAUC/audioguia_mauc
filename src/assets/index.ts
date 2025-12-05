@@ -26,7 +26,7 @@ export { default as AppMaucLogo } from "./images/app-mauc-logo.svg?react";
 export { default as AppMaucLogo1 } from "./images/app-mauc-logo-1.svg?react";
 export { default as MaucLogo } from "./images/mauc-logo.svg?react";
 export { default as PPCALogo } from "./images/ppca-logo.svg?react";
-export { default as LogosApp } from "./images/LOGOS-APP.svg?react";
+export { default as LogosApp } from "./images/logos-app.svg?react";
 export { default as ProcultLogo } from "./images/procult-logo.svg?react";
 export { default as PPCABlackLogo } from "./images/ppca-logo-black.svg?react";
 export { default as ProcultBlackLogo } from "./images/procult-logo-black.svg?react";

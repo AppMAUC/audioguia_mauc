@@ -1,13 +1,9 @@
 import Mobile from "../../components/ui/Mobile";
 import Item from "../../components/ui/Item";
 import {
-  AppIcon,
   GithubIcon,
   MailIcon,
   AppMaucLogo1,
-  MaucLogo,
-  PPCABlackLogo,
-  ProcultBlackLogo,
   LogosApp,
 } from "../../assets";
 import { Link } from "react-router-dom";
