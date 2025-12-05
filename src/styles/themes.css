@@ -24,8 +24,8 @@
   --color-primary-muted: var(--color-blue-muted);
   --color-link-highlight: var(--color-blue-default);
   --color-secondary: var(--color-black-default);
-  --color-secondary-accent: var(--color-brown-accent);
-  --color-secondary-muted: var(--color-brown-muted);
+  --color-secondary-accent: var(--color-black-accent);
+  --color-secondary-muted: var(--color-black-muted);
 }
 
 /* Light Theme */
@@ -35,10 +35,10 @@
   --color-text-white: var(--color-white);
   --color-text-black: var(--color-white);
   --color-text-gray: var(--color-black);
-  --color-input: var(--color-black);
+  --color-input: var(--color-gray-light);
   --color-info: var(--color-black);
-  --color-placeholder: var(--color-white);
-  --color-input-focus: var(--color-white);
+  --color-placeholder: var(--color-gray-dark);
+  --color-input-focus: var(--color-black-default);
   --color-state: var(--color-gray-dark);
   --color-state-active: var(--color-black);
   --color-title-secondary: var(--color-black);
@@ -52,9 +52,9 @@
   --color-primary-accent: var(--color-blue-high-contrast-light-accent);
   --color-primary-muted: var(--color-blue-high-contrast-light-muted);
   --color-link-highlight: var(--color-blue-high-contrast-light-highlight);
-  --color-secondary: var(--color-brown-high-contrast-light-default);
-  --color-secondary-accent: var(--color-brown-high-contrast-light-accent);
-  --color-secondary-muted: var(--color-brown-high-contrast-light-muted);
+  --color-secondary: var(--color-black-high-contrast-light-default);
+  --color-secondary-accent: var(--color-black-high-contrast-light-accent);
+  --color-secondary-muted: var(--color-black-high-contrast-light-muted);
 }
 
 /* Dark Theme */
@@ -64,11 +64,11 @@
   --color-text-white: var(--color-white);
   --color-text-black: var(--color-black);
   --color-text-gray: var(--color-white);
-  --color-input: var(--color-white);
+  --color-input: var(--color-gray-dark);
   --color-info: var(--color-white);
-  --color-placeholder: var(--color-black);
-  --color-input-focus: var(--color-black);
-  --color-state: var(--color-gray-dark);
+  --color-placeholder: var(--color-white);
+  --color-input-focus: var(--color-white);
+  --color-state: var(--color-gray);
   --color-state-active: var(--color-white);
   --color-title-secondary: var(--color-white);
   --color-error: var(--color-red-high-contrast-dark-default);
@@ -81,7 +81,7 @@
   --color-primary-accent: var(--color-blue-high-contrast-dark-accent);
   --color-primary-muted: var(--color-blue-high-contrast-dark-muted);
   --color-link-highlight: var(--color-blue-high-contrast-dark-highlight);
-  --color-secondary: var(--color-brown-high-contrast-dark-default);
-  --color-secondary-accent: var(--color-brown-high-contrast-dark-accent);
-  --color-secondary-muted: var(--color-brown-high-contrast-dark-muted);
+  --color-secondary: var(--color-black-high-contrast-dark-default);
+  --color-secondary-accent: var(--color-black-high-contrast-dark-accent);
+  --color-secondary-muted: var(--color-black-high-contrast-dark-muted);
 }

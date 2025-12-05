@@ -3,7 +3,7 @@
   --color-white-default: #fffefc;
   --color-white: #ffffff;
   /* Preto */
-  --color-black-default: #2f2e33;
+  /* --color-black-default: #2f2e33; */
   --color-black: #000000;
 
   /* Cinza Claro*/
@@ -39,18 +39,31 @@
 
   /* Cor Primária */
   --color-blue-default: #0062a2;
-  --color-blue-accent: #004572;
+  --color-blue-accent: #027ed1;
   --color-blue-muted: #0062a266;
   --color-blue-high-contrast-light-default: #005994;
   --color-blue-high-contrast-light-accent: #003a61;
   --color-blue-high-contrast-light-muted: #00599466;
-  --color-blue-high-contrast-light-highlight: #6300c7;
+  --color-blue-high-contrast-light-highlight: #0062a2;
   --color-blue-high-contrast-dark-default: #38afff;
   --color-blue-high-contrast-dark-accent: #7acaff;
   --color-blue-high-contrast-dark-muted: #38afff66;
-  --color-blue-high-contrast-dark-highlight: #fb8c00;
+  --color-blue-high-contrast-dark-highlight: #38afff;
 
   /* Cor Secundária */
+  --color-black-default: #2f2e33;
+  --color-black-accent: #000000;
+  --color-black-muted: #1e1e1e66;
+  --color-black-high-contrast-light-default: #333333;
+  --color-black-high-contrast-light-accent: #000000;
+  --color-black-high-contrast-light-muted: #33333366;
+  --color-black-high-contrast-dark-default: #d4d4d4;
+  --color-black-high-contrast-dark-accent: #ffffff;
+  --color-black-high-contrast-dark-muted: #d4d4d466;
+}
+
+
+/* Cores secundarias anteriores
   --color-brown-default: #a57c52;
   --color-brown-accent: #835526;
   --color-brown-muted: #c1a08166;
@@ -59,5 +72,4 @@
   --color-brown-high-contrast-light-muted: #6d533666;
   --color-brown-high-contrast-dark-default: #c1a081;
   --color-brown-high-contrast-dark-accent: #d9c4b0;
-  --color-brown-high-contrast-dark-muted: #c1a08166;
-}
+  --color-brown-high-contrast-dark-muted: #c1a08166; */

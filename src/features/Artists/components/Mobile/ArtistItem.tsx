@@ -32,7 +32,7 @@ const ArtistItem = ({
             src={image || ""}
             alt={`Foto do artista ${name ?? ""}`}
           />
-          <Item.Column padding="20px">
+          <Item.Column padding="calc(var(--spacing-15) + var(--spacing-5)) 20px">
             {/* Mantendo Mobile.Title */}
             <Mobile.Title>{name}</Mobile.Title>
 
@@ -57,7 +57,7 @@ const ArtistItem = ({
               width="100%"
               marginTop="var(--spacing-5)"
             >
-              <span aria-hidden="true" style={{ textDecoration: "underline" }}>
+              <span aria-hidden="true" style={{ textDecoration: "underline", fontSize: "var(--p-size", fontFamily: "var(--font-family-base)" }}>
                 Ver mais
               </span>
             </Item.Row>

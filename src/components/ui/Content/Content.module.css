@@ -2,8 +2,8 @@
   font-family: var(--font-family-primary);
   color: var(--color-secondary);
   font-weight: bold;
-  margin-top: 0.8rem;
-  margin-bottom: 0.5rem;
+  margin-top: var(--spacing-15);
+  margin-bottom: var(--spacing-10);
   padding: 0 20px;
   box-sizing: border-box;
 }
@@ -17,8 +17,8 @@
   font-weight: var(--font-weight-regular);
   line-height: normal;
   color: var(--color-text-muted);
-  margin-top: 0.8rem;
-  margin-bottom: 0.1rem;
+  margin-top: var(--spacing-15);
+  margin-bottom: var(--spacing-0);
   padding: 0 20px;
 }
 
@@ -32,8 +32,8 @@
   height: 40%;
   flex-direction: column;
   align-items: start;
-  margin-top: 0.1em;
-  margin-bottom: var(--spacing-15-md);
+  margin-top: var(--spacing-0);
+  margin-bottom: var(--spacing-15);
 }
 
 .image {
@@ -42,7 +42,7 @@
   border-radius: 10px;
   display: block;
   object-fit: cover;
-  margin-top: 10px;
+  margin-top: var(--spacing-10);
 }
 
 .imageWrapper {

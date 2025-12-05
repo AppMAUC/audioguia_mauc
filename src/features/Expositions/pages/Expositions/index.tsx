@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import ExpositionService from "../../api/ExpositionService";
 import ExpositionList from "../../components/Mobile/ExpositionList";
 import { Exposition } from "../../types/Exposition";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Expositions = () => {
   const [page, setPage] = useState(1);
@@ -26,6 +26,16 @@ const Expositions = () => {
     window.scrollTo(0, 0);
   }, [page]);
 
+  const liveRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (expositions && liveRef.current) {
+      const totalNaPagina = expositions?.data?.length ?? 0;
+      const totalPaginas = expositions?.pages ?? 1;
+      liveRef.current.textContent =
+        `Página ${page} de ${totalPaginas}. ${totalNaPagina} exposições carregadas.`;
+    }
+  }, [expositions, page]);
+
   if (isLoading) return <Mobile.Loading />;
 
   if (isError) return <Mobile.Error />;
@@ -35,13 +45,20 @@ const Expositions = () => {
       <Mobile.Title
         style={{
           color: "var(--color-text)",
-          marginTop: "140px",
-          marginBottom: "var(--spacing-10-md)",
+          marginTop: "clamp(8.75rem, calc(5 * var(--spacing-25) + var(--spacing-15)), 9.375rem)",
+          marginBottom: "var(--spacing-10)",
           paddingLeft: "20px",
         }}
       >
         Todas as Exposições
       </Mobile.Title>
+
+      {/* Live region invisível para anunciar mudanças de página/quantidade */}
+      <div
+        ref={liveRef}
+        aria-live="polite"
+        style={{ position: "absolute", left: -9999, top: "auto" }}
+      />
 
       <Item.Container>
         <Item.Column gap="var(--spacing-0)">

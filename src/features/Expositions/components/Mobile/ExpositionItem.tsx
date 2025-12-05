@@ -24,12 +24,12 @@ const ExpositionItem = ({
     <Link
       to={link || "#"}
       style={{ textDecoration: "none", color: "inherit" }}
-      aria-label={`Exposição ${title}, de ${dateStarts} até ${dateEnds}. Clique para ver mais detalhes.`}
+      aria-label={`Ver mais detalhes sobre a exposição ${title}`}
     >
       <Item.Container marginBottom="var(--spacing-5)" >
-        <Mobile.ImageDefault src={image || ""} alt={title || ""} />
+        <Mobile.ImageDefault src={image || ""} alt={title ? `Imagem da exposição ${title}` : "Imagem da exposição"} />
         <Item.Container
-          padding="20px"
+          padding="calc(var(--spacing-15) + var(--spacing-5)) 20px"
           display="flex"
           flexDirection="column"
           gap="var(--spacing-10)"
@@ -42,6 +42,7 @@ const ExpositionItem = ({
               fontFamily: "var(--font-family-base)",
               fontWeight: "bold",
             }}
+            aria-label={`Período da exposição: ${dateStarts} até ${dateEnds}`}
           >
             {dateStarts} - {dateEnds}
           </p>
