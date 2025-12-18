@@ -10,7 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import Mobile from "../../components/ui/Mobile";
 import { useRef } from "react";
 
-import bgHero from "../../assets/images/bg-hero.jpg";
+import bgHero from "../../assets/images/bg-hero.webp";
 
 const Home = () => {
   const heroRef = useRef<HTMLDivElement | null>(null);
