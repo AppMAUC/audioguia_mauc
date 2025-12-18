@@ -99,7 +99,7 @@ const About = () => {
           <Item.Column gap="var(--spacing-10)">
             <Mobile.Title
               style={{
-                color: "var(--color-blue-accent)",
+                color: "var(--color-text)",
                 marginTop: "var(--spacing-25)",
               }}
             >
@@ -108,7 +108,30 @@ const About = () => {
 
             <Item.Column margin="var(--spacing-10)">
               <Item.Container marginLeft={"3px"}>
-                <Mobile.Subtitle>Orientador(a)</Mobile.Subtitle>
+                <Mobile.Subtitle>Coordenadora</Mobile.Subtitle>
+              </Item.Container>
+
+              <p
+                style={{
+                  fontSize: "var(--h2-size)",
+                  marginTop: "var(--spacing-10)",
+                  marginBottom: "var(--spacing-5)",
+                  paddingLeft: "3px",
+                  color: "var(--color-text)",
+                  fontWeight: "bold",
+                  fontFamily: "var(--font-family-base)",
+                  lineHeight: "1.2",
+                }}
+              >
+                Kathleen Raelle de Paiva Silveira
+              </p>
+              <Email email="kathleen@ufc.br" />
+
+            </Item.Column>
+
+            <Item.Column margin="var(--spacing-10)">
+              <Item.Container marginLeft={"3px"}>
+                <Mobile.Subtitle>Orientação</Mobile.Subtitle>
               </Item.Container>
 
               <p
@@ -243,18 +266,42 @@ const About = () => {
 
           </Item.Column>
 
+
           <Item.Column gap="var(--spacing-10)">
             <Mobile.Title
               style={{
-                color: "var(--color-blue-accent)",
+                color: "var(--color-text)",
                 marginTop: "var(--spacing-25)",
               }}
             >
-              Colaboração
+              Parceiros
             </Mobile.Title>
-            <Item.Column margin="var(--spacing-10)">
+
+            <Item.Column>
               <Item.Container marginLeft={"3px"}>
-                <Mobile.Subtitle>Coordenadores</Mobile.Subtitle>
+                <Mobile.Subtitle>LATAV/UECE e LEAD/UECE</Mobile.Subtitle>
+              </Item.Container>
+
+              <p
+                style={{
+                  fontSize: "var(--h2-size)",
+                  marginTop: "var(--spacing-10)",
+                  marginBottom: "var(--spacing-5)",
+                  paddingLeft: "3px",
+                  color: "var(--color-text)",
+                  fontWeight: "bold",
+                  fontFamily: "var(--font-family-base)",
+                  lineHeight: "1.2",
+                }}
+              >
+                Profa. Vera Lúcia Santiago Sampaio
+              </p>
+
+            </Item.Column>
+
+            <Item.Column>
+              <Item.Container marginLeft={"3px"}>
+                <Mobile.Subtitle>Fotografia Tátil</Mobile.Subtitle>
               </Item.Container>
               <p
                 style={{
@@ -268,10 +315,69 @@ const About = () => {
                   lineHeight: "1.2",
                 }}
               >
-                Kathleen Raelle de Paiva Silveira
+                Prof. Roberto Vieira
               </p>
 
-              <Email email="kathleen@ufc.br" />
+            </Item.Column>
+
+            <Item.Column >
+              <Item.Container marginLeft={"3px"}>
+                <Mobile.Subtitle> Rádio Universitária FM</Mobile.Subtitle>
+              </Item.Container>
+              <p
+                style={{
+                  fontSize: "var(--h2-size)",
+                  marginTop: "var(--spacing-10)",
+                  marginBottom: "var(--spacing-5)",
+                  paddingLeft: "3px",
+                  color: "var(--color-text)",
+                  fontWeight: "bold",
+                  fontFamily: "var(--font-family-base)",
+                  lineHeight: "1.2",
+                }}
+              >
+                Thaís Amorim Aragão
+              </p>
+            </Item.Column>
+
+            <Item.Column >
+              <Item.Container marginLeft={"3px"}>
+                <Mobile.Subtitle> LETRARE/UFC</Mobile.Subtitle>
+              </Item.Container>
+              <p
+                style={{
+                  fontSize: "var(--h2-size)",
+                  marginTop: "var(--spacing-10)",
+                  marginBottom: "var(--spacing-5)",
+                  paddingLeft: "3px",
+                  color: "var(--color-text)",
+                  fontWeight: "bold",
+                  fontFamily: "var(--font-family-base)",
+                  lineHeight: "1.2",
+                }}
+              >
+                Profa. Diana Fortier
+              </p>
+            </Item.Column>
+
+            <Item.Column >
+              <Item.Container marginLeft={"3px"}>
+                <Mobile.Subtitle> Prointer/UFC</Mobile.Subtitle>
+              </Item.Container>
+              <p
+                style={{
+                  fontSize: "var(--h2-size)",
+                  marginTop: "var(--spacing-10)",
+                  marginBottom: "var(--spacing-5)",
+                  paddingLeft: "3px",
+                  color: "var(--color-text)",
+                  fontWeight: "bold",
+                  fontFamily: "var(--font-family-base)",
+                  lineHeight: "1.2",
+                }}
+              >
+                Tadeu Azevedo
+              </p>
 
               <p
                 style={{
@@ -279,17 +385,76 @@ const About = () => {
                   marginTop: "var(--spacing-10)",
                   marginBottom: "var(--spacing-5)",
                   paddingLeft: "3px",
-                  color: "var(--color-blue-default)",
+                  color: "var(--color-text)",
                   fontWeight: "bold",
                   fontFamily: "var(--font-family-base)",
                   lineHeight: "1.2",
                 }}
               >
-                Acesse a ficha técnica completa.
+                Ananda Badaró
               </p>
             </Item.Column>
 
 
+            <Item.Column >
+              <Item.Container marginLeft={"3px"}>
+                <Mobile.Subtitle>  STI/UFC</Mobile.Subtitle>
+              </Item.Container>
+              <p
+                style={{
+                  fontSize: "var(--h2-size)",
+                  marginTop: "var(--spacing-10)",
+                  marginBottom: "var(--spacing-5)",
+                  paddingLeft: "3px",
+                  color: "var(--color-text)",
+                  fontWeight: "bold",
+                  fontFamily: "var(--font-family-base)",
+                  lineHeight: "1.2",
+                }}
+              >
+                Amarildo Maia Rolim
+              </p>
+
+              <p
+                style={{
+                  fontSize: "var(--h2-size)",
+                  marginTop: "var(--spacing-10)",
+                  marginBottom: "var(--spacing-5)",
+                  paddingLeft: "3px",
+                  color: "var(--color-text)",
+                  fontWeight: "bold",
+                  fontFamily: "var(--font-family-base)",
+                  lineHeight: "1.2",
+                }}
+              >
+                Woldisney Derarovele Semeão
+              </p>
+            </Item.Column>
+
+            <p
+              style={{
+                fontSize: "var(--h2-size)",
+                marginTop: "var(--spacing-10)",
+                marginBottom: "var(--spacing-5)",
+                paddingLeft: "3px",
+                color: "var(--color-link-highlight)",
+                fontWeight: "bold",
+                fontFamily: "var(--font-family-base)",
+                lineHeight: "1.2",
+              }}
+            >
+              <a
+                href="https://mauc.ufc.br/pt/nucleo-de-comunicacao/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                Acesse a ficha técnica completa.
+              </a>
+            </p>
           </Item.Column>
 
           <Mobile.Subtitle>
