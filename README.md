@@ -101,7 +101,7 @@ npm run dev
 ## 🧑‍🤝‍🧑 Devs  
 
 - **[Victor Emanuel Tomaz](https://github.com/victor280504)**  
-
+- **[Mateus de Aquino](https://github.com/mateusaquinomr)**  
 ---
 
 
