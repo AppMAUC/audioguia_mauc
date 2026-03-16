@@ -1,0 +1,259 @@
+{
+    "home": {
+        "hero": {
+            "startButton": "Start visit",
+            "ariaLabel": "Initial section of Mauc Audio Guide, with illustrative image of the artwork 'Two Eras' used as cover",
+            "description": "By clicking, you will be taken to the next section with information about the museum."
+        },
+        "sections": {
+            "about": {
+                "title": "Mauc App",
+                "imageAlt": "Facade of the UFC Art Museum",
+                "description": "The Art Museum of the Federal University of Ceará (Mauc) has nine spaces for long-term exhibitions and three for temporary exhibitions."
+            },
+            "temporaryExhibitions": "Temporary Exhibitions",
+            "permanentExhibitions": "Permanent Exhibitions",
+            "seeMore": "See more exhibitions",
+            "seeMoreAriaLabel": "See all exhibitions",
+            "seeMoreDescription": "Access the page with all exhibitions available at the museum."
+        }
+    },
+    "search": {
+        "placeholder": "Search",
+        "ariaLabel": "Search the museum collection",
+        "label": "Search field"
+    },
+    "carousel": {
+        "roleDescription": "carousel",
+        "item": {
+            "ariaLabel": "Access {{itemType}} page {{title}}{{date}}",
+            "date": "Date: {{date}}"
+        }
+    },
+    "pagination": {
+        "navAriaLabel": "Pagination controls",
+        "previous": "Previous",
+        "previousAriaLabel": "Previous page",
+        "next": "Next",
+        "nextAriaLabel": "Next page",
+        "pageInfo": "Page {{page}}",
+        "pageInfoWithTotal": "Page {{page}} of {{totalPages}}"
+    },
+    "artworkSelector": {
+        "title": "Select Artworks",
+        "selected": "({{count}} selected)",
+        "selected_plural": "({{count}} selected)",
+        "errorMin": "Select at least two artworks",
+        "previous": "Previous",
+        "next": "Next",
+        "pageInfo": "Page {{page}} of {{total}}"
+    },
+    "navbar": {
+        "homeLinkAriaLabel": "Go to homepage",
+        "accessibilityButtonAriaLabel": "Accessibility Menu",
+        "menuButtonAriaLabel": "Open main menu",
+        "menuButtonTitle": "Menu"
+    },
+    "menu": {
+        "closeButtonAriaLabel": "Close Menu",
+        "home": "Home",
+        "homeAriaLabel": "Home page",
+        "exhibitions": "Exhibitions",
+        "exhibitionsAriaLabel": "Exhibitions",
+        "artworks": "Artworks",
+        "artworksAriaLabel": "Artworks",
+        "artists": "Artists",
+        "artistsAriaLabel": "Artists",
+        "about": "About",
+        "aboutApp": "About the App",
+        "aboutAppAriaLabel": "About the App",
+        "archive": "Archive",
+        "archiveAriaLabel": "Archive",
+        "library": "Library",
+        "libraryAriaLabel": "Library",
+        "nucleus": "Nucleus",
+        "nucleusAriaLabel": "Nucleus",
+        "scheduleVisit": "Schedule your visit",
+        "scheduleVisitAriaLabel": "Schedule visit",
+        "learnMore": "Learn more",
+        "learnMoreAriaLabel": "Learn more about MAUC",
+        "submenu": {
+            "openAriaLabel": "Open submenu",
+            "closeAriaLabel": "Close submenu"
+        }
+    },
+    "footer": {
+        "contactButton": "Contact Us",
+        "contactButtonAriaLabel": "Get in touch"
+    },
+    "install": {
+        "buttonText": "Install",
+        "buttonAriaLabel": "Install app",
+        "consoleAccepted": "User accepted the PWA install prompt",
+        "consoleDismissed": "User dismissed the PWA install prompt"
+    },
+    "accessibility": {
+        "closeButtonAriaLabel": "Close Accessibility Menu",
+        "darkContrast": "Dark contrast",
+        "lightContrast": "Light contrast",
+        "size": "Size",
+        "spacing": "Spacing",
+        "resetButtonAriaLabel": "Reset settings",
+        "menuAriaLabel": "Accessibility Menu",
+        "menuTitle": "Accessibility Menu",
+        "resetDescription": "Reset all accessibility settings.",
+        "stateAriaLabel": "Size {{value}}"
+    },
+    "mobile": {
+        "loading": "Loading content",
+        "closeImageTitle": "Close image",
+        "readMore": "Read more",
+        "readLess": "Read less",
+        "audio": {
+            "playAriaLabel": "Play audio {{prefix}}",
+            "pauseAriaLabel": "Pause audio {{prefix}}",
+            "sliderAriaLabel": "Audio progress bar {{prefix}}"
+        },
+        "share": {
+            "buttonTitle": "Share",
+            "copySuccess": "Link copied successfully!",
+            "copyError": "Failed to copy link"
+        },
+        "error": {
+            "title": "Oops, the gallery is empty.",
+            "defaultMessage": "We had a technical issue, please try again or come back later...",
+            "backButton": "Back"
+        },
+        "error404": {
+            "title": "Oops, you got lost in the exhibition.",
+            "defaultMessage": "We couldn't find the page you're looking for...",
+            "backButton": "Back"
+        }
+    },
+    "artists": {
+        "imageAlt": "Photo of artist {{name}}",
+        "imageAltDefault": "Artist photo",
+        "seeMore": "See more",
+        "listAriaLabel": "Artists List",
+        "authorImageAlt": "Image",
+        "seeAboutArtist": "See about the artist",
+        "expandButtonTitleOpen": "Close image",
+        "expandButtonTitleClose": "Expand image",
+        "biographyPt": "Biography (PT)",
+        "biographyEn": "Biography (EN)",
+        "audioNotAvailablePt": "Portuguese audio not available yet",
+        "audioNotAvailableEn": "English audio not available yet",
+        "artworksBy": "Artworks by {{name}}",
+        "audioAriaLabelPrefixPt": "of {{name}}'s biography",
+        "audioAriaLabelPrefixEn": "of {{name}}'s biography in English",
+        "pageTitle": "All Artists",
+        "liveRegionText": "Page {{page}} of {{totalPages}}. {{count}} items"
+    },
+    "artworks": {
+        "imageAlt": "Artwork",
+        "seeMore": "See more",
+        "listAriaLabel": "Artworks list",
+        "imageAltWithTitle": "Image of artwork {{title}}",
+        "imageAltDefault": "Artwork image",
+        "expandButtonTitleOpen": "Close image",
+        "expandButtonTitleClose": "Expand image",
+        "author": "Author",
+        "audioDescription": "Audio description",
+        "audioDescriptionAriaLabel": "of the audio description",
+        "aboutPt": "About the artwork (PT)",
+        "aboutPtAriaLabel": "About the Artwork in Portuguese",
+        "aboutEn": "About the artwork (EN)",
+        "aboutEnAriaLabel": "About the artwork in English",
+        "audioNotAvailable": "Audio not available yet",
+        "otherArtworks": "Other Artworks",
+        "pageTitle": "All Artworks",
+        "liveRegionText": "Page {{page}} of {{totalPages}}. {{count}} items"
+    },
+    "expositions": {
+        "linkAriaLabel": "See more details about the exhibition {{title}}",
+        "imageAlt": "Image of exhibition {{title}}",
+        "imageAltDefault": "Exhibition image",
+        "periodAriaLabel": "Exhibition period: {{start}} to {{end}}",
+        "seeMore": "See more",
+        "expandButtonTitleOpen": "Close image",
+        "expandButtonTitleClose": "Expand image",
+        "artworksRegionAriaLabel": "Exhibition artworks",
+        "pageTitle": "All Exhibitions",
+        "liveRegionText": "Page {{page}} of {{totalPages}}. {{count}} items"
+    },
+    "languageSelector": {
+        "buttonAriaLabel": "Select language. Current language: {{language}}",
+        "optionAriaLabel": "Select {{language}}"
+    },
+    "languageDisplay": {
+        "title": "Device Language",
+        "preferred": "Preferred language:",
+        "list": "List of preferred languages:"
+    },
+    "about": {
+        "pageTitle": "About the App",
+        "appLogoAriaLabel": "App Mauc Logo",
+        "emailAriaLabel": "MAUC Email",
+        "githubAriaLabel": "GitHub username",
+        "description": "This application was developed to provide an audio-guided experience at the UFC Art Museum. With it, you can explore exhibitions and get detailed information about artworks directly on your mobile device. The app is easy to use and offers an intuitive interface, allowing you to navigate through different sections with ease. Additionally, you can access exclusive content and updates about future events and exhibitions. Enjoy your visit to the museum with our app!",
+        "realization": "Realization",
+        "coordinator": "Coordinator",
+        "supervision": "Supervision",
+        "supervisorDetails": "Prof. Dr. Alysson Diniz dos Santos (Professor of Digital Media Systems Course)",
+        "developer": "Developer Scholarship Holder",
+        "designer": "Designer Scholarship Holder",
+        "partners": "Partners",
+        "latavLead": "LATAV/UECE and LEAD/UECE",
+        "tactilePhotography": "Tactile Photography",
+        "universityRadio": "University Radio FM",
+        "letrare": "LETRARE/UFC",
+        "prointer": "Prointer/UFC",
+        "sti": "STI/UFC",
+        "fullCreditsLink": "Access the full credits.",
+        "footerText": "This project was carried out with support from the Pro-Rectory of Culture at the Federal University of Ceará and the Artistic Culture Promotion Program.",
+        "logosAriaLabel": "Realization, collaboration and support logos. Including PPCA, MAUC, PROCULT, SMD, LATAV/LEAD, TACTILE PHOTOGRAPHY, UNIVERSITY RADIO, PROINTER, PROGRAD and PRAE.",
+        "emailIconAriaLabel": "Email"
+    },
+    "arquivo": {
+        "pageTitle": "Archive",
+        "imageAlt": "image of the institutional archive repository",
+        "institutionalArchive": "Institutional Archive",
+        "phoneAriaLabel": "Institutional Archive phone number",
+        "emailAriaLabel": "Institutional Archive email",
+        "institutionalDescription": "Created from the preservation of documents related to the Museum's activities since its foundation in 1961, the Mauc Institutional Archive consists of annual reports, correspondence, photos, visitor signature books, exhibition catalogs and documentation of artists who are part of the museum's exhibition circuit. This collection safeguards records of significant and historical moments for UFC and for the artistic memory of Ceará.",
+        "historicalArchive": "Historical Archive – Jean-Pierre Chabloz",
+        "historicalDescription": "It covers a set of personal documents related to the artistic activities of Swiss Jean-Pierre Chabloz carried out in Europe in the 1930s and in Brazil, discontinuously, between the 1940s and 1980s. Highlights include documents about activities carried out in Fortaleza during the 1940s, especially the documentation produced in 1943 for the Worker Mobilization Service for the Amazon – SEMTA. This last set received, in 2016, the UNESCO Seal in its Memory of the World Program due to its importance and thematic relevance."
+    },
+    "biblioteca": {
+        "pageTitle": "Library",
+        "imageAlt": "Image of the library interior",
+        "phoneAriaLabel": "Library phone number",
+        "emailAriaLabel": "Library email",
+        "description": "The Floriano Teixeira Library maintains a collection specialized in the arts, consisting of books, catalogs, periodicals, pamphlets, among other types of documents. Among the special collections, we have the Jean-Pierre Chabloz collection, formed by books and magazines from the artist's personal library. In addition to the rare works collection, composed of slides, video tapes, magazines, pamphlets and rare books.",
+        "services": "Services Offered:",
+        "service1": "In-person and online collection consultation",
+        "service2": "Bibliographic research guidance",
+        "service3": "Bibliographic survey"
+    },
+    "nucleos": {
+        "pageTitle": "Nucleus",
+        "communicationLogoAlt": "MAUC Communication Nucleus Logo",
+        "communicationTitle": "Communication Nucleus",
+        "communicationEmailAriaLabel": "Communication Nucleus email",
+        "communicationDescription": "Responsible for planning and executing Mauc's digital communication actions such as the website, social media, Flickr and other projects. The CN is responsible for collaborating in Mauc's dialogue with its audience, whether visitors or partners (artists, curators, researchers, external authorities or institution members).",
+        "educationalImageAlt": "Image of MAUC interior",
+        "educationalTitle": "Educational Nucleus",
+        "educationalEmailAriaLabel": "Educational Nucleus email",
+        "educationalDescription": "The Educational Nucleus of the UFC Art Museum (Nemauc) is responsible for planning, managing and executing the institution's Educational and Cultural Policy, through programs and projects aimed at dialogue, participation and the exercise of citizenship through art and heritage."
+    },
+    "notFound": {
+        "title": "Oops, you got lost in the exhibition.",
+        "message": "We couldn't find the page you're looking for...",
+        "backButton": "Back"
+    },
+    "searchPage": {
+        "noResults": "No results found...",
+        "artistsTitle": "Artists",
+        "artworksTitle": "Artworks"
+    }
+}

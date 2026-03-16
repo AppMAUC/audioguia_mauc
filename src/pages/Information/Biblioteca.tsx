@@ -2,15 +2,21 @@ import Mobile from "../../components/ui/Mobile";
 import Item from "../../components/ui/Item";
 import { CallIcon, MailIcon } from "../../assets";
 import { Biblioteca as Image } from "../../assets";
+import { useTranslation } from "../../features/Language/useTranslation";
 
 const Biblioteca = () => {
+  const { t } = useTranslation();
+
   return (
     <section>
       <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "clamp(140px, calc(5 * var(--spacing-25) + var(--spacing-15)), 150px)", marginBottom: "var(--spacing-10)" }}>
-        Biblioteca
+        {t('biblioteca.pageTitle')}
       </Mobile.Title>
 
-      <Mobile.ImageDefault src={Image} alt="Imagem da biblioteca por dentro" />
+      <Mobile.ImageDefault
+        src={Image}
+        alt={t('biblioteca.imageAlt')}
+      />
 
       <Item.Row
         justify="start"
@@ -25,7 +31,7 @@ const Biblioteca = () => {
             paddingLeft: "20px",
             paddingRight: "10px",
           }}
-          aria-label="Número de telefone da Biblioteca"
+          aria-label={t('biblioteca.phoneAriaLabel')}
         />
         <p
           style={{
@@ -34,7 +40,7 @@ const Biblioteca = () => {
             fontWeight: "bold",
           }}
         >
-          +55 85 3366 7481{" "}
+          +55 85 3366 7481
         </p>
       </Item.Row>
 
@@ -50,7 +56,7 @@ const Biblioteca = () => {
             height: "auto",
             paddingLeft: "20px",
           }}
-          aria-label="Email da Biblioteca"
+          aria-label={t('biblioteca.emailAriaLabel')}
         />
         <p
           style={{
@@ -59,7 +65,7 @@ const Biblioteca = () => {
             fontWeight: "bold",
           }}
         >
-          bibliotecamauc@ufc.br{" "}
+          bibliotecamauc@ufc.br
         </p>
       </Item.Row>
 
@@ -73,16 +79,10 @@ const Biblioteca = () => {
             lineHeight: "1.2",
           }}
         >
-          A Biblioteca Floriano Teixeira mantém um acervo especializado em
-          artes, constituído de livros, catálogos, periódicos, folhetos, entre
-          outros tipos de documentos. Dentre as coleções especiais, contamos com
-          a coleção Jean-Pierre Chabloz, formada por livros e revistas da
-          biblioteca particular do artista. Além da coleção de obras raras,
-          composta por diapositivos, fitas de vídeo, revistas, folhetos e livros
-          raros.
+          {t('biblioteca.description')}
           <br />
           <br />
-          Serviços Oferecidos:
+          {t('biblioteca.services')}
           <br />
         </p>
         <ul
@@ -95,9 +95,9 @@ const Biblioteca = () => {
             lineHeight: "1.2",
           }}
         >
-          <li>Consulta local e on-line do acervo</li>
-          <li>Orientação na pesquisa bibliográfica</li>
-          <li>Levantamento bibliográfico</li>
+          <li>{t('biblioteca.service1')}</li>
+          <li>{t('biblioteca.service2')}</li>
+          <li>{t('biblioteca.service3')}</li>
         </ul>
       </Item.Container>
     </section>

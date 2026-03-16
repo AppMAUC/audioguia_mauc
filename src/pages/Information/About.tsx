@@ -3,12 +3,15 @@ import Item from "../../components/ui/Item";
 import {
   GithubIcon,
   MailIcon,
-  AppMaucLogo1,
+  AppMaucLogo,
   LogosApp,
 } from "../../assets";
 import { Link } from "react-router-dom";
+import { useTranslation } from "../../features/Language/useTranslation";
 
 const About = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <section>
@@ -20,7 +23,7 @@ const About = () => {
             paddingBottom: "var(--spacing-25)"
           }}
         >
-          Sobre o App
+          {t('about.pageTitle')}
         </Mobile.Title>
 
         <Item.Row
@@ -31,8 +34,11 @@ const About = () => {
           gap="var(--spacing-10)"
           marginTop="var(--spacing-10)"
         >
-          <AppMaucLogo1 style={{ width: "90%", height: "auto" }} role="img" arial-label="Logotipo do APP Mauc" />
-          {/* <AppIcon style={{ width: "90%", height: "auto" }} role="img" aria-label="Logotipo do App MAUC" /> */}
+          <AppMaucLogo
+            style={{ width: "90%", height: "auto" }}
+            role="img"
+            aria-label={t('about.appLogoAriaLabel')}
+          />
         </Item.Row>
 
         <Item.Row
@@ -49,7 +55,7 @@ const About = () => {
               width: "24px",
               height: "24px",
             }}
-            aria-label="E-mail do MAUC"
+            aria-label={t('about.emailAriaLabel')}
           />
           <p
             style={{
@@ -58,7 +64,7 @@ const About = () => {
               fontWeight: "bold",
             }}
           >
-            {"appmauc@gmail.com"}{" "}
+            appmauc@gmail.com
           </p>
         </Item.Row>
 
@@ -70,7 +76,7 @@ const About = () => {
           marginTop="var(--spacing-10)"
           margin="var(--spacing-10)"
         >
-          <Link to="https://github.com/appmauc" aria-label="Nome de usuário do GitHub">
+          <Link to="https://github.com/appmauc" aria-label={t('about.githubAriaLabel')}>
             <Github user="appmauc" />
           </Link>
         </Item.Row>
@@ -85,15 +91,7 @@ const About = () => {
               lineHeight: "1.2",
             }}
           >
-            Este aplicativo foi desenvolvido para fornecer uma experiência de
-            áudio guiada no Museu de Arte da UFC. Com ele, você pode explorar as
-            exposições e obter informações detalhadas sobre as obras de arte
-            diretamente no seu dispositivo móvel. O aplicativo é fácil de usar e
-            oferece uma interface intuitiva, permitindo que você navegue pelas
-            diferentes seções do aplicativo com facilidade. Além disso, você
-            pode acessar conteúdos exclusivos e atualizações sobre eventos e
-            exposições futuras. Aproveite sua visita ao museu com o
-            nosso aplicativo!
+            {t('about.description')}
           </p>
 
           <Item.Column gap="var(--spacing-10)">
@@ -103,12 +101,12 @@ const About = () => {
                 marginTop: "var(--spacing-25)",
               }}
             >
-              Realização
+              {t('about.realization')}
             </Mobile.Title>
 
             <Item.Column margin="var(--spacing-10)">
               <Item.Container marginLeft={"3px"}>
-                <Mobile.Subtitle>Coordenadora</Mobile.Subtitle>
+                <Mobile.Subtitle>{t('about.coordinator')}</Mobile.Subtitle>
               </Item.Container>
 
               <p
@@ -126,12 +124,11 @@ const About = () => {
                 Kathleen Raelle de Paiva Silveira
               </p>
               <Email email="kathleen@ufc.br" />
-
             </Item.Column>
 
             <Item.Column margin="var(--spacing-10)">
               <Item.Container marginLeft={"3px"}>
-                <Mobile.Subtitle>Orientação</Mobile.Subtitle>
+                <Mobile.Subtitle>{t('about.supervision')}</Mobile.Subtitle>
               </Item.Container>
 
               <p
@@ -162,15 +159,14 @@ const About = () => {
                   lineHeight: "1.2",
                 }}
               >
-                Prof. Dr. Alysson Diniz dos Santos  (docente do Curso de Sistemas Mídias Digitais)
+                {t('about.supervisorDetails')}
               </p>
               <Email email="alysson@virtual.ufc.br" />
-
             </Item.Column>
 
             <Item.Column margin="var(--spacing-10)">
               <Item.Container marginLeft={"3px"}>
-                <Mobile.Subtitle>Bolsista Desenvolvedor</Mobile.Subtitle>
+                <Mobile.Subtitle>{t('about.developer')}</Mobile.Subtitle>
               </Item.Container>
               <p
                 style={{
@@ -184,9 +180,8 @@ const About = () => {
                   lineHeight: "1.2",
                 }}
               >
-                Victor Emanuel Tomaz das Neves{" "}
+                Victor Emanuel Tomaz das Neves
               </p>
-
               <Email email="victoremanuel.vetn@alu.ufc.br" />
 
               <p
@@ -203,13 +198,12 @@ const About = () => {
               >
                 Mateus Marques de Aquino
               </p>
-
               <Email email="mateusaquinomr@gmail.com" />
             </Item.Column>
 
             <Item.Column margin="var(--spacing-10)">
               <Item.Container marginLeft={"3px"}>
-                <Mobile.Subtitle>Bolsista Designer</Mobile.Subtitle>
+                <Mobile.Subtitle>{t('about.designer')}</Mobile.Subtitle>
               </Item.Container>
               <p
                 style={{
@@ -225,7 +219,6 @@ const About = () => {
               >
                 Angelo Vinícius Damasceno Andrade
               </p>
-
               <Email email="angelovinicius@alu.ufc.br" />
 
               <p
@@ -242,9 +235,7 @@ const About = () => {
               >
                 Giovanna Olivati Quintana
               </p>
-
               <Email email="giovannaolivati@alu.ufc.br" />
-
 
               <p
                 style={{
@@ -260,12 +251,9 @@ const About = () => {
               >
                 Mateus Marques de Aquino
               </p>
-
               <Email email="mateusaquinomr@gmail.com" />
             </Item.Column>
-
           </Item.Column>
-
 
           <Item.Column gap="var(--spacing-10)">
             <Mobile.Title
@@ -274,14 +262,13 @@ const About = () => {
                 marginTop: "var(--spacing-25)",
               }}
             >
-              Parceiros
+              {t('about.partners')}
             </Mobile.Title>
 
             <Item.Column>
               <Item.Container marginLeft={"3px"}>
-                <Mobile.Subtitle>LATAV/UECE e LEAD/UECE</Mobile.Subtitle>
+                <Mobile.Subtitle>{t('about.latavLead')}</Mobile.Subtitle>
               </Item.Container>
-
               <p
                 style={{
                   fontSize: "var(--h2-size)",
@@ -296,12 +283,11 @@ const About = () => {
               >
                 Profa. Vera Lúcia Santiago Sampaio
               </p>
-
             </Item.Column>
 
             <Item.Column>
               <Item.Container marginLeft={"3px"}>
-                <Mobile.Subtitle>Fotografia Tátil</Mobile.Subtitle>
+                <Mobile.Subtitle>{t('about.tactilePhotography')}</Mobile.Subtitle>
               </Item.Container>
               <p
                 style={{
@@ -317,12 +303,11 @@ const About = () => {
               >
                 Prof. Roberto Vieira
               </p>
-
             </Item.Column>
 
-            <Item.Column >
+            <Item.Column>
               <Item.Container marginLeft={"3px"}>
-                <Mobile.Subtitle> Rádio Universitária FM</Mobile.Subtitle>
+                <Mobile.Subtitle>{t('about.universityRadio')}</Mobile.Subtitle>
               </Item.Container>
               <p
                 style={{
@@ -340,9 +325,9 @@ const About = () => {
               </p>
             </Item.Column>
 
-            <Item.Column >
+            <Item.Column>
               <Item.Container marginLeft={"3px"}>
-                <Mobile.Subtitle> LETRARE/UFC</Mobile.Subtitle>
+                <Mobile.Subtitle>{t('about.letrare')}</Mobile.Subtitle>
               </Item.Container>
               <p
                 style={{
@@ -360,9 +345,9 @@ const About = () => {
               </p>
             </Item.Column>
 
-            <Item.Column >
+            <Item.Column>
               <Item.Container marginLeft={"3px"}>
-                <Mobile.Subtitle> Prointer/UFC</Mobile.Subtitle>
+                <Mobile.Subtitle>{t('about.prointer')}</Mobile.Subtitle>
               </Item.Container>
               <p
                 style={{
@@ -378,7 +363,6 @@ const About = () => {
               >
                 Tadeu Azevedo
               </p>
-
               <p
                 style={{
                   fontSize: "var(--h2-size)",
@@ -395,10 +379,9 @@ const About = () => {
               </p>
             </Item.Column>
 
-
-            <Item.Column >
+            <Item.Column>
               <Item.Container marginLeft={"3px"}>
-                <Mobile.Subtitle>  STI/UFC</Mobile.Subtitle>
+                <Mobile.Subtitle>{t('about.sti')}</Mobile.Subtitle>
               </Item.Container>
               <p
                 style={{
@@ -414,7 +397,6 @@ const About = () => {
               >
                 Amarildo Maia Rolim
               </p>
-
               <p
                 style={{
                   fontSize: "var(--h2-size)",
@@ -452,15 +434,13 @@ const About = () => {
                   textDecoration: "none",
                 }}
               >
-                Acesse a ficha técnica completa.
+                {t('about.fullCreditsLink')}
               </a>
             </p>
           </Item.Column>
 
           <Mobile.Subtitle>
-            Esse projeto foi realizado com o apoio da Pró-Reitoria de Cultura da
-            Universidade Federal do Ceará e do Programa de Promoção da Cultura
-            Artística.
+            {t('about.footerText')}
           </Mobile.Subtitle>
         </Item.Container>
 
@@ -471,12 +451,10 @@ const About = () => {
           marginTop="calc(var(--spacing-25) + var(--spacing-5))"
           gap="var(--spacing-25)"
         >
-          {/* <AppMaucLogo1 style={{ width: "100px", height: "75px" }} arial-label="Logo do APP Mauc" />
-          <MaucLogo style={{ width: "100px", height: "75px" }} arial-label="Logo do MAUC" />
-          <PPCABlackLogo style={{ width: "100px", height: "75px" }} arial-label="Logo PPCA" />
-          <ProcultBlackLogo style={{ width: "100px", height: "75px" }} arial-label="Logo Procult" /> */}
-          <LogosApp style={{ width: "98%", height: "auto" }} arial-label="Logos de realização, colaboração e apoio. Sendo elas PPCA, MAUC, PROCULT, SMD, LATAV/LEAD, FOTOGRAFIA TÁTIL, RÁDIO UNIVERSITÁRIA, PROINTER, PROGRAD E PRAE." />
-
+          <LogosApp
+            style={{ width: "98%", height: "auto" }}
+            aria-label={t('about.logosAriaLabel')}
+          />
         </Item.Container>
         <Item.Container
           display="flex"
@@ -485,14 +463,15 @@ const About = () => {
           marginTop="calc(var(--spacing-25) + var(--spacing-5))"
           height="30px"
           gap="var(--spacing-25)"
-        >
-        </Item.Container>
+        />
       </section>
     </>
   );
 };
 
 const Email = ({ email }: { email: string }) => {
+  const { t } = useTranslation();
+
   return (
     <Item.Row align="center" gap="var(--spacing-10)">
       <MailIcon
@@ -501,7 +480,7 @@ const Email = ({ email }: { email: string }) => {
           width: "24px",
           height: "24px",
         }}
-        aria-label="E-mail"
+        aria-label={t('about.emailIconAriaLabel')}
       />
       <p
         style={{
@@ -510,12 +489,15 @@ const Email = ({ email }: { email: string }) => {
           fontWeight: "bold",
         }}
       >
-        {email}{" "}
+        {email}
       </p>
     </Item.Row>
   );
 };
+
 const Github = ({ user }: { user: string }) => {
+  const { t } = useTranslation();
+
   return (
     <Item.Row align="center" gap="var(--spacing-10)">
       <GithubIcon
@@ -524,7 +506,7 @@ const Github = ({ user }: { user: string }) => {
           width: "24px",
           height: "24px",
         }}
-        aria-label="Usuário do GitHub"
+        aria-label={t('about.githubIconAriaLabel')}
       />
       <p
         style={{
@@ -533,7 +515,7 @@ const Github = ({ user }: { user: string }) => {
           fontWeight: "bold",
         }}
       >
-        {user}{" "}
+        {user}
       </p>
     </Item.Row>
   );

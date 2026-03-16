@@ -1,16 +1,16 @@
-// components
 import Mobile from "../../../../components/ui/Mobile";
 import Item from "../../../../components/ui/Item";
 import PaginationControls from "../../../../components/ui/Pagination/PaginationControls";
 
-// Hooks
 import { useQuery } from "@tanstack/react-query";
 import ArtistService from "../../api/ArtistService";
 import ArtistList from "../../components/Mobile/ArtistList";
 import { Artist } from "../../types/Artist";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "../../../../features/Language/useTranslation";
 
 const Artists = () => {
+  const { t } = useTranslation();
   const [page, setPage] = useState(1);
 
   const {
@@ -31,10 +31,14 @@ const Artists = () => {
     if (artists && liveRef.current) {
       const totalNaPagina = artists?.data?.length ?? 0;
       const totalPaginas = artists?.pages ?? 1;
-      liveRef.current.textContent =
-        `Página ${page} de ${totalPaginas}. ${totalNaPagina} artistas carregados.`;
+
+      liveRef.current.textContent = t('artists.liveRegionText', {
+        page,
+        totalPages: totalPaginas,
+        count: totalNaPagina
+      });
     }
-  }, [artists, page]);
+  }, [artists, page, t]);
 
   if (isLoading) {
     return <Mobile.Loading />;
@@ -54,7 +58,7 @@ const Artists = () => {
           paddingLeft: "20px",
         }}
       >
-        Todos os Artistas
+        {t('artists.pageTitle')}
       </Mobile.Title>
 
       <div

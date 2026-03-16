@@ -1,12 +1,15 @@
-// src/App.tsx
 import React, { useState, useEffect } from "react";
 import Button from "../ui/Button";
+import { useTranslation } from "../../features/Language/useTranslation";
+
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[];
   readonly userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
   prompt(): Promise<void>;
 }
+
 const Install: React.FC = () => {
+  const { t } = useTranslation();
   const [deferredPrompt, setDeferredPrompt] =
     useState<BeforeInstallPromptEvent | null>(null);
   const [showInstallButton, setShowInstallButton] = useState(false);
@@ -34,9 +37,9 @@ const Install: React.FC = () => {
       deferredPrompt.prompt();
       const { outcome } = await deferredPrompt.userChoice;
       if (outcome === "accepted") {
-        console.log("User accepted the PWA install prompt");
+        console.log(t('install.consoleAccepted'));
       } else {
-        console.log("User dismissed the PWA install prompt");
+        console.log(t('install.consoleDismissed'));
       }
       setDeferredPrompt(null);
       setShowInstallButton(false);
@@ -49,8 +52,9 @@ const Install: React.FC = () => {
         <Button
           onClick={handleInstallClick}
           style={{ marginLeft: "var(--spacing-25)", zIndex: 1000 }}
+          aria-label={t('install.buttonAriaLabel')}
         >
-          Instalar
+          {t('install.buttonText')}
         </Button>
       )}
     </>

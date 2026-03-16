@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Item from "../../../../components/ui/Item";
 import Mobile from "../../../../components/ui/Mobile";
+import { useTranslation } from "../../../../features/Language/useTranslation";
 
 interface ExpositionItemProps {
   id?: string;
@@ -20,14 +21,22 @@ const ExpositionItem = ({
   link,
   description,
 }: ExpositionItemProps) => {
+  const { t } = useTranslation();
+
   return (
     <Link
       to={link || "#"}
       style={{ textDecoration: "none", color: "inherit" }}
-      aria-label={`Ver mais detalhes sobre a exposição ${title}`}
+      aria-label={t('expositions.linkAriaLabel', { title: title || '' })}
     >
       <Item.Container marginBottom="var(--spacing-5)" >
-        <Mobile.ImageDefault src={image || ""} alt={title ? `Imagem da exposição ${title}` : "Imagem da exposição"} />
+        <Mobile.ImageDefault
+          src={image || ""}
+          alt={title
+            ? t('expositions.imageAlt', { title })
+            : t('expositions.imageAltDefault')
+          }
+        />
         <Item.Container
           padding="calc(var(--spacing-15) + var(--spacing-5)) 20px"
           display="flex"
@@ -42,20 +51,14 @@ const ExpositionItem = ({
               fontFamily: "var(--font-family-base)",
               fontWeight: "bold",
             }}
-            aria-label={`Período da exposição: ${dateStarts} até ${dateEnds}`}
+            aria-label={t('expositions.periodAriaLabel', {
+              start: dateStarts || '',
+              end: dateEnds || ''
+            })}
           >
             {dateStarts} - {dateEnds}
           </p>
           <Mobile.Description>{description}</Mobile.Description>
-          {/* Opcional: se quiser manter o botão "Ver mais" */}
-          {/* <Item.Row
-            justify="end"
-            align="center"
-            width="100%"
-            marginTop="var(--spacing-5)"
-          >
-            <Mobile.Redirect link={link}>Ver mais</Mobile.Redirect>
-          </Item.Row> */}
         </Item.Container>
       </Item.Container>
     </Link>

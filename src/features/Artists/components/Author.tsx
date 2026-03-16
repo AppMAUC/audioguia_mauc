@@ -1,5 +1,6 @@
 import Mobile from "../../../components/ui/Mobile";
 import Item from "../../../components/ui/Item";
+import { useTranslation } from "../../../features/Language/useTranslation";
 
 const Author = ({
   image,
@@ -10,6 +11,8 @@ const Author = ({
   name: string;
   id: string;
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Mobile.Author>
       <Item.Row
@@ -20,7 +23,7 @@ const Author = ({
       >
         <Mobile.CustomImage
           src={image}
-          alt="Imagem"
+          alt={t('artists.authorImageAlt')}
           width={"70px"}
           height="70px"
           borderRadius="50%"
@@ -32,7 +35,7 @@ const Author = ({
             fontStyle="base"
             fontSize="--title-like-4"
           >
-            Ver sobre o artista
+            {t('artists.seeAboutArtist')}
           </Mobile.Link>
         </Item.Column>
       </Item.Row>

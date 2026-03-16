@@ -19,6 +19,8 @@ import Biblioteca from "./pages/Information/Biblioteca.tsx";
 import Nucleos from "./pages/Information/Nucleos.tsx";
 import About from "./pages/Information/About.tsx";
 
+import { LanguageProvider } from "./features/Language/components/LanguageProvider";
+
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter(
@@ -75,14 +77,16 @@ createRoot(document.getElementById("root")!).render(
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
       <ThemeProvider>
-        <RouterProvider
-          router={router}
-          future={{
-            v7_startTransition: true,
-          }}
-        />
+        <LanguageProvider>
+          <RouterProvider
+            router={router}
+            future={{
+              v7_startTransition: true,
+            }}
+          />
+        </LanguageProvider>
       </ThemeProvider>
     </AuthProvider>
-  </QueryClientProvider>
+  </QueryClientProvider >
   // </StrictMode>
 );

@@ -73,7 +73,7 @@ const Dashboard = () => {
               <Card.Info>
                 <Card.Title>{item.name}</Card.Title>
               </Card.Info>
-              <Card.Image src={item.image.url} alt="Testando" />
+              <Card.Image src={item.image?.url} alt="Testando" />
             </Card>
           ))}
           <Card.Div>
@@ -93,7 +93,7 @@ const Dashboard = () => {
                 <Card.Title>{item.title}</Card.Title>
                 <Card.Subtitle2>{item.dateEnds.split("/")[2]}</Card.Subtitle2>
               </Card.Info>
-              <Card.Image src={item.image.url} alt="Testando" />
+              <Card.Image src={item.image?.url} alt="Testando" />
             </Card>
           ))}
           <Card.Div>
@@ -113,7 +113,7 @@ const Dashboard = () => {
                 <Card.Title>{item.title}</Card.Title>
                 <Card.Subtitle2>{item.year}</Card.Subtitle2>
               </Card.Info>
-              <Card.Image src={item.image.url} alt="Testando" />
+              <Card.Image src={item.image?.url} alt="Testando" />
             </Card>
           ))}
           <Card.Div>
@@ -134,7 +134,7 @@ const Dashboard = () => {
                   <Card.Title>{item.name}</Card.Title>
                   <Card.Subtitle2>{item.email}</Card.Subtitle2>
                 </Card.Info>
-                <Card.Image src={item.image.url} alt="Testando" />
+                <Card.Image src={item.image?.url} alt="Testando" />
               </Card>
             ))}
             <Card.Div>

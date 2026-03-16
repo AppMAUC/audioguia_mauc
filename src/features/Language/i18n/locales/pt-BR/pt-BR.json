@@ -1,0 +1,259 @@
+{
+    "home": {
+        "hero": {
+            "startButton": "Iniciar visita",
+            "ariaLabel": "Seção inicial do Audioguia Mauc, com imagem ilustrativa da obra 'Duas Épocas' usada como capa",
+            "description": "Ao clicar, você será levado para a próxima seção com informações sobre o museu."
+        },
+        "sections": {
+            "about": {
+                "title": "Aplicativo Mauc",
+                "imageAlt": "Fachada do Museu de Arte da UFC",
+                "description": "O Museu de Arte da Universidade Federal do Ceará (Mauc) possui nove ambientes para exposições de longa duração e três para temporárias."
+            },
+            "temporaryExhibitions": "Exposições Temporárias",
+            "permanentExhibitions": "Exposições de Longa Duração",
+            "seeMore": "Ver mais exposições",
+            "seeMoreAriaLabel": "Ver todas as exposições",
+            "seeMoreDescription": "Acessa a página com todas as exposições disponíveis no museu."
+        }
+    },
+    "search": {
+        "placeholder": "Pesquisar",
+        "ariaLabel": "Pesquisar no acervo do museu",
+        "label": "Campo de pesquisa"
+    },
+    "carousel": {
+        "roleDescription": "carrossel",
+        "item": {
+            "ariaLabel": "Acessar página da {{itemType}} {{title}}{{date}}",
+            "date": "Data: {{date}}"
+        }
+    },
+    "pagination": {
+        "navAriaLabel": "Controles de paginação",
+        "previous": "Anterior",
+        "previousAriaLabel": "Página anterior",
+        "next": "Próximo",
+        "nextAriaLabel": "Próxima página",
+        "pageInfo": "Página {{page}}",
+        "pageInfoWithTotal": "Página {{page}} de {{totalPages}}"
+    },
+    "artworkSelector": {
+        "title": "Selecionar Obras",
+        "selected": "({{count}} selecionada)",
+        "selected_plural": "({{count}} selecionadas)",
+        "errorMin": "Selecione ao menos duas obras",
+        "previous": "Anterior",
+        "next": "Próximo",
+        "pageInfo": "Página {{page}} de {{total}}"
+    },
+    "navbar": {
+        "homeLinkAriaLabel": "Ir para a página inicial",
+        "accessibilityButtonAriaLabel": "Menu Acessibilidade",
+        "menuButtonAriaLabel": "Abrir menu principal",
+        "menuButtonTitle": "Menu"
+    },
+    "menu": {
+        "closeButtonAriaLabel": "Fechar Menu",
+        "home": "Home",
+        "homeAriaLabel": "Página inicial",
+        "exhibitions": "Exposições",
+        "exhibitionsAriaLabel": "Exposições",
+        "artworks": "Obras",
+        "artworksAriaLabel": "Obras",
+        "artists": "Artistas",
+        "artistsAriaLabel": "Artistas",
+        "about": "Sobre",
+        "aboutApp": "Sobre o App",
+        "aboutAppAriaLabel": "Sobre o App",
+        "archive": "Arquivo",
+        "archiveAriaLabel": "Arquivo",
+        "library": "Biblioteca",
+        "libraryAriaLabel": "Biblioteca",
+        "nucleus": "Núcleos",
+        "nucleusAriaLabel": "Núcleos",
+        "scheduleVisit": "Agende a sua visita",
+        "scheduleVisitAriaLabel": "Agendar visita",
+        "learnMore": "Saiba mais",
+        "learnMoreAriaLabel": "Saiba mais sobre o MAUC",
+        "submenu": {
+            "openAriaLabel": "Abrir submenu",
+            "closeAriaLabel": "Fechar submenu"
+        }
+    },
+    "footer": {
+        "contactButton": "Fale Conosco",
+        "contactButtonAriaLabel": "Entrar em contato"
+    },
+    "install": {
+        "buttonText": "Instalar",
+        "buttonAriaLabel": "Instalar aplicativo",
+        "consoleAccepted": "Usuário aceitou a instalação do PWA",
+        "consoleDismissed": "Usuário dispensou a instalação do PWA"
+    },
+    "accessibility": {
+        "closeButtonAriaLabel": "Fechar Menu de Acessibilidade",
+        "darkContrast": "Contraste escuro",
+        "lightContrast": "Contraste claro",
+        "size": "Tamanho",
+        "spacing": "Espaçamento",
+        "resetButtonAriaLabel": "Restaurar configurações",
+        "menuAriaLabel": "Menu Acessibilidade",
+        "menuTitle": "Menu Acessibilidade",
+        "resetDescription": "Redefinir todas as configurações de acessibilidade.",
+        "stateAriaLabel": "Tamanho {{value}}"
+    },
+    "mobile": {
+        "loading": "Carregando conteúdo",
+        "closeImageTitle": "Fechar imagem",
+        "readMore": "Ler mais",
+        "readLess": "Ler menos",
+        "audio": {
+            "playAriaLabel": "Reproduzir áudio {{prefix}}",
+            "pauseAriaLabel": "Pausar áudio {{prefix}}",
+            "sliderAriaLabel": "Barra de progresso do áudio {{prefix}}"
+        },
+        "share": {
+            "buttonTitle": "Compartilhar",
+            "copySuccess": "Link copiado com sucesso!",
+            "copyError": "Falha ao copiar o link"
+        },
+        "error": {
+            "title": "Ops, a galeria está vazia.",
+            "defaultMessage": "Tivemos um probleminha técnico, tente novamente ou volte mais tarde...",
+            "backButton": "Voltar"
+        },
+        "error404": {
+            "title": "Ops, você se perdeu na exposição.",
+            "defaultMessage": "Não conseguimos encontrar a página que você está procurando...",
+            "backButton": "Voltar"
+        }
+    },
+    "artists": {
+        "imageAlt": "Foto do artista {{name}}",
+        "imageAltDefault": "Foto do artista",
+        "seeMore": "Ver mais",
+        "listAriaLabel": "Lista de Artistas",
+        "authorImageAlt": "Imagem",
+        "seeAboutArtist": "Ver sobre o artista",
+        "expandButtonTitleOpen": "Fechar imagem",
+        "expandButtonTitleClose": "Expandir imagem",
+        "biographyPt": "Biografia (PT)",
+        "biographyEn": "Biography (EN)",
+        "audioNotAvailablePt": "Áudio em português ainda não disponível",
+        "audioNotAvailableEn": "English audio not available yet",
+        "artworksBy": "Obras de {{name}}",
+        "audioAriaLabelPrefixPt": "da biografia de {{name}}",
+        "audioAriaLabelPrefixEn": "da biografia de {{name}} em inglês",
+        "pageTitle": "Todos os Artistas",
+        "liveRegionText": "Página {{page}} de {{totalPages}}. {{count}} itens"
+    },
+    "artworks": {
+        "imageAlt": "Obra de arte",
+        "seeMore": "Ver mais",
+        "listAriaLabel": "Lista de obras",
+        "imageAltWithTitle": "Imagem da obra {{title}}",
+        "imageAltDefault": "Imagem da obra",
+        "expandButtonTitleOpen": "Fechar imagem",
+        "expandButtonTitleClose": "Expandir imagem",
+        "author": "Autor",
+        "audioDescription": "Audiodescrição",
+        "audioDescriptionAriaLabel": "da audiodescrição",
+        "aboutPt": "Sobre a obra (PT)",
+        "aboutPtAriaLabel": "Sobre a Obra em Português",
+        "aboutEn": "About the artwork (EN)",
+        "aboutEnAriaLabel": "Sobre a obra em inglês",
+        "audioNotAvailable": "Áudio ainda não disponível",
+        "otherArtworks": "Outras Obras",
+        "pageTitle": "Todas as Obras",
+        "liveRegionText": "Página {{page}} de {{totalPages}}. {{count}} itens"
+    },
+    "expositions": {
+        "linkAriaLabel": "Ver mais detalhes sobre a exposição {{title}}",
+        "imageAlt": "Imagem da exposição {{title}}",
+        "imageAltDefault": "Imagem da exposição",
+        "periodAriaLabel": "Período da exposição: {{start}} até {{end}}",
+        "seeMore": "Ver mais",
+        "expandButtonTitleOpen": "Fechar imagem",
+        "expandButtonTitleClose": "Expandir imagem",
+        "artworksRegionAriaLabel": "Obras da exposição",
+        "pageTitle": "Todas as Exposições",
+        "liveRegionText": "Página {{page}} de {{totalPages}}. {{count}} itens"
+    },
+    "languageSelector": {
+        "buttonAriaLabel": "Selecionar idioma. Idioma atual: {{language}}",
+        "optionAriaLabel": "Selecionar {{language}}"
+    },
+    "languageDisplay": {
+        "title": "Idioma do Dispositivo",
+        "preferred": "Idioma preferido:",
+        "list": "Lista de idiomas preferidos:"
+    },
+    "about": {
+        "pageTitle": "Sobre o App",
+        "appLogoAriaLabel": "Logotipo do APP Mauc",
+        "emailAriaLabel": "E-mail do MAUC",
+        "githubAriaLabel": "Nome de usuário do GitHub",
+        "description": "Este aplicativo foi desenvolvido para fornecer uma experiência de áudio guiada no Museu de Arte da UFC. Com ele, você pode explorar as exposições e obter informações detalhadas sobre as obras de arte diretamente no seu dispositivo móvel. O aplicativo é fácil de usar e oferece uma interface intuitiva, permitindo que você navegue pelas diferentes seções do aplicativo com facilidade. Além disso, você pode acessar conteúdos exclusivos e atualizações sobre eventos e exposições futuras. Aproveite sua visita ao museu com o nosso aplicativo!",
+        "realization": "Realização",
+        "coordinator": "Coordenadora",
+        "supervision": "Orientação",
+        "supervisorDetails": "Prof. Dr. Alysson Diniz dos Santos (docente do Curso de Sistemas Mídias Digitais)",
+        "developer": "Bolsista Desenvolvedor",
+        "designer": "Bolsista Designer",
+        "partners": "Parceiros",
+        "latavLead": "LATAV/UECE e LEAD/UECE",
+        "tactilePhotography": "Fotografia Tátil",
+        "universityRadio": "Rádio Universitária FM",
+        "letrare": "LETRARE/UFC",
+        "prointer": "Prointer/UFC",
+        "sti": "STI/UFC",
+        "fullCreditsLink": "Acesse a ficha técnica completa.",
+        "footerText": "Esse projeto foi realizado com o apoio da Pró-Reitoria de Cultura da Universidade Federal do Ceará e do Programa de Promoção da Cultura Artística.",
+        "logosAriaLabel": "Logos de realização, colaboração e apoio. Sendo elas PPCA, MAUC, PROCULT, SMD, LATAV/LEAD, FOTOGRAFIA TÁTIL, RÁDIO UNIVERSITÁRIA, PROINTER, PROGRAD E PRAE.",
+        "emailIconAriaLabel": "E-mail"
+    },
+    "arquivo": {
+        "pageTitle": "Arquivo",
+        "imageAlt": "imagem do depósito de arquivos institucionais",
+        "institutionalArchive": "Arquivo Institucional",
+        "phoneAriaLabel": "Número de telefone do Arquivo Institucional",
+        "emailAriaLabel": "Email do Arquivo Institucional",
+        "institutionalDescription": "Criado a partir da guarda de documentos referente às atividades do Museu desde sua fundação em 1961, o Arquivo Institucional do Mauc é constituído de relatórios anuais, correspondências, fotos, livros de assinaturas de visitantes, catálogos de exposições e documentações dos artistas que integram o circuito expositivo do museu. Esse acervo salvaguarda registros de passagens expressivas e históricas para a UFC e para a memória artística do Ceará.",
+        "historicalArchive": "Arquivo Histórico – Jean-Pierre Chabloz",
+        "historicalDescription": "Abrange um conjunto de documentos pessoais referentes às atividades artísticas do suíço Jean-Pierre Chabloz realizadas na Europa na década de 30 e no Brasil, de forma descontínua, entre as décadas de 40 e 80. Destacam-se os documentos sobre as atividades realizadas em Fortaleza durante a década de 40, em especial as documentações produzidas, em 1943, para o Serviço de Mobilização de Trabalhadores para a Amazônia – SEMTA. Este último conjunto recebeu, em 2016, o Selo da Unesco em seu Programa Memória do Mundo devido à sua importância e relevância temática."
+    },
+    "biblioteca": {
+        "pageTitle": "Biblioteca",
+        "imageAlt": "Imagem da biblioteca por dentro",
+        "phoneAriaLabel": "Número de telefone da Biblioteca",
+        "emailAriaLabel": "Email da Biblioteca",
+        "description": "A Biblioteca Floriano Teixeira mantém um acervo especializado em artes, constituído de livros, catálogos, periódicos, folhetos, entre outros tipos de documentos. Dentre as coleções especiais, contamos com a coleção Jean-Pierre Chabloz, formada por livros e revistas da biblioteca particular do artista. Além da coleção de obras raras, composta por diapositivos, fitas de vídeo, revistas, folhetos e livros raros.",
+        "services": "Serviços Oferecidos:",
+        "service1": "Consulta local e on-line do acervo",
+        "service2": "Orientação na pesquisa bibliográfica",
+        "service3": "Levantamento bibliográfico"
+    },
+    "nucleos": {
+        "pageTitle": "Núcleos",
+        "communicationLogoAlt": "Logo Núcleo de Comunicação do MAUC",
+        "communicationTitle": "Núcleo de Comunicação",
+        "communicationEmailAriaLabel": "E-mail do Núcleo de Comunicação",
+        "communicationDescription": "Responsável por planejar e executar as ações de comunicação digital do Mauc como o site, redes sociais, Flickr e outros projetos. O NC é responsável por colaborar no diálogo do Mauc com seu público, sejam visitantes ou parceiros de realização (artistas, curadoras/es, pesquisadoras/es, autoridades externas ou da instituição).",
+        "educationalImageAlt": "Imagem do MAUC por dentro",
+        "educationalTitle": "Núcleo Educativo",
+        "educationalEmailAriaLabel": "E-mail do Núcleo Educativo",
+        "educationalDescription": "O Núcleo Educativo do Museu de Arte da UFC (Nemauc) é responsável pelo planejamento, gestão e execução da Política Educativa e Cultural da instituição, através de programas e projetos que objetivam o diálogo, a participação e o exercício da cidadania por meio da arte e do patrimônio."
+    },
+    "notFound": {
+        "title": "Ops, você se perdeu na exposição.",
+        "message": "Não conseguimos encontrar a página que você está procurando...",
+        "backButton": "Voltar"
+    },
+    "searchPage": {
+        "noResults": "Nenhum resultado encontrado...",
+        "artistsTitle": "Artistas",
+        "artworksTitle": "Obras"
+    }
+}

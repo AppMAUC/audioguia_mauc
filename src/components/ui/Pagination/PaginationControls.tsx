@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "../../../features/Language/useTranslation"; // Import do hook
 
 interface Props {
     page: number;
@@ -9,12 +10,17 @@ interface Props {
 }
 
 const PaginationControls = ({ page, setPage, hasNext, hasPrev, totalPages }: Props) => {
+    const { t } = useTranslation(); // Hook de tradução
+
     return (
-        <nav aria-label="Controles de paginação" style={{ marginTop: "2rem", textAlign: "center" }}>
+        <nav
+            aria-label={t('pagination.navAriaLabel')}
+            style={{ marginTop: "2rem", textAlign: "center" }}
+        >
             <button
                 onClick={() => setPage(prev => Math.max(prev - 1, 1))}
                 disabled={!hasPrev}
-                aria-label="Página anterior"
+                aria-label={t('pagination.previousAriaLabel')}
                 style={{
                     marginRight: "1rem",
                     fontSize: "var(--p-size)",
@@ -23,22 +29,28 @@ const PaginationControls = ({ page, setPage, hasNext, hasPrev, totalPages }: Pro
                         : "var(--color-state)",
                 }}
             >
-                Anterior
+                {t('pagination.previous')}
             </button>
 
-            <span aria-live="polite" style={{
-                fontFamily: "var(--font-family-base)",
-                color: "var(--color-text)",
-                fontSize: "var(--p-size)",
-                fontWeight: 600,
-            }}>
-                Página {page} {totalPages && `de ${totalPages}`}
+            <span
+                aria-live="polite"
+                style={{
+                    fontFamily: "var(--font-family-base)",
+                    color: "var(--color-text)",
+                    fontSize: "var(--p-size)",
+                    fontWeight: 600,
+                }}
+            >
+                {totalPages
+                    ? t('pagination.pageInfoWithTotal', { page, totalPages })
+                    : t('pagination.pageInfo', { page })
+                }
             </span>
 
             <button
                 onClick={() => setPage(prev => (hasNext ? prev + 1 : prev))}
                 disabled={!hasNext}
-                aria-label="Próxima página"
+                aria-label={t('pagination.nextAriaLabel')}
                 style={{
                     marginLeft: "1rem",
                     fontSize: "var(--p-size)",
@@ -47,7 +59,7 @@ const PaginationControls = ({ page, setPage, hasNext, hasPrev, totalPages }: Pro
                         : "var(--color-state)"
                 }}
             >
-                Próximo
+                {t('pagination.next')}
             </button>
         </nav>
     );

@@ -2,14 +2,22 @@ import Mobile from "../../components/ui/Mobile";
 import Item from "../../components/ui/Item";
 import { CallIcon, MailIcon } from "../../assets";
 import { Arquivo as Image } from "../../assets";
+import { useTranslation } from "../../features/Language/useTranslation";
 
 const Arquivo = () => {
+  const { t } = useTranslation();
+
   return (
     <section>
       <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "clamp(8.75rem, calc(5 * var(--spacing-25) + var(--spacing-15)), 9.375rem)", paddingBottom: "var(--spacing-10)" }}>
-        Arquivo
+        {t('arquivo.pageTitle')}
       </Mobile.Title>
-      <Mobile.ImageDefault src={Image} alt="imagem do depósito de arquivos institucionais " />
+
+      <Mobile.ImageDefault
+        src={Image}
+        alt={t('arquivo.imageAlt')}
+      />
+
       <Mobile.Title
         style={{
           paddingLeft: "20px",
@@ -17,7 +25,7 @@ const Arquivo = () => {
           color: "var(--color-text)",
         }}
       >
-        Arquivo Institucional
+        {t('arquivo.institutionalArchive')}
       </Mobile.Title>
 
       <Item.Row
@@ -33,7 +41,7 @@ const Arquivo = () => {
             paddingLeft: "20px",
             paddingRight: "10px",
           }}
-          aria-label="Número de telefone do Arquivo Institucional"
+          aria-label={t('arquivo.phoneAriaLabel')}
         />
         <p
           style={{
@@ -58,7 +66,7 @@ const Arquivo = () => {
             height: "auto",
             paddingLeft: "20px",
           }}
-          aria-label="Email do Arquivo Institucional: "
+          aria-label={t('arquivo.emailAriaLabel')}
         />
         <p
           style={{
@@ -67,7 +75,7 @@ const Arquivo = () => {
             fontWeight: "bold",
           }}
         >
-          arquivomauc@ufc.br{" "}
+          arquivomauc@ufc.br
         </p>
       </Item.Row>
 
@@ -81,13 +89,7 @@ const Arquivo = () => {
             lineHeight: "1.2",
           }}
         >
-          Criado a partir da guarda de documentos referente às atividades do
-          Museu desde sua fundação em 1961, o Arquivo Institucional do Mauc é
-          constituído de relatórios anuais, correspondências, fotos, livros de
-          assinaturas de visitantes, catálogos de exposições e documentações dos
-          artistas que integram o circuito expositivo do museu. Esse acervo
-          salvaguarda registros de passagens expressivas e históricas para a UFC
-          e para a memória artística do Ceará.
+          {t('arquivo.institutionalDescription')}
         </p>
       </Item.Container>
 
@@ -98,7 +100,7 @@ const Arquivo = () => {
           color: "var(--color-text)",
         }}
       >
-        Arquivo Histórico – Jean-Pierre Chabloz{" "}
+        {t('arquivo.historicalArchive')}
       </Mobile.Title>
 
       <Item.Container padding="0 20px">
@@ -111,15 +113,7 @@ const Arquivo = () => {
             lineHeight: "1.2",
           }}
         >
-          Abrange um conjunto de documentos pessoais referentes às atividades
-          artísticas do suíço Jean-Pierre Chabloz realizadas na Europa na década
-          de 30 e no Brasil, de forma descontínua, entre as décadas de 40 e 80.
-          Destacam-se os documentos sobre as atividades realizadas em Fortaleza
-          durante a década de 40, em especial as documentações produzidas, em
-          1943, para o Serviço de Mobilização de Trabalhadores para a Amazônia –
-          SEMTA. Este último conjunto recebeu, em 2016, o Selo da Unesco em seu
-          Programa Memória do Mundo devido à sua importância e relevância
-          temática.
+          {t('arquivo.historicalDescription')}
         </p>
       </Item.Container>
     </section>
