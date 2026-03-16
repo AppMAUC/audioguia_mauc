@@ -1,18 +1,20 @@
 import { ArtWork } from "../../types/ArtWork";
 import ArtWorkItem from "./ArtWorkItem";
+import { useTranslation } from "../../../../features/Language/useTranslation";
 
 interface ArtWorkListProps {
   artWork: ArtWork[];
 }
 
 const ArtWorkList = ({ artWork }: ArtWorkListProps) => {
+  const { t } = useTranslation();
+
   return (
     <ul
       role="list"
-      aria-label="Lista de obras"
+      aria-label={t('artworks.listAriaLabel')}
       style={{ listStyle: "none", padding: 0, margin: 0 }}
     >
-
       {artWork.map((item: ArtWork) => (
         <li key={item._id} role="listitem">
           <ArtWorkItem

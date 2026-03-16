@@ -10,8 +10,10 @@ import { Artist } from "../../features/Artists/types/Artist";
 import Author from "../../features/Artists/components/Author";
 import { useEffect, useState } from "react";
 import { Error404Image } from "../../assets";
+import { useTranslation } from "../../features/Language/useTranslation";
 
 const Search = () => {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const search = searchParams.get("q");
   const [artWorks, setartWorks] = useState<ArtWork[] | null>(null);
@@ -55,17 +57,17 @@ const Search = () => {
             marginTop: "140px",
           }}
         >
-          Nenhum Resultado econtrado...
+          {t('searchPage.noResults')}
         </h1>
       </Item.Container>
     );
 
   return (
     <>
-      <Item.Container padding="20px" marginTop= "140px">
+      <Item.Container padding="20px" marginTop="140px">
         {artists && artists?.length > 0 && (
           <Mobile.Title style={{ color: "var(--color-text)" }}>
-            Artistas
+            {t('searchPage.artistsTitle')}
           </Mobile.Title>
         )}
         {artists &&
@@ -86,7 +88,7 @@ const Search = () => {
             <Mobile.Title
               style={{ color: "var(--color-text)", paddingLeft: "20px" }}
             >
-              Obras
+              {t('searchPage.artworksTitle')}
             </Mobile.Title>
             <ArtWorkList artWork={artWorks as ArtWork[]} />
           </>

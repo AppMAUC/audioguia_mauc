@@ -11,6 +11,7 @@ import styles from "./Menu.module.css";
 import { NavLink } from "react-router-dom";
 import Container from "./Menu.tsx";
 import Button from "../../ui/Button/index.tsx";
+import { useTranslation } from "../../../features/Language/useTranslation";
 
 interface MenuProps {
   isOpen: boolean;
@@ -20,6 +21,7 @@ interface MenuProps {
 }
 
 const Menu = ({ isOpen, setModalOpen, tabIndex, id }: MenuProps) => {
+  const { t } = useTranslation();
 
   return (
     <>
@@ -31,52 +33,95 @@ const Menu = ({ isOpen, setModalOpen, tabIndex, id }: MenuProps) => {
       ></div>
 
       <div
-        className={isOpen ? `${styles.body}` : `${styles.body} ${styles.hide}`}
+        className={`${styles.body} ${isOpen ? styles.open : styles.hide}`}
         tabIndex={tabIndex}
         id={id}
         role="menu"
-
       >
         <Container.Nav>
           <button
-            aria-label="Fechar Menu"
+            aria-label={t('menu.closeButtonAriaLabel')}
             className={styles.close}
             onClick={setModalOpen}
           >
-            {/* <Container.Icon src={CloseIcon} alt={"Ícone de fechar"} /> */}
-            <CloseIcon className="svg2" />
+            <CloseIcon className="svg2" style={{ fill: "var(--color-primary)" }} />
           </button>
         </Container.Nav>
 
         <Container.Items>
-
-          <Container.Item link={"/"} onClick={setModalOpen} aria-label="Página inicial">
+          <Container.Item
+            link={"/"}
+            onClick={setModalOpen}
+            aria-label={t('menu.homeAriaLabel')}
+          >
             <HomeIcon className="svg1" />
-            <Container.Text>Home</Container.Text>
+            <Container.Text>{t('menu.home')}</Container.Text>
           </Container.Item>
-          <Container.Item link={"/expositions"} onClick={setModalOpen} aria-label="Exposições">
+
+          <Container.Item
+            link={"/expositions"}
+            onClick={setModalOpen}
+            aria-label={t('menu.exhibitionsAriaLabel')}
+          >
             <DrawIcon className="svg1" />
-            <Container.Text>Exposições</Container.Text>
+            <Container.Text>{t('menu.exhibitions')}</Container.Text>
           </Container.Item>
-          <Container.Item link={"/artworks"} onClick={setModalOpen} aria-label="Obras">
+
+          <Container.Item
+            link={"/artworks"}
+            onClick={setModalOpen}
+            aria-label={t('menu.artworksAriaLabel')}
+          >
             <PalleteIcon className="svg1" />
-            <Container.Text>Obras</Container.Text>
+            <Container.Text>{t('menu.artworks')}</Container.Text>
           </Container.Item>
-          <Container.Item link={"/artists"} onClick={setModalOpen} aria-label="Artistas">
+
+          <Container.Item
+            link={"/artists"}
+            onClick={setModalOpen}
+            aria-label={t('menu.artistsAriaLabel')}
+          >
             <BrushIcon className="svg1" />
-            <Container.Text>Artistas</Container.Text>
+            <Container.Text>{t('menu.artists')}</Container.Text>
           </Container.Item>
 
           <Container.Suspense>
             <div className={styles.item}>
               <DescriptionIcon className="svg1" />
-              <Container.Text>Sobre</Container.Text>
+              <Container.Text>{t('menu.about')}</Container.Text>
             </div>
             <>
-              <NavLink to="/about" onClick={setModalOpen} aria-label="Sobre o App">Sobre o App</NavLink>
-              <NavLink to="/arquivo" onClick={setModalOpen} aria-label="Arquivo">Arquivo</NavLink>
-              <NavLink to="/biblioteca" onClick={setModalOpen} aria-label="Biblioteca">Biblioteca</NavLink>
-              <NavLink to="/nucleos" onClick={setModalOpen} aria-label="Núcleos">Núcleos</NavLink>
+              <NavLink
+                to="/about"
+                onClick={setModalOpen}
+                aria-label={t('menu.aboutAppAriaLabel')}
+              >
+                {t('menu.aboutApp')}
+              </NavLink>
+
+              <NavLink
+                to="/arquivo"
+                onClick={setModalOpen}
+                aria-label={t('menu.archiveAriaLabel')}
+              >
+                {t('menu.archive')}
+              </NavLink>
+
+              <NavLink
+                to="/biblioteca"
+                onClick={setModalOpen}
+                aria-label={t('menu.libraryAriaLabel')}
+              >
+                {t('menu.library')}
+              </NavLink>
+
+              <NavLink
+                to="/nucleos"
+                onClick={setModalOpen}
+                aria-label={t('menu.nucleusAriaLabel')}
+              >
+                {t('menu.nucleus')}
+              </NavLink>
             </>
           </Container.Suspense>
 
@@ -84,12 +129,20 @@ const Menu = ({ isOpen, setModalOpen, tabIndex, id }: MenuProps) => {
 
         <div className={styles.buttons}>
           <Button>
-            <NavLink to="https://forms.office.com/r/8DaNFyn2Ev" aria-label="Agendar visita">
-              Agende a sua visita
+            <NavLink
+              to="https://forms.office.com/r/8DaNFyn2Ev"
+              aria-label={t('menu.scheduleVisitAriaLabel')}
+            >
+              {t('menu.scheduleVisit')}
             </NavLink>
           </Button>
           <Button>
-            <NavLink to="https://mauc.ufc.br/pt/sobre-o-mauc/" aria-label="Saiba mais sobre o MAUC">Saiba mais</NavLink>
+            <NavLink
+              to="https://mauc.ufc.br/pt/sobre-o-mauc/"
+              aria-label={t('menu.learnMoreAriaLabel')}
+            >
+              {t('menu.learnMore')}
+            </NavLink>
           </Button>
         </div>
       </div>

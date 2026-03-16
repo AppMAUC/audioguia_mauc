@@ -1,6 +1,7 @@
 import Item from "../../../../components/ui/Item";
 import Mobile from "../../../../components/ui/Mobile";
 import { Link } from "react-router-dom";
+import { useTranslation } from "../../../../features/Language/useTranslation";
 
 interface ArtWorkItemProps {
   id?: string;
@@ -20,9 +21,10 @@ const ArtWorkItem = ({
   link,
   description,
 }: ArtWorkItemProps) => {
+  const { t } = useTranslation();
 
   const href = link || "#";
-  const imgAlt = title ? title : "Obra de arte";
+  const imgAlt = title ? title : t('artworks.imageAlt');
 
   return (
     <Link
@@ -38,7 +40,7 @@ const ArtWorkItem = ({
               marginTop: "var(--spacing-5)",
               color: "var(--color-state)",
               fontFamily: "var(--font-family-base)",
-              fontWeight: "600", // ou "bold" se preferir
+              fontWeight: "600",
             }}
           >
             {date}
@@ -52,7 +54,9 @@ const ArtWorkItem = ({
             width="100%"
             marginTop="var(--spacing-5)"
           >
-            <span aria-hidden="true" style={{ textDecoration: "underline", fontSize: "var(--p-size", fontFamily: "var(--font-family-base)" }}>Ver mais</span>
+            <span aria-hidden="true" style={{ textDecoration: "underline", fontSize: "var(--p-size", fontFamily: "var(--font-family-base)" }}>
+              {t('artworks.seeMore')}
+            </span>
           </Item.Row>
         </Item.Column>
       </Item.Container>

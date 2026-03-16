@@ -165,12 +165,13 @@
   font-weight: regular;
 }
 
-.body {
+.body.open {
   animation: slideIn 0.5s forwards;
 }
 
 .body.hide {
   animation: slideOut 0.5s forwards;
+  display: none;
 }
 
 .suspense_items {

@@ -9,8 +9,10 @@ import ExpositionService from "../../api/ExpositionService";
 import ExpositionList from "../../components/Mobile/ExpositionList";
 import { Exposition } from "../../types/Exposition";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "../../../../features/Language/useTranslation";
 
 const Expositions = () => {
+  const { t } = useTranslation();
   const [page, setPage] = useState(1);
 
   const {
@@ -31,13 +33,15 @@ const Expositions = () => {
     if (expositions && liveRef.current) {
       const totalNaPagina = expositions?.data?.length ?? 0;
       const totalPaginas = expositions?.pages ?? 1;
-      liveRef.current.textContent =
-        `Página ${page} de ${totalPaginas}. ${totalNaPagina} exposições carregadas.`;
+      liveRef.current.textContent = t('expositions.liveRegionText', {
+        page,
+        totalPages: totalPaginas,
+        count: totalNaPagina
+      });
     }
-  }, [expositions, page]);
+  }, [expositions, page, t]);
 
   if (isLoading) return <Mobile.Loading />;
-
   if (isError) return <Mobile.Error />;
 
   return (
@@ -50,10 +54,9 @@ const Expositions = () => {
           paddingLeft: "20px",
         }}
       >
-        Todas as Exposições
+        {t('expositions.pageTitle')}
       </Mobile.Title>
 
-      {/* Live region invisível para anunciar mudanças de página/quantidade */}
       <div
         ref={liveRef}
         aria-live="polite"
@@ -75,7 +78,6 @@ const Expositions = () => {
           totalPages={expositions?.pages}
         />
       )}
-
     </section>
   );
 };

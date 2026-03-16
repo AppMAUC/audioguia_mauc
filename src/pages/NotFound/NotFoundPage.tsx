@@ -5,10 +5,13 @@ import styles from "../../components/ui/Mobile/Mobile.module.css";
 import { Error404Image } from "../../assets";
 import Mobile from "../../components/ui/Mobile";
 import Navbar from "../../components/navigation/Navbar";
+import { useTranslation } from "../../features/Language/useTranslation";
 
 const NotFoundPage = () => {
+  const { t } = useTranslation();
   const { auth } = useAuth();
   const navigate = useNavigate();
+
   return (
     <>
       <Navbar />
@@ -17,7 +20,7 @@ const NotFoundPage = () => {
         <Mobile.Title
           style={{ fontSize: "var(--h1-size)", color: "var(--color-text)" }}
         >
-          Ops, você se perdeu na exposição.{" "}
+          {t('notFound.title')}
         </Mobile.Title>
         <p
           style={{
@@ -30,11 +33,11 @@ const NotFoundPage = () => {
             marginBottom: "var(--spacing-5)",
           }}
         >
-          Não conseguimos encontrar a página que você está procurando...
+          {t('notFound.message')}
         </p>
 
         <Button onClick={() => navigate(auth ? "/admin/dashboard" : "/")}>
-          Voltar
+          {t('notFound.backButton')}
         </Button>
       </div>
     </>

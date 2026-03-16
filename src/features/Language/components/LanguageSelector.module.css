@@ -1,0 +1,129 @@
+.container {
+    position: relative;
+    width: 100%;
+    margin-bottom: var(--spacing-15, 1rem);
+}
+
+.selectorButton {
+    width: 100%;
+    height: 50px;
+    padding: 0 var(--spacing-20, 20px);
+    background-color: color-mix(in srgb, var(--color-input) 80%, transparent);
+    color: var(--color-primary);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-10, 8px);
+    font-family: var(--font-family-base);
+    font-size: var(--title-like-3);
+    line-height: 1;
+    box-sizing: border-box;
+}
+
+.selectorButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.selectorButton:active {
+    transform: translateY(0);
+}
+
+.flag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.flag svg {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.languageName {
+    flex: 0 0 80px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: var(--color-primary) !important;
+    opacity: 0.7;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.arrow svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-primary) !important;
+}
+
+.arrowUp {
+    transform: rotate(90deg);
+}
+
+.arrow:not(.arrowUp) {
+    transform: rotate(270deg);
+}
+
+.dropdown {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-input);
+    border: none;
+    border-radius: 15px;
+    margin-bottom: var(--spacing-10, 10px);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    overflow: hidden;
+    padding: 0;
+}
+
+.dropdownItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-10, 8px);
+    padding: var(--spacing-10) var(--spacing-20);
+    height: 50px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-family-base);
+    font-size: var(--p-size, 1rem);
+    color: var(--color-text);
+    transition: background-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.dropdownItem:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dropdownItem.selected .languageName {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold, 600);
+}
+
+.dropdownItem .languageName {
+    flex: 0 0 80px;
+    text-align: left;
+}

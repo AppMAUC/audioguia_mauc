@@ -9,9 +9,12 @@ import { Exposition as ExpositionByID } from "../../types/Exposition";
 import { useParams } from "react-router-dom";
 import ArtWorkList from "../../../ArtWorks/components/Mobile/ArtWorkList";
 import { ArtWork } from "../../../ArtWorks/types/ArtWork";
+import { useTranslation } from "../../../../features/Language/useTranslation";
 
 const Exposition = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
+
   const {
     data: expositionData,
     isLoading,
@@ -29,8 +32,11 @@ const Exposition = () => {
   }, []);
 
   if (isLoading) return <Mobile.Loading />;
-
   if (isError) return <Mobile.Error404 />;
+
+  const formatDate = (dateString: string) => {
+    return dateString.split("T")[0].replace(/-/g, "/");
+  };
 
   return (
     <section className={styles.section}>
@@ -43,14 +49,23 @@ const Exposition = () => {
         <Mobile.Image
           isOpen={openImage}
           src={expositionData?.image.url || ""}
-          alt={expositionData?.title ? `Imagem da exposição ${expositionData.title}` : "Imagem da exposição"}
+          alt={expositionData?.title
+            ? t('expositions.imageAlt', { title: expositionData.title })
+            : t('expositions.imageAltDefault')
+          }
           onClose={() => setOpenImage(false)}
         />
 
-        <button title={openImage ? "Fechar imagem" : "Expandir imagem"} className={styles.image_button} onClick={() => setOpenImage((prev) => !prev)} aria-hidden="true">
-          <ExpandIcon
-            className={styles.expand}
-          />
+        <button
+          title={openImage
+            ? t('expositions.expandButtonTitleOpen')
+            : t('expositions.expandButtonTitleClose')
+          }
+          className={styles.image_button}
+          onClick={() => setOpenImage((prev) => !prev)}
+          aria-hidden="true"
+        >
+          <ExpandIcon className={styles.expand} />
         </button>
       </div>
 
@@ -59,6 +74,7 @@ const Exposition = () => {
           <Mobile.Title>{expositionData?.title}</Mobile.Title>
           <Mobile.Share />
         </Item.Row>
+
         <p
           style={{
             marginTop: "var(--spacing-5)",
@@ -66,10 +82,16 @@ const Exposition = () => {
             fontFamily: "var(--font-family-base)",
             fontWeight: "bold",
           }}
-          aria-label={`Período da exposição: de ${expositionData?.dateStarts.split("T")[0].replace(/-/g, "/")} até ${expositionData?.dateEnds.split("T")[0].replace(/-/g, "/")}`}
+          aria-label={t('expositions.periodAriaLabel', {
+            start: expositionData ? formatDate(expositionData.dateStarts) : '',
+            end: expositionData ? formatDate(expositionData.dateEnds) : ''
+          })}
         >
-          {expositionData?.dateStarts.split("T")[0].replace(/-/g, "/")} -{" "}
-          {expositionData?.dateEnds.split("T")[0].replace(/-/g, "/")}
+          {expositionData && (
+            <>
+              {formatDate(expositionData.dateStarts)} - {formatDate(expositionData.dateEnds)}
+            </>
+          )}
         </p>
 
         <Item.Container
@@ -77,21 +99,24 @@ const Exposition = () => {
           flexDirection="column"
           gap="var(--spacing-10)"
           marginBottom="var(--spacing-25)"
-        ></Item.Container>
+        />
 
         <Mobile.DescriptionWithLimit>
           {expositionData?.description}
         </Mobile.DescriptionWithLimit>
       </Mobile.Container>
 
-      <Item.Row width="100%" height="100px"></Item.Row>
+      <Item.Row width="100%" height="100px" />
 
-      <div style={{ position: "absolute", top: "90%" }} role="region" aria-label="Obras da exposição">
+      <div
+        style={{ position: "absolute", top: "90%" }}
+        role="region"
+        aria-label={t('expositions.artworksRegionAriaLabel')}
+      >
         {expositionData && expositionData?.artWorks?.length > 0 && (
           <ArtWorkList artWork={expositionData?.artWorks as ArtWork[]} />
         )}
       </div>
-
     </section>
   );
 };

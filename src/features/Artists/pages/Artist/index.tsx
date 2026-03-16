@@ -9,9 +9,12 @@ import ArtistService from "../../api/ArtistService";
 import { Artist as ArtistByID } from "../../types/Artist";
 import { useParams } from "react-router-dom";
 import { ArtWork } from "../../../ArtWorks/types/ArtWork";
+import { useTranslation } from "../../../../features/Language/useTranslation";
 
 const Artist = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
+
   const {
     data: artistData,
     isError,
@@ -47,15 +50,18 @@ const Artist = () => {
           isOpen={openImage}
           src={artistData?.image.url || ""}
           alt={artistData?.name
-            ? `Foto do artista ${artistData.name}`
-            : "Foto do artista"
+            ? t('artists.imageAlt', { name: artistData.name })
+            : t('artists.imageAltDefault')
           }
           onClose={() => setOpenImage(false)}
         />
-        <button title={openImage ? "Fechar imagem" : "Expandir imagem"} className={styles.image_button} onClick={() => setOpenImage((prev) => !prev)} aria-hidden="true" >
-          <ExpandIcon
-            className={styles.expand}
-          />
+        <button
+          title={openImage ? t('artists.expandButtonTitleOpen') : t('artists.expandButtonTitleClose')}
+          className={styles.image_button}
+          onClick={() => setOpenImage((prev) => !prev)}
+          aria-hidden="true"
+        >
+          <ExpandIcon className={styles.expand} />
         </button>
       </div>
 
@@ -65,27 +71,27 @@ const Artist = () => {
           <Mobile.Share />
         </Item.Row>
 
-        <Mobile.Subtitle>Biografia (PT)</Mobile.Subtitle>
+        <Mobile.Subtitle>{t('artists.biographyPt')}</Mobile.Subtitle>
         {artistData?.audioGuia?.[0]?.url ? (
           <Mobile.AudioPlayer
             src={artistData.audioGuia[0].url}
             type="audio/mpeg"
-            ariaLabelPrefix={`da biografia de ${artistData?.name}`}
+            ariaLabelPrefix={t('artists.audioAriaLabelPrefixPt', { name: artistData?.name || '' })}
           />
         ) : (
-          <p>Áudio em português ainda não disponível</p>
+          <p>{t('artists.audioNotAvailablePt')}</p>
         )}
 
         <Item.Container marginTop="var(--spacing-15)">
-          <Mobile.Subtitle>Biography (EN)</Mobile.Subtitle>
+          <Mobile.Subtitle>{t('artists.biographyEn')}</Mobile.Subtitle>
           {artistData?.audioGuia?.[1]?.url ? (
             <Mobile.AudioPlayer
               src={artistData.audioGuia[1].url}
               type="audio/mpeg"
-              ariaLabelPrefix={`da biografia de ${artistData?.name} em inglês`}
+              ariaLabelPrefix={t('artists.audioAriaLabelPrefixEn', { name: artistData?.name || '' })}
             />
           ) : (
-            <p>English audio not available yet</p>
+            <p>{t('artists.audioNotAvailableEn')}</p>
           )}
         </Item.Container>
 
@@ -95,7 +101,9 @@ const Artist = () => {
 
         {artistData && artistData?.artWorks.length > 0 && (
           <>
-            <Mobile.Title2>Obras de {artistData?.name}</Mobile.Title2>
+            <Mobile.Title2>
+              {t('artists.artworksBy', { name: artistData?.name || '' })}
+            </Mobile.Title2>
             <Carousel
               items={artistData?.artWorks as ArtWork[]}
               link="artworks"

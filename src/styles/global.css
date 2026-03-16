@@ -49,7 +49,7 @@ a {
 }
 
 .svg2 {
-  fill: var(--color-secondary);
+  fill: var(--color-primary);
 }
 
 [size="mb"] {
