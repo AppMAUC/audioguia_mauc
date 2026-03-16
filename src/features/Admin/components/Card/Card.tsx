@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Card.module.css";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useState } from "react";
 import { AddIcon, EditIcon } from "../../../../assets";
 
 interface CardProps extends PropsWithChildren {
@@ -58,9 +58,20 @@ const Subtitle2 = ({ children }: PropsWithChildren) => {
 };
 
 const Image = ({ src, alt }: { src: string; alt: string }) => {
+  const [error, setError] = useState(false);
+
   return (
     <div className={styles.image_container}>
-      <img className={styles.image} src={src} alt={alt} />
+      <img
+        className={styles.image}
+        src={error ? '' : src}
+        alt={alt}
+        onError={() => setError(true)}
+        style={{
+          backgroundColor: !src || error ? '#f0f0f0' : 'transparent',
+          objectFit: !src || error ? 'contain' : 'cover'
+        }}
+      />
     </div>
   );
 };

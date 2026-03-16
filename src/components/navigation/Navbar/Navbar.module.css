@@ -20,6 +20,7 @@
 }
 
 .nav_clone {
+  pointer-events: none;
   box-sizing: border-box;
   padding: var(--spacing-10) 20px;
   gap: var(--spacing-15);

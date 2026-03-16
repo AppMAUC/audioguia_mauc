@@ -3,6 +3,7 @@ import { ArrowDown, ArrowUp } from "../../../assets";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { PropsWithChildren } from "react";
+import { useTranslation } from "../../../features/Language/useTranslation";
 
 type MenuProps = PropsWithChildren;
 
@@ -43,12 +44,24 @@ interface SuspenseProps extends PropsWithChildren {
 }
 
 const Suspense = ({ children }: SuspenseProps) => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
+
   return (
     <>
-      <div className={styles.suspense} onClick={() => setOpen(!open)} tabIndex={0} role="button" aria-haspopup="true" aria-expanded={open ? "true" : "false"} >
+      <div
+        className={styles.suspense}
+        onClick={() => setOpen(!open)}
+        tabIndex={0}
+        role="button"
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : "false"}
+      >
         {children[0]}
-        <button className={styles.suspense_btn} aria-label={open ? "Fechar submenu" : "Abrir submenu"}>
+        <button
+          className={styles.suspense_btn}
+          aria-label={open ? t('menu.submenu.closeAriaLabel') : t('menu.submenu.openAriaLabel')}
+        >
           {open ? <ArrowUp width={20} height={20} className="svg1" /> : <ArrowDown width={20} height={20} className="svg1" />}
         </button>
       </div>

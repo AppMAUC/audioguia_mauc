@@ -1,4 +1,3 @@
-// CSS
 import styles from "./Home.module.css";
 import { MaucHome } from "../../assets";
 import Carousel from "../../components/ui/Carousel";
@@ -10,9 +9,13 @@ import { useQuery } from "@tanstack/react-query";
 import Mobile from "../../components/ui/Mobile";
 import { useRef } from "react";
 
+import { useTranslation } from "../../features/Language/useTranslation";
+import LanguageSelector from "../../features/Language/components/LanguageSelector";
+
 import bgHero from "../../assets/images/bg-hero.webp";
 
 const Home = () => {
+  const { t } = useTranslation();
   const heroRef = useRef<HTMLDivElement | null>(null);
   const nextSectionRef = useRef<HTMLDivElement | null>(null);
 
@@ -26,7 +29,6 @@ const Home = () => {
   });
 
   if (isLoading) return <Mobile.Loading />;
-
   if (isError) return <Mobile.Error404 />;
 
   const handleStartClick = () => {
@@ -36,28 +38,47 @@ const Home = () => {
 
   return (
     <main className={styles.home}>
-
-      <section className={styles.hero} ref={heroRef} style={{ backgroundImage: `url(${bgHero})` }} aria-label="Seção inicial do Audioguia Mauc, com imagem ilustrativa da obra 'Duas Épocas' usada como capa">
-        {/* <img src={maucLogo} alt="Logo do MAUC" className={styles.heroLogo} /> */}
-        <button onClick={handleStartClick} className={styles.startButton} aria-label="Iniciar visita pelo museu" aria-describedby="descricao-inicio">Iniciar visita</button>
+      <section
+        className={styles.hero}
+        ref={heroRef}
+        style={{ backgroundImage: `url(${bgHero})` }}
+        aria-label={t('home.hero.ariaLabel')}
+      >
+        <div className={styles.heroButtons}>
+          <LanguageSelector />
+          <button
+            onClick={handleStartClick}
+            className={styles.startButton}
+            aria-label={t('home.hero.startButton')}
+            aria-describedby="descricao-inicio"
+          >
+            {t('home.hero.startButton')}
+          </button>
+        </div>
         <p id="descricao-inicio" className="sr-only">
-          Ao clicar, você será levado para a próxima seção com informações sobre o museu.
+          {t('home.hero.description')}
         </p>
       </section>
 
       <Content>
-
-        <Content.Title id="sobre-mauc">Audioguia Mauc</Content.Title>
+        <Content.Title id="sobre-mauc">
+          {t('home.sections.about.title')}
+        </Content.Title>
         <Content.ImageWrapper>
-          <Content.Image src={MaucHome} alt="Fachada do Museu de Arte da UFC" />
+          <Content.Image
+            src={MaucHome}
+            alt={t('home.sections.about.imageAlt')}
+          />
         </Content.ImageWrapper>
         <Content.Desc color="black">
-          O Museu de Arte da Universidade Federal do Ceará (Mauc) possui nove ambientes para exposições de longa duração e três para temporárias.
+          {t('home.sections.about.description')}
         </Content.Desc>
       </Content>
 
       <Content>
-        <Content.Title id="carousel-exposicoes-temp">Exposições Temporárias</Content.Title>
+        <Content.Title id="carousel-exposicoes-temp">
+          {t('home.sections.temporaryExhibitions')}
+        </Content.Title>
         <div ref={nextSectionRef} tabIndex={-1} className={styles.gap} />
         <Carousel
           link="expositions"
@@ -69,7 +90,9 @@ const Home = () => {
       </Content>
 
       <Content>
-        <Content.Title id="carousel-exposicoes-longo">Exposições de Longa Duração</Content.Title>
+        <Content.Title id="carousel-exposicoes-longo">
+          {t('home.sections.permanentExhibitions')}
+        </Content.Title>
         <Carousel
           link="expositions"
           num={3}
@@ -78,11 +101,16 @@ const Home = () => {
           ariaLabelledBy="carousel-exposicoes-longo"
         />
 
-        <NavLink to="/expositions" className={styles.navLink} aria-label="Ver todas as exposições" aria-describedby="descricao-vermais">
-          Ver mais exposições
+        <NavLink
+          to="/expositions"
+          className={styles.navLink}
+          aria-label={t('home.sections.seeMoreAriaLabel')}
+          aria-describedby="descricao-vermais"
+        >
+          {t('home.sections.seeMore')}
         </NavLink>
         <p id="descricao-vermais" className="sr-only">
-          Acessa a página com todas as exposições disponíveis no museu.
+          {t('home.sections.seeMoreDescription')}
         </p>
       </Content>
     </main>

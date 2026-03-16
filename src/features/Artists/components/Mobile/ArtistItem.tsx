@@ -1,6 +1,7 @@
 import Item from "../../../../components/ui/Item";
 import Mobile from "../../../../components/ui/Mobile";
 import { Link } from "react-router-dom";
+import { useTranslation } from "../../../../features/Language/useTranslation";
 
 interface ArtistItemProps {
   id?: string;
@@ -18,7 +19,7 @@ const ArtistItem = ({
   link,
   biography,
 }: ArtistItemProps) => {
-
+  const { t } = useTranslation();
   const href = link || "#";
 
   return (
@@ -30,10 +31,10 @@ const ArtistItem = ({
         <Item.Container marginBottom="var(--spacing-5)">
           <Mobile.ImageDefault
             src={image || ""}
-            alt={`Foto do artista ${name ?? ""}`}
+            alt={t('artists.imageAlt', { name: name ?? "" })}
           />
           <Item.Column padding="calc(var(--spacing-15) + var(--spacing-5)) 20px">
-            {/* Mantendo Mobile.Title */}
+
             <Mobile.Title>{name}</Mobile.Title>
 
             {date && (
@@ -57,8 +58,14 @@ const ArtistItem = ({
               width="100%"
               marginTop="var(--spacing-5)"
             >
-              <span aria-hidden="true" style={{ textDecoration: "underline", fontSize: "var(--p-size", fontFamily: "var(--font-family-base)" }}>
-                Ver mais
+              <span
+                aria-hidden="true"
+                style={{
+                  fontSize: "var(--p-size)",
+                  fontFamily: "var(--font-family-base)"
+                }}
+              >
+                {t('artists.seeMore')}
               </span>
             </Item.Row>
           </Item.Column>

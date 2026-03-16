@@ -160,7 +160,7 @@
 }
 
 .state.active {
-  fill: var(--color-state-active);
+  fill: var(--color-primary);
 }
 
 @keyframes fadeIn {
@@ -207,4 +207,9 @@
     opacity: 0;
     display: none;
   }
+}
+
+button.active,
+button[class*="active"] {
+  border: 3px solid var(--color-primary) !important;
 }

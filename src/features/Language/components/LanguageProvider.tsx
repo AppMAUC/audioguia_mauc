@@ -1,7 +1,9 @@
 import { useState, useEffect, createContext, ReactNode } from "react";
 
+type Language = "pt-BR" | "en";
+
 interface LanguageContextProps {
-  language: Language | null;
+  language: Language;
   toggleLanguage: (newLanguage: Language) => void;
 }
 
@@ -9,34 +11,23 @@ export const LanguageContext = createContext<LanguageContextProps | undefined>(
   undefined
 );
 
-type Language = "pt-BR" | "en" | "en-US" | "pt";
-
 interface LanguageProviderProps {
   children: ReactNode;
 }
 
 export const LanguageProvider = ({ children }: LanguageProviderProps) => {
-  const [language, setLanguage] = useState<Language | null>("en");
+  const [language, setLanguage] = useState<Language>("pt-BR");
 
   useEffect(() => {
-    const localLanguage = localStorage.getItem("language");
-
-    if (localLanguage) {
-      setLanguage(localLanguage as Language);
-    } else {
-      const userLanguage = navigator.language;
-      setLanguage(userLanguage as Language);
-      toggleLanguage(userLanguage as Language);
+    const localLanguage = localStorage.getItem("language") as Language;
+    if (localLanguage && (localLanguage === "pt-BR" || localLanguage === "en")) {
+      setLanguage(localLanguage);
     }
   }, []);
 
-  const setLocalLanguage = (newLanguage: Language) => {
-    localStorage.setItem("language", newLanguage);
-  };
-
   const toggleLanguage = (newLanguage: Language) => {
     setLanguage(newLanguage);
-    setLocalLanguage(newLanguage);
+    localStorage.setItem("language", newLanguage);
   };
 
   return (

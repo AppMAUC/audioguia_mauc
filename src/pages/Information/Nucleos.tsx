@@ -1,15 +1,21 @@
 import Mobile from "../../components/ui/Mobile";
 import Item from "../../components/ui/Item";
 import { MailIcon, Comunicacao, Educativo } from "../../assets";
+import { useTranslation } from "../../features/Language/useTranslation";
 
 const Nucleos = () => {
+  const { t } = useTranslation();
+
   return (
     <section>
       <Mobile.Title style={{ paddingLeft: "20px", paddingTop: "clamp(140px, calc(5 * var(--spacing-25) + var(--spacing-15)), 150px)", marginBottom: "var(--spacing-10)" }}>
-        Núcleos
+        {t('nucleos.pageTitle')}
       </Mobile.Title>
 
-      <Mobile.ImageDefault src={Comunicacao} alt="Logo Núcleo de Comunicação do MAUC" />
+      <Mobile.ImageDefault
+        src={Comunicacao}
+        alt={t('nucleos.communicationLogoAlt')}
+      />
 
       <Mobile.Title
         style={{
@@ -18,7 +24,7 @@ const Nucleos = () => {
           color: "var(--color-text)",
         }}
       >
-        Núcleo de Comunicação{" "}
+        {t('nucleos.communicationTitle')}
       </Mobile.Title>
 
       <Item.Row
@@ -33,7 +39,7 @@ const Nucleos = () => {
             height: "auto",
             paddingLeft: "20px",
           }}
-          aria-label="E-mail do Núcleo de Comunicação"
+          aria-label={t('nucleos.communicationEmailAriaLabel')}
         />
         <p
           style={{
@@ -42,9 +48,10 @@ const Nucleos = () => {
             fontWeight: "bold",
           }}
         >
-          comunicamauc@ufc.br{" "}
+          comunicamauc@ufc.br
         </p>
       </Item.Row>
+
       <Item.Container padding="0 20px" marginBottom="var(--spacing-25)">
         <p
           style={{
@@ -55,15 +62,15 @@ const Nucleos = () => {
             lineHeight: "1.2",
           }}
         >
-          Responsável por planejar e executar as ações de comunicação digital do
-          Mauc como o site, redes sociais, Flickr e outros projetos. O NC é
-          responsável por colaborar no diálogo do Mauc com seu público, sejam
-          visitantes ou parceiros de realização (artistas, curadoras/es,
-          pesquisadoras/es, autoridades externas ou da instituição).
+          {t('nucleos.communicationDescription')}
         </p>
       </Item.Container>
 
-      <Mobile.ImageDefault src={Educativo} alt="Imagem do MAUC por dentro" />
+      <Mobile.ImageDefault
+        src={Educativo}
+        alt={t('nucleos.educationalImageAlt')}
+      />
+
       <Mobile.Title
         style={{
           paddingLeft: "20px",
@@ -71,8 +78,9 @@ const Nucleos = () => {
           color: "var(--color-text)",
         }}
       >
-        Núcleo Educativo{" "}
+        {t('nucleos.educationalTitle')}
       </Mobile.Title>
+
       <Item.Row
         justify="start"
         align="center"
@@ -85,7 +93,7 @@ const Nucleos = () => {
             height: "auto",
             paddingLeft: "20px",
           }}
-          aria-label="E-mail do Núcleo Educativo"
+          aria-label={t('nucleos.educationalEmailAriaLabel')}
         />
         <p
           style={{
@@ -94,9 +102,10 @@ const Nucleos = () => {
             fontWeight: "bold",
           }}
         >
-          nemauc@ufc.br{" "}
+          nemauc@ufc.br
         </p>
       </Item.Row>
+
       <Item.Container padding="0 20px">
         <p
           style={{
@@ -107,11 +116,7 @@ const Nucleos = () => {
             lineHeight: "1.2",
           }}
         >
-          O Núcleo Educativo do Museu de Arte da UFC (Nemauc) é responsável pelo
-          planejamento, gestão e execução da Política Educativa e Cultural da
-          instituição, através de programas e projetos que objetivam o diálogo,
-          a participação e o exercício da cidadania por meio da arte e do
-          patrimônio.
+          {t('nucleos.educationalDescription')}
         </p>
       </Item.Container>
     </section>

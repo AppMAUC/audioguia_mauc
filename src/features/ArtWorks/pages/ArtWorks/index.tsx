@@ -9,8 +9,10 @@ import ArtWorkService from "../../api/ArtWorkService";
 import ArtWorkList from "../../components/Mobile/ArtWorkList";
 import { ArtWork } from "../../types/ArtWork";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "../../../../features/Language/useTranslation";
 
 const Artworks = () => {
+  const { t } = useTranslation();
   const [page, setPage] = useState(1);
 
   const {
@@ -32,10 +34,13 @@ const Artworks = () => {
     if (artWorks && liveRef.current) {
       const totalNaPagina = artWorks?.data?.length ?? 0;
       const totalPaginas = artWorks?.pages ?? 1;
-      liveRef.current.textContent =
-        `Página ${page} de ${totalPaginas}. ${totalNaPagina} obras carregadas.`;
+      liveRef.current.textContent = t('artworks.liveRegionText', {
+        page,
+        totalPages: totalPaginas,
+        count: totalNaPagina
+      });
     }
-  }, [artWorks, page]);
+  }, [artWorks, page, t]);
 
   if (isLoading) {
     return <Mobile.Loading />;
@@ -44,6 +49,7 @@ const Artworks = () => {
   if (isError) {
     return <Mobile.Error />;
   }
+
   return (
     <section>
       <Mobile.Title
@@ -54,7 +60,7 @@ const Artworks = () => {
           paddingLeft: "20px",
         }}
       >
-        Todas as Obras
+        {t('artworks.pageTitle')}
       </Mobile.Title>
 
       <div
@@ -65,7 +71,7 @@ const Artworks = () => {
 
       <Item.Container>
         <Item.Column gap="var(--spacing-0)">
-          {artWorks && <ArtWorkList artWork={artWorks?.data} />}{" "}
+          {artWorks && <ArtWorkList artWork={artWorks?.data} />}
         </Item.Column>
       </Item.Container>
 

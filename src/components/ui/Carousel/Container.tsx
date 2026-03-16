@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useState, useRef, useEffect, PropsWithChildren } from "react";
 import React from "react";
+import { useTranslation } from "../../../features/Language/useTranslation";
 
 interface ContainerProps {
   children: React.ReactNode;
@@ -12,7 +13,6 @@ interface ContainerProps {
   ariaLabelledBy?: string;
 }
 
-
 const Container = ({
   children,
   focusedIndex,
@@ -20,6 +20,7 @@ const Container = ({
   padding = "0 20px",
   ariaLabelledBy,
 }: ContainerProps) => {
+  const { t } = useTranslation();
   const carousel = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
 
@@ -35,7 +36,7 @@ const Container = ({
       className={styles.carousel}
       style={{ padding: padding }}
       role="region"
-      aria-roledescription="carrossel"
+      aria-roledescription={t('carousel.roleDescription')}
       aria-labelledby={ariaLabelledBy}
       tabIndex={0}
       whileTap={{ cursor: "grabbing" }}
@@ -78,13 +79,17 @@ const Item = ({
   itemType = "item",
   children,
 }: PropsWithChildren & ItemProps) => {
-  // console.log('Rendering item with image:', image);
+  const { t } = useTranslation();
 
-  const ariaLabel = `Acessar página da ${itemType} ${title || ""}${date ? `. Data: ${date}` : ""
-    }`;
+  const dateText = date ? ` ${t('carousel.item.date', { date })}` : "";
+
+  const ariaLabel = t('carousel.item.ariaLabel', {
+    itemType,
+    title: title || "",
+    date: dateText
+  });
 
   return (
-
     <motion.div
       className={styles.item}
       style={{

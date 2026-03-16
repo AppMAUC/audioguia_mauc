@@ -16,6 +16,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "../../../features/Theme/ThemeProvider";
 import Button from "../Button";
 import { useAuth } from "../../../features/Admin/hooks/useAuth";
+import { useTranslation } from "../../../features/Language/useTranslation";
 
 interface ImageProps {
   src: string;
@@ -26,6 +27,7 @@ interface ImageProps {
 
 const Loading = () => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <div className={styles.loading} role="status" aria-live="polite">
@@ -33,12 +35,14 @@ const Loading = () => {
         animation="border"
         variant={theme == "dark" ? "light" : "dark"}
       />
-      <span className="sr-only">Carregando conteúdo</span>
+      <span className="sr-only">{t('mobile.loading')}</span>
     </div>
   );
 };
 
 const Image = ({ src, alt, isOpen, onClose }: ImageProps) => {
+  const { t } = useTranslation();
+
   return (
     <>
       <img
@@ -49,7 +53,7 @@ const Image = ({ src, alt, isOpen, onClose }: ImageProps) => {
       {isOpen && (
         <div className={styles.background}>
           <button
-            title="Fechar imagem"
+            title={t('mobile.closeImageTitle')}
             tabIndex={1}
             className={styles.close_button}
             onClick={onClose}
@@ -97,7 +101,6 @@ const Subtitle = ({ children, ...props }: PropsWithChildren<React.HTMLAttributes
   return <h2 className={styles.subtitle} {...props}>{children}</h2>;
 };
 
-
 const Description = ({ children }: PropsWithChildren) => {
   return (
     <p
@@ -113,6 +116,7 @@ const DescriptionWithLimit = ({
   children,
   style,
 }: PropsWithChildren & { style?: React.CSSProperties }) => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const paragraphRef = useRef<HTMLParagraphElement>(null);
@@ -142,7 +146,7 @@ const DescriptionWithLimit = ({
           aria-expanded={open}
           aria-controls="descricao"
         >
-          <span>{open ? "Ler menos" : "Ler mais"}</span>
+          <span>{open ? t('mobile.readLess') : t('mobile.readMore')}</span>
           {open ? (
             <ArrowUp className={styles.suspense_icon} />
           ) : (
@@ -165,6 +169,7 @@ const AudioPlayer = ({
   type: string;
   ariaLabelPrefix?: string;
 }) => {
+  const { t } = useTranslation();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const sliderRef = useRef<HTMLInputElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -175,13 +180,11 @@ const AudioPlayer = ({
     const audio = audioRef.current;
     if (!audio) return;
 
-    // registra o player na lista global
     if (!audioPlayers.includes(audio)) {
       audioPlayers.push(audio);
     }
 
     const handlePlay = () => {
-      // pausa todos os outros players
       audioPlayers.forEach((player) => {
         if (player !== audio && !player.paused) {
           player.pause();
@@ -200,7 +203,6 @@ const AudioPlayer = ({
       audio.removeEventListener("pause", handlePause);
     };
   }, []);
-
 
   const handleLoadedMetadata = () => {
     if (audioRef.current) {
@@ -221,7 +223,6 @@ const AudioPlayer = ({
       } else {
         audioRef.current.play();
       }
-      // setIsPlaying(!isPlaying);
     }
   };
 
@@ -232,6 +233,7 @@ const AudioPlayer = ({
       setCurrentTime(newTime);
     }
   };
+
   useEffect(() => {
     if (sliderRef.current) {
       const progressPercent = (currentTime / duration) * 100 || 0;
@@ -242,6 +244,7 @@ const AudioPlayer = ({
       )`;
     }
   }, [currentTime, duration]);
+
   return (
     <div className={styles.audio_player}>
       <audio
@@ -252,7 +255,14 @@ const AudioPlayer = ({
         typeof={type}
       ></audio>
       <div className={styles.controls}>
-        <button aria-label={isPlaying ? `Pausar áudio ${ariaLabelPrefix}` : `Reproduzir áudio ${ariaLabelPrefix}`} onClick={handlePlayPause} className={styles.play_pause_button}>
+        <button
+          aria-label={isPlaying
+            ? t('mobile.audio.pauseAriaLabel', { prefix: ariaLabelPrefix })
+            : t('mobile.audio.playAriaLabel', { prefix: ariaLabelPrefix })
+          }
+          onClick={handlePlayPause}
+          className={styles.play_pause_button}
+        >
           {isPlaying ? (
             <PauseIcon className={styles.play_pause_button_icon} />
           ) : (
@@ -264,10 +274,6 @@ const AudioPlayer = ({
           {("0" + Math.floor(currentTime % 60)).slice(-2)}{" "}
         </span>
 
-        {/* <label htmlFor="audio-slider" className="sr-only">
-          Ajustar progresso do áudio
-        </label> */}
-
         <input
           ref={sliderRef}
           className={styles.slider}
@@ -277,15 +283,15 @@ const AudioPlayer = ({
           step="0.1"
           value={currentTime}
           onChange={handleSliderChange}
-          aria-label={`Barra de progresso do áudio ${ariaLabelPrefix}`}
+          aria-label={t('mobile.audio.sliderAriaLabel', { prefix: ariaLabelPrefix })}
         />
       </div>
-
     </div>
   );
 };
 
 const Share = () => {
+  const { t } = useTranslation();
   const [message, setMessage] = useState(false);
 
   const handleShareClick = async (e: React.MouseEvent) => {
@@ -295,7 +301,7 @@ const Share = () => {
       setMessage(true);
       setTimeout(() => setMessage(false), 3000);
     } catch (err) {
-      console.error("Falha ao copiar o link: ", err);
+      console.error(t('mobile.share.copyError'), err);
     }
   };
 
@@ -303,7 +309,7 @@ const Share = () => {
     <div className={styles.share_wrapper}>
       <button
         className={styles.button}
-        title="Share"
+        title={t('mobile.share.buttonTitle')}
         onClick={handleShareClick}
         type="button"
       >
@@ -313,7 +319,7 @@ const Share = () => {
         className={`${styles.copy_message} ${message ? "" : styles.hidden}`}
         role="alert"
       >
-        Link copiado com sucesso!
+        {t('mobile.share.copySuccess')}
       </span>
     </div>
   );
@@ -382,16 +388,17 @@ const Error = ({
   error?: string;
   home?: boolean;
 }) => {
+  const { t } = useTranslation();
   const { auth } = useAuth();
-
   const navigate = useNavigate();
+
   return (
     <div className={styles.error} role="alert">
       <ErrorImage className={styles.error_image} />
       <Mobile.Title
         style={{ fontSize: "var(--h1-size)", color: "var(--color-text)" }}
       >
-        Ops, a galeria está vazia.
+        {t('mobile.error.title')}
       </Mobile.Title>
 
       <p
@@ -405,11 +412,13 @@ const Error = ({
           marginBottom: "var(--spacing-5)",
         }}
       >
-        {error}
+        {error === "Tivemos um probleminha técnico, tente novamente ou volte mais tarde..."
+          ? t('mobile.error.defaultMessage')
+          : error}
       </p>
       {!home && (
         <Button onClick={() => navigate(auth ? "/admin/dashboard" : "/")}>
-          Voltar
+          {t('mobile.error.backButton')}
         </Button>
       )}
     </div>
@@ -423,15 +432,17 @@ const Error404 = ({
   error?: string;
   home?: boolean;
 }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { auth } = useAuth();
+
   return (
     <div className={styles.error}>
       <Error404Image className={styles.error_image} />
       <Mobile.Title
         style={{ fontSize: "var(--h1-size)", color: "var(--color-text)" }}
       >
-        Ops, você se perdeu na exposição.{" "}
+        {t('mobile.error404.title')}
       </Mobile.Title>
 
       <p
@@ -445,11 +456,13 @@ const Error404 = ({
           marginBottom: "var(--spacing-5)",
         }}
       >
-        {error}
+        {error === "Não conseguimos encontrar a página que você está procurando..."
+          ? t('mobile.error404.defaultMessage')
+          : error}
       </p>
       {!home && (
         <Button onClick={() => navigate(auth ? "/admin/dashboard" : "/")}>
-          Voltar
+          {t('mobile.error404.backButton')}
         </Button>
       )}
     </div>

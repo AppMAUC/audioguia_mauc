@@ -1,7 +1,8 @@
-// src/features/language/components/LanguageDisplay.tsx
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "../useTranslation";
 
 const LanguageDisplay: React.FC = () => {
+  const { t } = useTranslation();
   const [language, setLanguage] = useState<string>("");
   const [languages, setLanguages] = useState<string[]>([]);
 
@@ -15,9 +16,9 @@ const LanguageDisplay: React.FC = () => {
 
   return (
     <div>
-      <h2>Idioma do Dispositivo</h2>
-      <p>Idioma preferido: {language}</p>
-      <p>Lista de idiomas preferidos: {languages.join(", ")}</p>
+      <h2>{t('languageDisplay.title')}</h2>
+      <p>{t('languageDisplay.preferred')} {language}</p>
+      <p>{t('languageDisplay.list')} {languages.join(", ")}</p>
     </div>
   );
 };

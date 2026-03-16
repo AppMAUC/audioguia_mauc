@@ -11,10 +11,12 @@ import { useParams } from "react-router-dom";
 import ArtistService from "../../../Artists/api/ArtistService";
 import { Artist as ArtistByID } from "../../../Artists/types/Artist";
 import { NavLink } from "react-router-dom";
-
+import { useTranslation } from "../../../../features/Language/useTranslation";
 
 const ArtWork = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
+
   const {
     data: artWorkData,
     isError,
@@ -61,16 +63,19 @@ const ArtWork = () => {
           src={artWorkData?.image.url || ""}
           alt={
             artWorkData?.title
-              ? `Imagem da obra ${artWorkData.title}`
-              : "Imagem da obra"
+              ? t('artworks.imageAlt', { title: artWorkData.title })
+              : t('artworks.imageAltDefault')
           }
           onClose={() => setOpenImage(false)}
         />
 
-        <button title={openImage ? "Fechar imagem" : "Expandir imagem"} className={styles.image_button} onClick={() => setOpenImage((prev) => !prev)} aria-hidden="true">
-          <ExpandIcon
-            className={styles.expand}
-          />
+        <button
+          title={openImage ? t('artworks.expandButtonTitleOpen') : t('artworks.expandButtonTitleClose')}
+          className={styles.image_button}
+          onClick={() => setOpenImage((prev) => !prev)}
+          aria-hidden="true"
+        >
+          <ExpandIcon className={styles.expand} />
         </button>
       </div>
 
@@ -86,8 +91,7 @@ const ArtWork = () => {
           gap="var(--spacing-10)"
           marginBottom="var(--spacing-15)"
         >
-          <Mobile.Subtitle>Autor</Mobile.Subtitle>
-
+          <Mobile.Subtitle>{t('artworks.author')}</Mobile.Subtitle>
 
           {(() => {
             const matchingArtist = artists?.data.find(
@@ -102,37 +106,36 @@ const ArtWork = () => {
               <Mobile.AuthorTitle>{artWorkData?.author}</Mobile.AuthorTitle>
             );
           })()}
-
         </Item.Container>
 
         <Item.Container marginTop="var(--spacing-15)">
-          <Mobile.Subtitle>Audiodescrição</Mobile.Subtitle>
+          <Mobile.Subtitle>{t('artworks.audioDescription')}</Mobile.Subtitle>
           <Mobile.AudioPlayer
             src={artWorkData?.audioDesc[0].url || ""}
             type="audio/mpeg"
-            ariaLabelPrefix="da audiodescrição"
+            ariaLabelPrefix={t('artworks.audioDescriptionAriaLabel')}
           />
         </Item.Container>
 
         <Item.Container marginTop="var(--spacing-15)">
-          <Mobile.Subtitle>Sobre a obra (PT)</Mobile.Subtitle>
+          <Mobile.Subtitle>{t('artworks.aboutPt')}</Mobile.Subtitle>
           <Mobile.AudioPlayer
             src={artWorkData?.audioGuia[0].url || ""}
             type="audio/mpeg"
-            ariaLabelPrefix="Sobre a Obra em Português"
+            ariaLabelPrefix={t('artworks.aboutPtAriaLabel')}
           />
         </Item.Container>
 
         <Item.Container marginTop="var(--spacing-15)">
-          <Mobile.Subtitle>About the artwork (EN)</Mobile.Subtitle>
+          <Mobile.Subtitle>{t('artworks.aboutEn')}</Mobile.Subtitle>
           {artWorkData?.audioGuia?.[1]?.url ? (
             <Mobile.AudioPlayer
               src={artWorkData.audioGuia[1].url}
               type="audio/mpeg"
-              ariaLabelPrefix="Sobre a obra em inglês"
+              ariaLabelPrefix={t('artworks.aboutEnAriaLabel')}
             />
           ) : (
-            <p>Áudio ainda não disponível</p>
+            <p>{t('artworks.audioNotAvailable')}</p>
           )}
         </Item.Container>
 
@@ -142,7 +145,7 @@ const ArtWork = () => {
 
         {artWorks?.data && artWorks.data.length > 0 && (
           <>
-            <Mobile.Title2>Outras Obras</Mobile.Title2>
+            <Mobile.Title2>{t('artworks.otherArtworks')}</Mobile.Title2>
             <Carousel
               items={artWorks?.data
                 .filter((artWork) => artWork._id !== id)
