@@ -25,7 +25,7 @@
   font-weight: var(--font-weight-bold);
   text-align: center;
   align-self: center;
-  margin-top: var(--spacing-25);
+  margin-top: var(--spacing-25-lg);
   text-decoration: none;
 }
 
@@ -36,15 +36,49 @@
 .hero {
   height: 100vh;
   width: 100%;
-  background-size: cover;
-  background-position: left;
-  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   position: relative;
   margin-bottom: var(--spacing-25);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('../../assets/images/bg-hero.webp');
+  background-size: cover;
+  background-position: left;
+  background-repeat: no-repeat;
+  filter: blur(1px);
+  /* transform: scale(1.05); */
+  z-index: 1;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.4) 20%,
+      rgba(255, 255, 255, 0.3) 40%,
+      rgba(255, 255, 255, 0.1) 60%,
+      rgba(255, 255, 255, 0.1) 80%,
+      rgba(255, 255, 255, 0.0) 100%);
+  transition: background 0.3s ease;
+  z-index: 2;
+}
+
+[data-theme="dark"] .hero::after {
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.8) 20%,
+      rgba(0, 0, 0, 0.55) 40%,
+      rgba(0, 0, 0, 0.55) 100%);
 }
 
 .heroLogo {
@@ -52,7 +86,6 @@
   height: auto;
   padding-bottom: calc(var(--spacing-25) + var(--spacing-5));
 }
-
 
 .heroButtons {
   display: flex;
@@ -62,7 +95,7 @@
   margin-bottom: calc(3 * var(--spacing-25));
   width: 100%;
   max-width: 260px;
-  z-index: 10;
+  z-index: 3;
 }
 
 .startButton {
@@ -92,7 +125,6 @@
 
 .startButton:hover,
 .hero button:hover {
-  /* background-color: var(--color-primary, #555); */
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -107,22 +139,9 @@
   padding: 0 var(--spacing-20);
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: transparent;
-  transition: background-color 0.3s ease;
-  z-index: 1;
-}
-
 .hero * {
   position: relative;
-  z-index: 2;
-}
-
-[data-theme="dark"] .hero::before {
-  background-color: rgba(0, 0, 0, 0.55);
+  z-index: 3;
 }
 
 .capa {

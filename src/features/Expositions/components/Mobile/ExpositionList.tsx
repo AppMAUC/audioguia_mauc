@@ -14,11 +14,13 @@ const ExpositionList = ({ expositions }: ExpositionListProps) => {
             key={item._id}
             id={item._id}
             title={item.title}
+            title_en={item.title_en}
             image={item.image.url}
             link={"/expositions/" + item._id}
             dateStarts={item.dateStarts.split("T")[0].replace(/-/g, "/")}
             dateEnds={item.dateEnds.split("T")[0].replace(/-/g, "/")}
             description={item.description}
+            description_en={item.description_en}
           />
         </li>
       ))}

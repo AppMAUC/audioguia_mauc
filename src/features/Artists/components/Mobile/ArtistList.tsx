@@ -24,6 +24,7 @@ const ArtistList = ({ artists }: ArtistListProps) => {
             date={item.birthDate.split("-")[0]}
             link={"/Artists/" + item._id}
             biography={item.biography}
+            biography_en={item.biography_en}
           />
         </li>
       ))}

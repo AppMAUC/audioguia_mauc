@@ -12,10 +12,17 @@ import ArtistService from "../../../Artists/api/ArtistService";
 import { Artist as ArtistByID } from "../../../Artists/types/Artist";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "../../../../features/Language/useTranslation";
+import { useLanguage } from "../../../../features/Language/useLanguage";
 
 const ArtWork = () => {
   const { t } = useTranslation();
+  const { language } = useLanguage();
   const { id } = useParams();
+
+  const getText = (ptText?: string, enText?: string) => {
+    if (language === 'en' && enText) return enText;
+    return ptText;
+  };
 
   const {
     data: artWorkData,
@@ -81,7 +88,7 @@ const ArtWork = () => {
 
       <Mobile.Container>
         <Item.Row align="center" justify="space-between">
-          <Mobile.Title>{artWorkData?.title}</Mobile.Title>
+          <Mobile.Title>{getText(artWorkData?.title, artWorkData?.title_en)}</Mobile.Title>
           <Mobile.Share />
         </Item.Row>
 
@@ -140,7 +147,7 @@ const ArtWork = () => {
         </Item.Container>
 
         <Mobile.DescriptionWithLimit>
-          {artWorkData?.description}
+          {getText(artWorkData?.description, artWorkData?.description_en)}
         </Mobile.DescriptionWithLimit>
 
         {artWorks?.data && artWorks.data.length > 0 && (

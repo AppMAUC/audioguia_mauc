@@ -51,7 +51,7 @@ const Install: React.FC = () => {
       {showInstallButton && (
         <Button
           onClick={handleInstallClick}
-          style={{ marginLeft: "var(--spacing-25)", zIndex: 1000 }}
+          style={{ marginLeft: "var(--spacing-25)", zIndex: 998 }}
           aria-label={t('install.buttonAriaLabel')}
         >
           {t('install.buttonText')}

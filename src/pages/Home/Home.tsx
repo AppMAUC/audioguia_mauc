@@ -41,7 +41,6 @@ const Home = () => {
       <section
         className={styles.hero}
         ref={heroRef}
-        style={{ backgroundImage: `url(${bgHero})` }}
         aria-label={t('home.hero.ariaLabel')}
       >
         <div className={styles.heroButtons}>
