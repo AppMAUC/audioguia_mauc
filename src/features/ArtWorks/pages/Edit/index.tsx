@@ -35,12 +35,15 @@ import DeleteWithConfirmation from "../../../../components/ui/Inputs/Delete";
 
 const schema = z.object({
   title: z.string().optional(),
+  title_en: z.string().optional(),
   description: z.string().optional(),
+  description_en: z.string().optional(),
   image: z
     .union([z.string(), z.instanceof(FileList).transform((list) => list[0])])
     .optional(),
   author: z.string().optional(),
   suport: z.string().optional(),
+  suport_en: z.string().optional(),
   year: z.string().optional(),
   dimension: z.string().optional(),
   audioGuia: z
@@ -91,14 +94,17 @@ const Edit = () => {
 
         return {
           title: artWork.title,
+          title_en: artWork.title_en,
           image: artWork.image.url,
           description: artWork.description,
+          description_en: artWork.description_en,
           dimension: artWork.dimension,
           audioGuia: [...audiGuiaArray],
           audioDesc: [...audioDescArray],
           year: artWork.year,
           author: artWork.author,
           suport: artWork.suport,
+          suport_en: artWork.suport_en,
         };
       } catch (error) {
         if (((error as ApiError).message = "Identificador inválido")) {
@@ -180,6 +186,14 @@ const Edit = () => {
               helperText={errors.title?.message?.toString()}
               {...register("title")}
             />
+
+            <Input
+              type="text"
+              label="Nome da obra (Inglês - opcional)"
+              placeholder="Insira o título em inglês"
+              helperText={errors.title_en?.message?.toString()}
+              {...register("title_en")}
+            />
             <Upload>
               <Upload.Input
                 accept="image/png, image/jpeg"
@@ -203,11 +217,24 @@ const Edit = () => {
               helperText={errors.suport?.message?.toString()}
               {...register("suport")}
             />
+            <Input
+              type="text"
+              label="Técnica (Inglês - opcional)"
+              placeholder="Insira a técnica em inglês"
+              helperText={errors.suport_en?.message?.toString()}
+              {...register("suport_en")}
+            />
             <TextArea
               label="Descrição"
               placeholder="Adicione a descrição da obra"
               helperText={errors.description?.message?.toString()}
               {...register("description")}
+            />
+            <TextArea
+              label="Descrição (Inglês - opcional)"
+              placeholder="Adicione a descrição em inglês"
+              helperText={errors.description_en?.message?.toString()}
+              {...register("description_en")}
             />
             <Upload>
               <Upload.Input

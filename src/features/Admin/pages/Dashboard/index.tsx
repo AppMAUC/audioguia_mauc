@@ -119,7 +119,7 @@ const Dashboard = () => {
           <Card.Div>
             <Card.Add link={`/admin/artworks/new`} />
             <Card.Button link={`/admin/artworks`}>
-              <Card.Edit>Editar Obrass</Card.Edit>
+              <Card.Edit>Editar Obras</Card.Edit>
             </Card.Button>
           </Card.Div>
         </CardList>

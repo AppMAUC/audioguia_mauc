@@ -8,6 +8,7 @@ export interface Artist {
   name: string;
   artWorks: string[] | ArtWork[];
   biography: string;
+  biography_en?: string;
   audioGuia: Audio[];
   birthDate: string;
 }

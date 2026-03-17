@@ -2,6 +2,7 @@ import Item from "../../../../components/ui/Item";
 import Mobile from "../../../../components/ui/Mobile";
 import { Link } from "react-router-dom";
 import { useTranslation } from "../../../../features/Language/useTranslation";
+import { useLanguage } from "../../../../features/Language/useLanguage";
 
 interface ArtistItemProps {
   id?: string;
@@ -10,6 +11,7 @@ interface ArtistItemProps {
   date?: string;
   link?: string;
   biography?: string;
+  biography_en?: string;
 }
 
 const ArtistItem = ({
@@ -18,8 +20,15 @@ const ArtistItem = ({
   date,
   link,
   biography,
+  biography_en,
 }: ArtistItemProps) => {
   const { t } = useTranslation();
+  const { language } = useLanguage();
+
+  const getText = (ptText?: string, enText?: string) => {
+    return language === 'en' && enText ? enText : ptText;
+  };
+
   const href = link || "#";
 
   return (
@@ -50,7 +59,7 @@ const ArtistItem = ({
               </p>
             )}
 
-            {biography && <Mobile.Description>{biography}</Mobile.Description>}
+            {biography && <Mobile.Description> {getText(biography, biography_en)}</Mobile.Description>}
 
             <Item.Row
               justify="end"

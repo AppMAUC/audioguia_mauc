@@ -33,12 +33,15 @@ import PaginationControls from "../../../../components/ui/Pagination/PaginationC
 
 const schema = z.object({
   title: z.string(),
+  title_en: z.string().optional(),
   image: z.union([
     z.string(),
     z.instanceof(FileList).transform((list) => list[0]),
   ]),
   description: z.string(),
+  description_en: z.string().optional(),
   place: z.string(),
+  place_en: z.string().optional(),
   dateStarts: z.string(),
   dateEnds: z.string(),
   type: z.enum(["1", "2"]).transform(Number),
@@ -137,7 +140,13 @@ const Register = () => {
               helperText={errors.title?.message?.toString()}
               {...register("title")}
             />
-
+            <Input
+              type="text"
+              label="Título (Inglês - opcional)"
+              placeholder="Insira o título em inglês"
+              helperText={errors.title_en?.message?.toString()}
+              {...register("title_en")}
+            />
             <Radio
               first={true}
               firstLabel="Tipo de Exposição"
@@ -161,6 +170,13 @@ const Register = () => {
               placeholder="Adicione a descrição da exposição"
               helperText={errors.place?.message?.toString()}
               {...register("description")}
+            />
+            <TextArea
+              type="text"
+              label="Descrição (Inglês - opcional)"
+              placeholder="Adicione a descrição em inglês"
+              helperText={errors.description_en?.message?.toString()}
+              {...register("description_en")}
             />
             <Input
               type="date"
@@ -193,6 +209,13 @@ const Register = () => {
               placeholder="Adicione o local ou sala que a exposição está"
               helperText={errors.place?.message?.toString()}
               {...register("place")}
+            />
+            <TextArea
+              type="text"
+              label="Lugar (Inglês - opcional)"
+              placeholder="Adicione o local em inglês"
+              helperText={errors.place_en?.message?.toString()}
+              {...register("place_en")}
             />
             {isDirty ? (
               <Input

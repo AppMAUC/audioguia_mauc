@@ -24,13 +24,16 @@ import Item from "../../../../components/ui/Item";
 
 const schema = z.object({
   title: z.string(),
+  title_en: z.string().optional(),
   description: z.string(),
+  description_en: z.string().optional(),
   image: z.union([
     z.string(),
     z.instanceof(FileList).transform((list) => list[0]),
   ]),
   author: z.string(),
   suport: z.string(),
+  suport_en: z.string().optional(),
   year: z.string(),
   dimension: z.string(),
   audioGuia: z
@@ -122,6 +125,13 @@ const Register = () => {
               helperText={errors.title?.message?.toString()}
               {...register("title")}
             />
+            <Input
+              type="text"
+              label="Nome da Obra (Inglês - opcional)"
+              placeholder="Insira o título em inglês"
+              helperText={errors.title_en?.message?.toString()}
+              {...register("title_en")}
+            />
             <Upload>
               <Upload.Input
                 accept="image/png, image/jpeg"
@@ -148,12 +158,26 @@ const Register = () => {
               helperText={errors.suport?.message?.toString()}
               {...register("suport")}
             />
+
+            <Input
+              type="text"
+              label="Técnica (Inglês - opcional)"
+              placeholder="Insira a técnica em inglês"
+              helperText={errors.suport_en?.message?.toString()}
+              {...register("suport_en")}
+            />
             <TextArea
               label="Descrição"
               placeholder="Adicione a descrição da obra"
               required
               helperText={errors.description?.message?.toString()}
               {...register("description")}
+            />
+            <TextArea
+              label="Descrição (Inglês - opcional)"
+              placeholder="Adicione a descrição em inglês"
+              helperText={errors.description_en?.message?.toString()}
+              {...register("description_en")}
             />
             <Upload>
               <Upload.Input

@@ -10,10 +10,17 @@ import { useParams } from "react-router-dom";
 import ArtWorkList from "../../../ArtWorks/components/Mobile/ArtWorkList";
 import { ArtWork } from "../../../ArtWorks/types/ArtWork";
 import { useTranslation } from "../../../../features/Language/useTranslation";
+import { useLanguage } from "../../../../features/Language/useLanguage";
 
 const Exposition = () => {
   const { t } = useTranslation();
+  const { language } = useLanguage();
   const { id } = useParams();
+
+  const getText = (ptText?: string, enText?: string) => {
+    if (language === 'en' && enText) return enText;
+    return ptText;
+  };
 
   const {
     data: expositionData,
@@ -71,7 +78,7 @@ const Exposition = () => {
 
       <Mobile.Container>
         <Item.Row align="center" justify="space-between">
-          <Mobile.Title>{expositionData?.title}</Mobile.Title>
+          <Mobile.Title> {getText(expositionData?.title, expositionData?.title_en)} </Mobile.Title>
           <Mobile.Share />
         </Item.Row>
 
@@ -102,7 +109,7 @@ const Exposition = () => {
         />
 
         <Mobile.DescriptionWithLimit>
-          {expositionData?.description}
+          {getText(expositionData?.description, expositionData?.description_en)}
         </Mobile.DescriptionWithLimit>
       </Mobile.Container>
 
