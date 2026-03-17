@@ -43,6 +43,7 @@ const schema = z.object({
     .union([z.string(), z.instanceof(FileList).transform((list) => list[0])])
     .optional(),
   biography: z.string().optional(),
+  biography_en: z.string().optional(),
   artWorks: z.array(z.string()).optional(),
   audioGuia: z.array(
     z
@@ -50,7 +51,7 @@ const schema = z.object({
         z.string(),
         z.instanceof(FileList).transform((list, ctx) => {
           const file = list[0];
-          const lang = ctx.path[1] === 0 ? "br" : "en"; // Determina o idioma baseado no índice
+          const lang = ctx.path[1] === 0 ? "br" : "en";
           return file ? addSuffixToFileName(file, lang) : "";
         }),
       ])
@@ -86,6 +87,7 @@ const Edit = () => {
           name: artist.name,
           image: artist.image.url,
           biography: artist.biography,
+          biography_en: artist.biography_en,
           artWorks: (artist.artWorks as ArtWork[]).map(
             (artwork) => artwork._id
           ),
@@ -219,6 +221,11 @@ const Edit = () => {
               label="Biografia"
               helperText={errors.biography?.message?.toString()}
               {...register("biography")}
+            />
+            <TextArea
+              label="Biografia (Inglês - opcional)"
+              helperText={errors.biography_en?.message?.toString()}
+              {...register("biography_en")}
             />
             <Upload>
               <Upload.Input

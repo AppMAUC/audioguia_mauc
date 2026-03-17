@@ -26,7 +26,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           >
             {children}
           </main>
-          <footer style={{ width: "100%", height: "10vh" }}></footer>
+          <footer style={{ width: "100%", height: "4vh" }}></footer>
         </div>
       </div>
     );
@@ -39,7 +39,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <Outlet />
         </main>
         {!location.pathname.includes("about") && (
-          <footer style={{ width: "100%", height: "10vh" }}></footer>
+          <footer style={{ width: "100%", height: "4vh" }}></footer>
         )}
       </div>
     </div>

@@ -39,11 +39,14 @@ import PaginationControls from "../../../../components/ui/Pagination/PaginationC
 
 const schema = z.object({
   title: z.string().optional(),
+  title_en: z.string().optional(),
   image: z
     .union([z.string(), z.instanceof(FileList).transform((list) => list[0])])
     .optional(),
   description: z.string().optional(),
+  description_en: z.string().optional(),
   place: z.string().optional(),
+  place_en: z.string().optional(),
   dateStarts: z.string().optional(),
   dateEnds: z.string().optional(),
   type: z.enum(["1", "2"]).transform(Number).optional(),
@@ -74,8 +77,11 @@ const Edit = () => {
 
         return {
           title: exposition.title,
+          title_en: exposition.title_en,
           description: exposition.description,
+          description_en: exposition.description_en,
           place: exposition.place,
+          place_en: exposition.place_en,
           dateStarts: exposition.dateStarts.split("T")[0],
           dateEnds: exposition.dateEnds.split("T")[0],
           type: exposition.type.toString(),
@@ -200,7 +206,13 @@ const Edit = () => {
               helperText={errors.title?.message?.toString()}
               {...register("title")}
             />
-
+            <Input
+              type="text"
+              label="Título (Inglês - opcional)"
+              placeholder="Insira o título em inglês"
+              helperText={errors.title_en?.message?.toString()}
+              {...register("title_en")}
+            />
             <Radio
               first={true}
               firstLabel="Tipo de Exposição"
@@ -224,6 +236,13 @@ const Edit = () => {
               placeholder="Adicione a descrição da exposição"
               helperText={errors.place?.message?.toString()}
               {...register("description")}
+            />
+            <TextArea
+              type="text"
+              label="Descrição (Inglês - opcional)"
+              placeholder="Adicione a descrição em inglês"
+              helperText={errors.description_en?.message?.toString()}
+              {...register("description_en")}
             />
             <Input
               type="date"
@@ -256,6 +275,13 @@ const Edit = () => {
               placeholder="Adicione o local ou sala que a exposição está"
               helperText={errors.place?.message?.toString()}
               {...register("place")}
+            />
+            <TextArea
+              type="text"
+              label="Lugar (Inglês - opcional)"
+              placeholder="Adicione o local em inglês"
+              helperText={errors.place_en?.message?.toString()}
+              {...register("place_en")}
             />
             {isDirty ? (
               <Input

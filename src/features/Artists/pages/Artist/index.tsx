@@ -10,10 +10,17 @@ import { Artist as ArtistByID } from "../../types/Artist";
 import { useParams } from "react-router-dom";
 import { ArtWork } from "../../../ArtWorks/types/ArtWork";
 import { useTranslation } from "../../../../features/Language/useTranslation";
+import { useLanguage } from "../../../../features/Language/useLanguage";
 
 const Artist = () => {
   const { t } = useTranslation();
+  const { language } = useLanguage();
   const { id } = useParams();
+
+  const getText = (ptText?: string, enText?: string) => {
+    if (language === 'en' && enText) return enText;
+    return ptText;
+  };
 
   const {
     data: artistData,
@@ -96,7 +103,7 @@ const Artist = () => {
         </Item.Container>
 
         <Mobile.DescriptionWithLimit>
-          {artistData?.biography}
+          {getText(artistData?.biography, artistData?.biography_en)}
         </Mobile.DescriptionWithLimit>
 
         {artistData && artistData?.artWorks.length > 0 && (

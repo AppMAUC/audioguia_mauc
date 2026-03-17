@@ -33,6 +33,7 @@ const schema = z.object({
     z.instanceof(FileList).transform((list) => list[0]),
   ]),
   biography: z.string(),
+  biography_en: z.string().optional(),
   artWorks: z.array(z.string()),
   audioGuia: z
     .array(
@@ -40,7 +41,7 @@ const schema = z.object({
         z.string(),
         z.instanceof(FileList).transform((list, ctx) => {
           const file = list[0];
-          const lang = ctx.path[1] === 0 ? "br" : "en"; // Determina o idioma baseado no índice
+          const lang = ctx.path[1] === 0 ? "br" : "en";
           return file ? addSuffixToFileName(file, lang) : "";
         }),
       ])
@@ -157,6 +158,11 @@ const Register = () => {
               required
               helperText={errors.biography?.message?.toString()}
               {...register("biography")}
+            />
+            <TextArea
+              label="Biografia (Inglês - opcional)"
+              helperText={errors.biography_en?.message?.toString()}
+              {...register("biography_en")}
             />
             <Upload>
               <Upload.Input

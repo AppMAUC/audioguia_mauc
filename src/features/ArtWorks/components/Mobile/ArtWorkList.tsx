@@ -21,11 +21,13 @@ const ArtWorkList = ({ artWork }: ArtWorkListProps) => {
             key={item._id}
             id={item._id}
             title={item.title}
+            title_en={item.title_en}
             image={item.image.url}
             author={item.author}
             date={item.year}
             link={"/artworks/" + item._id}
             description={item.description}
+            description_en={item.description_en}
           />
         </li>
       ))}

@@ -12,8 +12,6 @@ import { useRef } from "react";
 import { useTranslation } from "../../features/Language/useTranslation";
 import LanguageSelector from "../../features/Language/components/LanguageSelector";
 
-import bgHero from "../../assets/images/bg-hero.webp";
-
 const Home = () => {
   const { t } = useTranslation();
   const heroRef = useRef<HTMLDivElement | null>(null);
@@ -41,7 +39,6 @@ const Home = () => {
       <section
         className={styles.hero}
         ref={heroRef}
-        style={{ backgroundImage: `url(${bgHero})` }}
         aria-label={t('home.hero.ariaLabel')}
       >
         <div className={styles.heroButtons}>
